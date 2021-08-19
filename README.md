@@ -3,21 +3,32 @@ Feature request submission system
 
 Install Pip:
 
-`curl https://bootstrap.pypa.io/get-pip.py > get-pip.py
-sudo python3 get-pip.py`
+```sh
+curl https://bootstrap.pypa.io/get-pip.py > get-pip.py
+sudo python3 get-pip.py
+```
 
 Install VirtualEnv:
-`pip install virtualenv`
+```sh
+pip install virtualenv
+```
 
 Setup virtual environment:
-`mkdir env
+```sh
+mkdir env
 cd env
 virtualenv . -p python3
-source ./bin/activate`
+source ./bin/activate
+cd ..
+```
 
 Create DB tables:
-`python manage.py migrate`
+```sh
+python manage.py migrate
+```
 
 Run Server:
-`python manage.py runserver`
+```sh
+python manage.py runserver
+```
 
