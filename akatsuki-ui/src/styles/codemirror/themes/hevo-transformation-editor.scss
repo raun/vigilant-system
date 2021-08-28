@@ -1,0 +1,112 @@
+/*
+    Name:       hevo-transformation-editor
+*/
+@import '../../variables';
+.cm-s-hevo-transformation-editor {
+  &.CodeMirror {
+    background-color: $transformation-editor-bg;
+    color: #f8f8f2;
+  }
+
+  .CodeMirror-gutters {
+    background: $transformation-editor-bg;
+    color: #8f908a;
+    border: none;
+  }
+
+  .CodeMirror-guttermarker,
+  .CodeMirror-guttermarker-subtle,
+  .CodeMirror-linenumber {
+    color: rgb(83, 127, 126);
+  }
+
+  .CodeMirror-cursor {
+    border-left: 1px solid #f8f8f0;
+  }
+
+  div.CodeMirror-selected {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .CodeMirror-focused div.CodeMirror-selected {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .CodeMirror-line::selection,
+  .CodeMirror-line > span::selection,
+  .CodeMirror-line > span > span::selection {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .CodeMirror-activeline-background {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  .CodeMirror-matchingbracket {
+    text-decoration: underline;
+    color: white !important;
+  }
+
+  .cm-keyword {
+    color: #10bb0a !important;
+  }
+  .cm-operator {
+    color: rgba(233, 237, 237, 1);
+  }
+  .cm-variable-2 {
+    color: #f8f8f2;
+  }
+  .cm-builtin {
+    color: #decb6b;
+  }
+  .cm-atom {
+    color: #f77669;
+  }
+  .cm-number {
+    color: #ae81ff;
+  }
+  .cm-def {
+    color: #f8f8f2;
+  }
+  .cm-string {
+    color: #e6db74;
+  }
+  .cm-string-2 {
+    color: #80cbc4;
+  }
+  .cm-comment {
+    color: #546e7a;
+  }
+  .cm-variable {
+    color: #f8f8f2;
+  }
+  .cm-meta {
+    color: #80cbc4;
+  }
+  .cm-attribute {
+    color: #ffcb6b;
+  }
+  .cm-property {
+    color: #80cbae;
+  }
+  .cm-qualifier {
+    color: #decb6b;
+  }
+  .cm-variable-3,
+  .cm-s-hevo-transformation-editor .cm-type {
+    color: #decb6b;
+  }
+  .cm-tag {
+    color: rgba(255, 83, 112, 1);
+  }
+  .cm-error {
+    color: rgba(255, 255, 255, 1);
+    background-color: #ec5f67;
+  }
+  .cm-whitespace::before {
+    color: #505063;
+  }
+  .cm-show-tab .cm-tab {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE0AAAAQCAYAAABTGfKZAAAAAXNSR0IArs4c6QAAAY1JREFUWAnt1zFLw0AUB/B3TYodihVRv4SCgyA4CGJLBRdz0E4ODq3o4ndxEVRSKDim9LIJVWzBTVREBL+DaKkiZkk8/ymtHLWxdM4dhL68vOV+vHdNGOnVFeB8d5tI3gthP0eRWFZJhs8SUQVxynNeKkr5fYY9tzjfXxi1d40GIdM0GoyxWynlnJR+k/O9xf/gNBp0HOf0PZNJ54nYHUZ0hii4sqzyUhScRuvJVKuHnWRShnAP6Lhp4F3iDFseBqfRFBXHqbQZm8hhVB+RnsJ1gVFdUUq6oUYbEBHi6C2VSmQZoyc8msSoNgqF8qpaZvb/RtVk3GPPC34JMKpp36dzJNL9pO60vsQYv6brVtgY9bEoLRYPZn3fa6LL5nG+fRoGbaob152maiBWwXD7QWTkazX7Wi0z1Zu4xwNgHXhsCHFyM+iiO60nooJhJNt4X8vh6PoDFpZrNCCoYMB6xUiuu66Nr4PhS48nXILga0tKCg/9F3yJZoU4Dt/RIpfuNNDU6xUbYDsI10aBhZI/52WOKv+5sQQAAAAASUVORK5CYII=);
+  }
+}

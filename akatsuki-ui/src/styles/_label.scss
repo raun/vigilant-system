@@ -1,0 +1,263 @@
+$hd-default-label-border-radius: 10px;
+$hd-default-label-padding-y: $spacer / 16;
+$hd-default-label-padding-x: $spacer  * .375;
+$hd-state-label-padding-y: 5px;
+$hd-state-label-padding-x: $spacer * .5;
+$hd-badge-label-padding-x: $spacer * .31;
+$hd-badge-label-padding-y: $spacer / 8;
+$hd-badge-label-border-radius: 10px;
+$hd-badge-label-dot-size: 8px;
+$hd-badge-label-dot-overlay-gutter: $hd-badge-label-dot-size / 2;
+
+.hd-label {
+  display: inline-flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+//
+// Default Label
+//
+
+.hd-default-label {
+  padding: $hd-default-label-padding-y $hd-default-label-padding-x;
+  border-radius: $hd-default-label-border-radius;
+  color: $text-primary;
+  background: $ripple-bg;
+  @include typography-level-to-styles($typography-config, caption-4);
+}
+
+.hd-default-label-accent {
+  background: $accent-faded;
+  color: $text-accent;
+}
+
+.hd-default-label-error {
+  background: $error-faded;
+  color: $error;
+}
+
+.hd-default-label-purple {
+  background: $purple-badge-bg;
+  color: $purple-badge-text;
+}
+
+
+//
+// State Label
+//
+
+.hd-state-label {
+  padding: $hd-state-label-padding-y $hd-state-label-padding-x;
+  border-radius: $border-radius-default;
+  color: $light-text;
+  @include typography-level-to-styles($typography-config, body-4);
+}
+
+.hd-state-label-default {
+  color: $text-primary;
+  background: $ripple-bg;
+}
+
+.hd-state-label-success {
+  background: $success;
+}
+
+.hd-state-label-error {
+  background: $error;
+}
+
+.hd-state-label-warning {
+  background: $warning;
+}
+
+.hd-state-label-deferred {
+  background: $deferred;
+}
+
+
+//
+// State Label Flat
+//
+
+.hd-state-label-flat {
+  @include typography-level-to-styles($typography-config, body-4);
+}
+
+.hd-state-label-flat-default {
+  color: $default-secondary;
+}
+
+.hd-state-label-flat-success {
+  color: $success;
+}
+
+.hd-state-label-flat-success-1 {
+  color: $success-1;
+}
+
+.hd-state-label-flat-error {
+  color: $error;
+}
+
+.hd-state-label-flat-warning {
+  color: $warning;
+}
+
+.hd-state-label-flat-deferred {
+  color: $deferred;
+}
+
+.hd-state-label-flat-deferred-1 {
+  color: $deferred-1;
+}
+
+.hd-state-label-flat-info {
+  color: $info;
+}
+
+.hd-state-label-flat-info-1 {
+  color: $info-1;
+}
+
+.hd-state-label-flat-info-2 {
+  color: $info-2;
+}
+
+
+//
+// Key Label
+//
+
+.hd-key-label {
+  border: solid 1px $divider-color;
+  border-radius: $border-radius-default;
+  padding: $spacer / 8 $spacer / 4;
+  background: $surface-bg-overlay;
+  flex-shrink: 0;
+  @include typography-level-to-styles($typography-config, caption-4);
+}
+
+$hd-key-label-color-map: (
+  'pk': var(--key-badge-pk),
+  'sk': var(--key-badge-sk),
+  'dk': var(--key-badge-dk),
+  'ck': var(--key-badge-ck),
+  'partition-key': var(--key-badge-partition-key),
+  'not-null': var(--key-badge-not-null)
+);
+
+@each $key, $color in $hd-key-label-color-map {
+  .hd-key-label-#{$key} {
+    color: $color;
+  }
+}
+
+
+.hd-key-label-partition-key, .hd-key-label-not-null {
+  text-transform: capitalize;
+}
+
+
+//
+// Badge
+//
+
+.hd-badge-label {
+  padding: $hd-badge-label-padding-y $hd-badge-label-padding-x;
+  border-radius: $hd-badge-label-border-radius;
+  justify-content: center;
+  color: $light-text;
+  @include typography-level-to-styles($typography-config, caption-4);
+  line-height: 12px !important;
+}
+
+.hd-badge-label-dot {
+  width: $hd-badge-label-dot-size;
+  height: $hd-badge-label-dot-size;
+  padding: 0;
+}
+
+.hd-badge-label-default {
+  background: $ripple-bg;
+  color: $text-primary;
+}
+
+.hd-badge-label-success {
+  background: $success;
+}
+
+.hd-badge-label-deferred {
+  background: $deferred;
+}
+
+.hd-badge-label-error {
+  background: $error;
+}
+
+.hd-badge-label-warning {
+  background: $warning;
+}
+
+
+//
+// Overlay Label
+//
+
+.hd-label-overlay-container {
+  position: relative;
+}
+
+.hd-label-overlay-label {
+  position: absolute;
+}
+
+$overlap-vertical-prop-map: (
+  top: 'top',
+  bottom: 'bottom'
+);
+
+$overlap-horizontal-prop-map: (
+  right: 'left',
+  left: 'right'
+);
+
+.hd-label-overlay-label-overlap {
+  @each $vertical-dir, $vertical-prop in $overlap-vertical-prop-map {
+    @each $horizontal-dir, $horizontal-prop in $overlap-horizontal-prop-map {
+      &.hd-label-overlay-container-#{$vertical-dir}-#{$horizontal-dir} .hd-label-overlay-label {
+        #{$vertical-prop}: 0;
+        #{$horizontal-prop}: 100%;
+        margin-#{$vertical-prop}: -$spacer / 4;
+        margin-#{$horizontal-prop}: -$spacer / 2;
+        &.hd-badge-label-dot {
+          margin-#{$vertical-prop}: -$hd-badge-label-dot-overlay-gutter;
+          margin-#{$horizontal-prop}: -$hd-badge-label-dot-overlay-gutter;
+        }
+      }
+    }
+  }
+}
+
+$inset-vertical-prop-map: (
+  top: 'top',
+  bottom: 'bottom'
+);
+
+$inset-horizontal-prop-map: (
+  right: 'left',
+  left: 'right'
+);
+
+.hd-label-overlay-label-inset {
+  @each $vertical-dir, $vertical-prop in $inset-vertical-prop-map {
+    @each $horizontal-dir, $horizontal-prop in $inset-horizontal-prop-map {
+      &.hd-label-overlay-container-#{$vertical-dir}-#{$horizontal-dir} .hd-label-overlay-label {
+        #{$vertical-prop}: 0;
+        #{$horizontal-prop}: 0;
+        margin-#{$vertical-prop}: $spacer * .75;
+        margin-#{$horizontal-prop}: $spacer * .75;
+      }
+    }
+  }
+}

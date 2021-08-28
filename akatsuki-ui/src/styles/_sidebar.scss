@@ -1,0 +1,144 @@
+.tab-nav-wrapper {
+  position: relative;
+  background: $appbar-bg;
+  box-shadow: $shadow-default;
+  z-index: $zindex-tabbar;
+  padding-top: $spacer * 2;
+  color: $light-text;
+  height: 100%;
+}
+
+.tab-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+
+  li {
+    display: flex;
+  }
+
+  .tab-nav-link {
+    text-transform: uppercase;
+    font-weight: $font-weight-medium;
+    padding: $spacer $spacer * 0.25;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $light-text-secondary;
+
+    &::after {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      content: '';
+      display: block;
+      height: 2px;
+      width: 100%;
+      border-radius: 2px;
+      background: transparent;
+    }
+
+    &::before {
+      background: $error;
+    }
+
+    &:hover,
+    &.active,
+    &:focus {
+      color: $light-text;
+    }
+  }
+
+  &.text-transform-none .tab-nav-link {
+    text-transform: none;
+  }
+}
+
+.tab-nav-link.active::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  border-radius: 4px;
+  left: 0;
+  top: 0;
+  width: 2px;
+}
+
+.tab-nav-vertical {
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+
+  &.expanded {
+    width: 230px;
+
+    .tab-nav-link {
+      justify-content: flex-start;
+      padding: $spacer * .75 $spacer;
+
+      .active::before {
+        background: $error;
+      }
+    }
+
+    .tab-nav-link-icon {
+      margin-right: $spacer * 0.5;
+    }
+  }
+
+  li {
+    width: 100%;
+    margin-top: $spacer * .75;
+  }
+
+  .tab-nav-link-text {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .tab-nav-link {
+    width: 100%;
+
+    &.active {
+      background: $appbar-open-bg;
+    }
+
+    &.sub {
+      color: $light-text-secondary;
+      background: transparent;
+
+      &.active {
+        background-color: transparent;
+      }
+
+      &.active::before {
+        background: $error;
+      }
+    }
+  }
+}
+
+.hevo-icon.tab-nav-link-icon {
+  font-size: $icon-size-base;
+
+  &.sub {
+    padding-left: $spacer * 2;
+  }
+}
+
+.appbar__brand-image {
+  height: $spacer * 2;
+}
+
+.brand-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $topbar-height;
+  width: 100%;
+  border-bottom: 1px solid var(--divider-10-color);
+}

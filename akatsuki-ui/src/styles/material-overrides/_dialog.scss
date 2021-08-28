@@ -1,0 +1,18 @@
+.MuiDialog-paper {
+  box-shadow: $shadow-dropdown;
+}
+
+.MuiDialog-root {
+  z-index: 1000 !important;
+}
+
+.popup-input {
+  .MuiDialog-paperWidthSm {
+    width: 500px;
+  }
+  padding: $spacer * 0.5;
+}
+
+.MuiPaper-root {
+  color: $text-primary !important;
+}

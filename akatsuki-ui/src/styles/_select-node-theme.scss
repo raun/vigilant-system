@@ -1,0 +1,5 @@
+@mixin select-node-typography($config) {
+  .select-node-name {
+    @include typography-level-to-styles($config, body-3);
+  }
+}

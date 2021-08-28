@@ -1,0 +1,51 @@
+a {
+  text-decoration: none !important;
+  color: inherit;
+  &:hover {
+    color: $text-primary;
+  }
+}
+
+.text-link {
+  cursor: pointer;
+  display: inline-block;
+  align-items: center;
+  .thumb {
+    font-size: $icon-size-base * 0.875;
+    // Consider using inline svgs to avoid size issues
+    height: $icon-size-base * 0.875;
+    // Avoid text underline
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -2px;
+    &::before {
+      display: inline-block;
+    }
+  }
+
+  &.text-link-lg .thumb {
+    font-size: $icon-size-base * 1.25;
+    height: $icon-size-base * 1.25;
+    margin-top: -2px;
+  }
+
+  &.text-link-sm .thumb {
+    font-size: $icon-size-base * 0.75;
+    height: $icon-size-base * 0.75;
+    margin-top: -1px;
+  }
+
+  &.thumbnail-right .thumb {
+    margin-left: $spacer * 0.125;
+  }
+
+  &.thumbnail-left .thumb {
+    margin-right: $spacer * 0.125;
+  }
+}
+
+.banner-text-link {
+  font-weight: $font-weight-bold;
+  text-decoration: underline;
+  cursor: pointer;
+}

@@ -1,0 +1,12 @@
+.secondary-nav {
+  background: $surface-bg;
+  box-shadow: $shadow-header;
+  position: relative;
+}
+
+.secondary-nav__actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: $spacer * 1.25;
+}

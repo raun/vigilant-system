@@ -1,0 +1,21 @@
+.alternate-table-row {
+  background: $surface-bg;
+  padding: $spacer * 1.25;
+  &:nth-child(2n) {
+    background: $surface-bg-alternate;
+  }
+}
+
+.key-value-row {
+  display: flex;
+  .left {
+    width: 280px;
+    flex-shrink: 0;
+  }
+
+  .right {
+    flex: 1;
+    min-width: 0;
+    word-wrap: break-word;
+  }
+}

@@ -1,0 +1,100 @@
+/**
+You can use spacing utility classes to add padding and margin to elements
+Please note that padding should be treated as a property of an element
+while margin should be treated as relationship between elements. This can
+help you in choosing between the two.
+
+The class name syntax is as follows
+{property}{sides}-{size}
+
+{property} is either margin or padding
+
+{sides} can be left, right, bottom, top, horizontal or vertical
+left: l
+right: r
+bottom: b
+top: t
+horizontal: x
+vertical: y
+
+You can skip {sides} to apply spacing in all directions
+
+{sizes} are integer values starting from 0.
+To understand how the {sizes} are mapped to actual values check $spacers map in
+variables.scss
+
+for e.g to apply margin right of 16px to an element you can use class .mr-4
+or to apply horizontal padding to an element use .px-4
+or to apply padding/margin on all sides use .p-4/.m-4
+or to clear margin on an element you can use .m-0
+
+margins also have special value called auto. to use that use
+margin{sides}-auto
+*/
+
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @each $size, $length in $spacers {
+    .#{$abbrev}-#{$size} {
+      #{$prop}: $length !important;
+    }
+    .#{$abbrev}t-#{$size},
+    .#{$abbrev}y-#{$size} {
+      #{$prop}-top: $length !important;
+    }
+    .#{$abbrev}r-#{$size},
+    .#{$abbrev}x-#{$size} {
+      #{$prop}-right: $length !important;
+    }
+    .#{$abbrev}b-#{$size},
+    .#{$abbrev}y-#{$size} {
+      #{$prop}-bottom: $length !important;
+    }
+    .#{$abbrev}l-#{$size},
+    .#{$abbrev}x-#{$size} {
+      #{$prop}-left: $length !important;
+    }
+  }
+}
+
+@each $size, $length in $spacers {
+  .m-n#{$size} {
+    margin: -$length !important;
+  }
+  .mt-n#{$size},
+  .my-n#{$size} {
+    margin-top: -$length !important;
+  }
+  .mr-n#{$size},
+  .mx-n#{$size} {
+    margin-right: -$length !important;
+  }
+  .mb-n#{$size},
+  .my-n#{$size} {
+    margin-bottom: -$length !important;
+  }
+  .ml-n#{$size},
+  .mx-n#{$size} {
+    margin-left: -$length !important;
+  }
+}
+
+// Some special margin utils
+.m-auto {
+  margin: auto !important;
+}
+.mt-auto,
+.my-auto {
+  margin-top: auto !important;
+}
+.mr-auto,
+.mx-auto {
+  margin-right: auto !important;
+}
+.mb-auto,
+.my-auto {
+  margin-bottom: auto !important;
+}
+.ml-auto,
+.mx-auto {
+  margin-left: auto !important;
+}

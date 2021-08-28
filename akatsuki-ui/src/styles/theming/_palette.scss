@@ -1,0 +1,81 @@
+$mat-grey: (
+  0: #ffffff,
+  50: #fafafa,
+  100: #F5F6F8,
+  200: #F2F3F4,
+  300: #dfe3e9,
+  600: #cacfcf,
+  700: #acacac,
+  800: #4a4a4a,
+  900: #7e8491,
+  1000: #374053
+);
+$white: map-get($mat-grey, 0);
+$grey-1: map-get($mat-grey, 50);
+$grey-2: map_get($mat-grey, 100);
+$grey-3: map_get($mat-grey, 200);
+$grey-5: map_get($mat-grey, 300);
+$grey-6: map_get($mat-grey, 600);
+$grey-7: map_get($mat-grey, 700);
+$grey-9: map_get($mat-grey, 800);
+$grey-10: map_get($mat-grey, 900);
+$grey-11: map_get($mat-grey, 1000);
+
+$blue-palette: (
+  100: #F7F9FC,
+  300: #8CB9FC,
+  350: #3db5ff,
+  400: #4186e0,
+  500: #51a0f8,
+  560: #3a75b6,
+  600: #55b5db,
+  650: #005cc5
+);
+
+$purple-palette: (
+  200: #21a0d9,
+  300: #937efe,
+  400: #6c63ff,
+  500: #2574bc,
+  550: #433BD1,
+  600: #225B99,
+  700: #625384,
+  800: #35547C,
+  900: #4A3973
+);
+
+$red-palette: (
+  400: #ff6b6b,
+  500: #ff4e4e,
+  600: #D24B4B,
+  650: #B52C2C
+);
+
+$yellow-palette: (
+  300: #F7C209,
+  400: #EAAE14,
+  600: #CCA701,
+  800: #9F881F
+);
+
+$green-palette: (
+  200: #1cccc4,
+  300: #16a39d,
+  400: #4abc90,
+  500: #3b9673,
+  600: #2a936a,
+  700: #207454
+);
+
+$orange-palette: (
+  300: #ec8c39,
+  400: #f27e2f,
+  500: #ff6e00,
+  800: #D84315,
+  900: #B46319,
+  1000: #BF360C,
+  1100: #935115
+);
+
+$black-translucent: rgba(0, 0, 0, .8);
+$mirage: #151b26;

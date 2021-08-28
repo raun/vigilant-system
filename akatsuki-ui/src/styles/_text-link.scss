@@ -1,0 +1,18 @@
+.text-link,
+button.text-link {
+  color: $text-accent;
+  &:not([disabled]) {
+    &:hover,
+    &:focus {
+      color: $text-accent-active;
+      text-decoration: underline;
+    }
+  }
+  &.banner-text-link {
+    color: $light-text;
+    &:hover,
+    &:focus {
+      color: $light-text;
+    }
+  }
+}

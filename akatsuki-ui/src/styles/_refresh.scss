@@ -1,0 +1,15 @@
+.refresh-icon {
+  &.refreshing {
+    cursor: not-allowed;
+    animation: animateRefreshIcon 1000ms linear infinite;
+  }
+}
+
+@keyframes animateRefreshIcon {
+  100% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}

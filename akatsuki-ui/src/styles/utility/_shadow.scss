@@ -1,0 +1,22 @@
+.no-shadow {
+  box-shadow: none !important;
+}
+
+$shadows: (
+  default: $shadow-default,
+  elevated: $shadow-elevated,
+  tooltip: $shadow-tooltip,
+  header: $shadow-header,
+  bottom-card: $shadow-bottom-card,
+  topbar: $shadow-topbar,
+  dropdown: $shadow-dropdown,
+  elevated-btn: $shadow-elevated-btn,
+  elevated-accent: $shadow-elevated-accent,
+  thumb: $shadow-thumb,
+);
+
+@each $key, $value in $shadows {
+  .shadow-#{$key} {
+    box-shadow: $value !important;
+  }
+}

@@ -1,0 +1,44 @@
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/addon/dialog/dialog.css';
+@import '~codemirror/addon/fold/foldgutter.css';
+
+@import 'themes/hevo-transformation-editor';
+@import 'themes/hevo-default';
+@import 'themes/hevo-default-view';
+
+.CodeMirror {
+  font: 12px / normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas',
+    'source-code-pro' !important;
+  height: 100% !important;
+}
+
+.CodeMirror-scroll {
+  min-height: 300px;
+  overflow: auto;
+}
+
+.CodeMirror-sm {
+  .CodeMirror-scroll {
+    min-height: 150px;
+    overflow: auto;
+  }
+}
+
+.CodeMirror pre {
+  padding: 0 8px;
+}
+
+.CodeMirror-dialog input {
+  width: 100% !important;
+}
+
+.cm-whitespace::before {
+  position: absolute;
+  pointer-events: none;
+}
+
+.cm-show-tab .cm-tab {
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: right;
+}

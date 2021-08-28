@@ -1,0 +1,74 @@
+@mixin material-shadow($depth) {
+  box-shadow: 0 0 #{$depth + 1}px 0 rgba(0, 0, 0, 0.12),
+    0 #{$depth}px #{$depth}px 0 rgba(0, 0, 0, 0.14);
+}
+
+@mixin thumbnail-container(
+  $thumb-size,
+  $spacing: 0px,
+  $border: false,
+  $round-edge: false
+) {
+  $container-size: $thumb-size + 2 * $spacing;
+  width: $container-size;
+  height: $container-size;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  @if $round-edge {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  @if $border {
+    border: solid 1px $divider-color;
+  }
+  img {
+    max-width: $thumb-size;
+    max-height: $thumb-size;
+  }
+  hd-icon,
+  .hevo-icon {
+    font-size: $thumb-size;
+  }
+}
+
+@mixin clear-btn-style() {
+  margin: 0;
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  border-width: 0;
+  color: inherit;
+  font: inherit;
+  &:focus {
+    outline: none;
+    text-decoration: none;
+  }
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        str-slice($string, $index + str-length($search)),
+        $search,
+        $replace
+      );
+  }
+  @return $string;
+}
+
+@mixin border-right-radius($radius) {
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+@mixin border-left-radius($radius) {
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}

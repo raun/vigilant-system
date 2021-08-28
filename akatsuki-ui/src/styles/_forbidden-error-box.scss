@@ -1,0 +1,29 @@
+.forbidden-error-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: $spacer * 5;
+  padding: $spacer * 1.25;
+  &.height-100 {
+    height: 100%;
+    margin-top: 0;
+  }
+}
+
+.forbidden-error-box-thumbnail {
+  font-size: $icon-size-base * 6.25;
+  margin-bottom: $spacer * 0.75;
+  color: $text-secondary;
+}
+
+.forbidden-error-box-title {
+  margin-bottom: $spacer / 2;
+  font-size: $font-size-subheader;
+  font-weight: $font-weight-normal;
+  line-height: 24px;
+}
+
+.forbidden-error-box-message {
+  color: $text-secondary;
+}

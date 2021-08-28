@@ -1,0 +1,11 @@
+.page-error {
+  margin-top: $sapcer * 5;
+  margin-bottom: $sapcer * 5;
+  &.page-error-compact {
+    margin-top: $spacer;
+    margin-bottom: $spacer;
+  }
+  .no-item-box {
+    margin: 0;
+  }
+}

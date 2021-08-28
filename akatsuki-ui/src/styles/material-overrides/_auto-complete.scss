@@ -1,0 +1,219 @@
+.MuiAutocomplete-inputRoot {
+
+  font-size: $font-size-body;
+
+  &[class*='MuiOutlinedInput-root'] {
+    padding: 0;
+    padding-left: $spacer !important;
+    &[class*='MuiOutlinedInput-marginDense'] {
+      padding: 0;
+    }
+
+    input.MuiAutocomplete-input {
+      padding: $spacer;
+    }
+
+    &[class*='MuiOutlinedInput-marginDense'] input.MuiAutocomplete-input {
+      padding: $spacer * 0.75 0;
+    }
+
+    .MuiAutocomplete-endAdornment {
+      right: $spacer;
+      top: calc(50% - 12px);
+    }
+  }
+
+  &[class*='MuiInput-root'] {
+
+    padding: 0 !important;
+    &[class*='MuiInput-marginDense'] {
+      padding: 0 !important;
+    }
+
+    input.MuiAutocomplete-input {
+      padding: $spacer !important;
+    }
+
+    .MuiAutocomplete-input:first-child {
+      padding-left: $spacer !important;
+    }
+
+    &[class*='MuiInput-marginDense'] input.MuiAutocomplete-input {
+      padding: $spacer * 0.75 $spacer !important;
+    }
+
+    .MuiAutocomplete-endAdornment {
+      top: calc(50% - 12px);
+    }
+  }
+}
+
+.MuiInput-underline:before{
+  border-bottom: none !important;
+}
+
+.MuiInput-underline:after{
+  border-bottom: none !important;
+}
+
+//.HdSelectInput-display-left{
+//  color: $text-primary ;
+//  font-weight: 600;
+//  cursor: pointer;
+//}
+
+.MuiAutocomplete-paper {
+  margin: 0;
+  box-shadow: $shadow-dropdown;
+  border-radius: $border-radius-md;
+}
+
+.MuiAutocomplete-listbox {
+  padding: 0;
+}
+
+#Hd-small-chip-Autocomplete {
+  .MuiInputBase-root{
+    flex-wrap: nowrap;
+    padding: 0;
+    height: 40px;
+    overflow: hidden;
+  }
+}
+
+.MuiAutocomplete-option {
+  padding: $spacer * 0.75 $spacer;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-body;
+  &[data-focus='true'] {
+    background-color: $hover-bg;
+  }
+  &[aria-selected='true'] {
+    background-color: $ripple-bg;
+  }
+}
+
+.MuiAutocomplete-noOptions {
+  padding: $spacer * 0.75 $spacer;
+  font-size: $font-size-body;
+}
+
+.MuiIconButton-root {
+  &.MuiAutocomplete-popupIndicator,
+  &.MuiAutocomplete-clearIndicator {
+    padding: $spacer / 4;
+    margin-right: -$spacer / 4;
+  }
+}
+
+.MuiAutocomplete-popperDisablePortal {
+  position: static;
+  .MuiAutocomplete-paper {
+    box-shadow: none;
+    border-radius: 0;
+  }
+}
+
+.HdAutocompleteInline-inputRoot {
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px $divider-color !important;
+  padding: $spacer * 0.625 $spacer * 0.75;
+  .MuiAutocomplete-endAdornment,
+  .MuiAutocomplete-startAdornment {
+    position: static;
+    display: inline-flex;
+  }
+
+  input {
+    flex: 1;
+    border: none;
+    font: inherit;
+    color: currentColor;
+    width: 100%;
+    border: 0;
+    height: 1.1876em;
+    margin: 0;
+    display: block;
+    padding: 0px $spacer / 2;
+    min-width: 0;
+    background: none;
+    box-sizing: content-box;
+    animation-name: mui-auto-fill-cancel;
+    letter-spacing: inherit;
+    animation-duration: 10ms;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-body;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.HdAutocompleteInline-hiddenInputRoot {
+  transform: scale(0);
+  opacity: 0;
+  height: 0;
+}
+
+.HdSelectInput-root {
+  position: relative;
+  width: 100%;
+
+  .MuiAutocomplete-root.Mui-focused .HdSelectInput-display {
+    display: flex;
+  }
+}
+
+.HdSelectInput-inputRoot {
+  input,
+  .MuiInputBase-input.Mui-disabled {
+    opacity: 0;
+    cursor: default;
+  }
+}
+
+.HdSelectInput-display {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  font-size: $font-size-body;
+  color: $text-secondary;
+  display: none;
+  align-items: center;
+  width: 100%;
+  padding: $spacer 64px $spacer $spacer;
+  pointer-events: none;
+
+  .HdSelectInput-display-left {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &.HdSelectInputDisplay-marginDense {
+    padding: $spacer * 0.75 1px $spacer * 0.75 $spacer;
+  }
+
+  &.HdSelectInputDisplay-displayAlways {
+    display: flex;
+  }
+}
+
+.MuiAutocomplete-popper{
+  .MuiAutocomplete-groupLabel{
+    top: 0;
+    border-top: 1px solid $divider-color;
+    font-size: $font-size-caption;
+    font-weight: $font-weight-medium;
+  }
+  .MuiListSubheader-root{
+    line-height: 26px;
+  }
+
+  .MuiAutocomplete-loading{
+    padding: $spacer * 0.75 $spacer;
+    font-size: $font-size-body;
+  }
+}

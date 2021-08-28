@@ -1,0 +1,49 @@
+.card {
+  border-radius: $border-radius-default;
+  box-shadow: $shadow-default;
+  background-color: $surface-bg;
+}
+
+.card-table {
+  border-radius: $border-radius-md;
+  border: solid 1px $divider-color;
+  background: $secondary-bg;
+  display: block;
+}
+
+.card-table-header,
+.card-table-row {
+  display: flex;
+  align-items: center;
+  padding: $spacer;
+  border-bottom: solid 1px $divider-color;
+}
+
+.card-table-row {
+  padding: $spacer * 1.25;
+  align-items: flex-start;
+}
+
+.card-table-header {
+  padding-top: $spacer * 0.75;
+  padding-bottom: $spacer * 0.75;
+  font-size: $font-size-caption;
+  color: $text-secondary;
+}
+
+.card-table-row:last-child {
+  border-bottom: none;
+}
+
+.card-table-cell {
+  flex: 0;
+}
+
+.card-table-actions {
+  flex-basis: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: -$spacer / 2;
+  margin-left: $spacer;
+}

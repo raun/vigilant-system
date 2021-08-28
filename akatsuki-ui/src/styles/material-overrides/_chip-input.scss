@@ -1,0 +1,19 @@
+.HdChipInput-custom {
+  display: inherit;
+  label {
+    top: 0 !important;
+    padding: 0 $spacer 0 0;
+  }
+
+  div > * {
+    .MuiOutlinedInput-root {
+      padding-top: $spacer * 0.75;
+    }
+    input {
+      padding-left: 0 !important ;
+      padding-bottom: 16px;
+      padding-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}

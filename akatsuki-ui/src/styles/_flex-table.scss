@@ -1,0 +1,66 @@
+.flex-table {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+}
+
+.flex-table__row {
+  display: flex;
+  border-bottom: solid 1px $divider-color;
+  background-color: $surface-bg;
+  font-weight: $font-weight-medium;
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.flex-table__row--no-border {
+  border-bottom: none;
+}
+
+:not(.flex-table__row--header).flex-table__row {
+  transition: background-color 500ms ease;
+  &.flex-table__row--odd {
+    background-color: $surface-bg-alternate;
+  }
+  &.flex-table__row.highlight {
+    background-color: $warning-faded;
+  }
+}
+
+.flex-table__row--header {
+  border-bottom: 1px solid $divider-color;
+  font-weight: $font-weight-normal;
+  color: $text-secondary;
+}
+
+.flex-table__row--header-sticky {
+  position: sticky;
+  top: 0;
+  background: $surface-bg;
+  z-index: 1;
+}
+
+.flex-table__cell {
+  flex: 1;
+  display: flex;
+  padding: $spacer * 0.5 $spacer * 1.25;
+  min-width: 130px;
+}
+
+.flex-table__cell--no-wrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flex-table__row--header .flex-table__cell {
+  &:last-child {
+    border-right: none;
+  }
+}
+
+// auto width table cells. Same width will be applied to all cells in a col
+.flex-table__cell--w-fixed {
+  flex-grow: 0;
+}

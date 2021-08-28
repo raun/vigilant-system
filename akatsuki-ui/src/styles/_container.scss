@@ -1,0 +1,43 @@
+.main-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.main-content-area {
+  width: 100%;
+  height: 100%;
+  display: flex !important;
+  flex-direction: column;
+}
+
+.body-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: $body-container-padding;
+  max-width: $container-max-width;
+}
+
+.scrollable-content {
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+}
+
+.pwf-wrapper {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+
+  .pwf-right {
+    flex-grow: 1;
+    overflow-y: auto;
+    position: relative;
+  }
+
+  .pwf-left-width {
+    width: 200px;
+  }
+}

@@ -1,0 +1,15 @@
+.spinner-icon {
+  &.spinning {
+    cursor: not-allowed;
+    animation: animateSpinerIcon 1000ms linear infinite;
+  }
+}
+
+@keyframes animateSpinerIcon {
+  100% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}

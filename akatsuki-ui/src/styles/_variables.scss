@@ -1,0 +1,160 @@
+@import 'theming/theme';
+
+// Font sizes
+
+$font-size-headline: 24px;
+$font-size-title: 20px;
+$font-size-subheader: 16px;
+$font-size-body: 12px;
+$font-size-caption: 10px;
+
+$paragraph-line-height: 1.67;
+
+$font-family: Open Sans, sans-serif;
+
+// Font weights
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 600;
+$font-weight-bold: 700;
+
+// Border Radius
+
+$border-radius-xs: 2px;
+$border-radius-sm: 4px;
+$border-radius-md: 6px;
+$border-radius-lg: 8px;
+$border-radius-xl: 16px;
+$border-radius-default: $border-radius-sm;
+
+// Border width
+
+$border-width: 1px;
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+$spacer: 16px;
+$spacers: () !default;
+$spacers: map-merge(
+  (
+    0: 0,
+    1: $spacer * 0.25,
+    2: $spacer * 0.5,
+    3: $spacer * 0.75,
+    4: $spacer,
+    5: $spacer * 1.25,
+    6: $spacer * 1.5,
+    7: $spacer * 2,
+    8: $spacer * 2.5,
+    9: $spacer * 3,
+  ),
+  $spacers
+);
+
+// Icon Sizes
+//
+
+$icon-size-base: 16px;
+$icon-sizes: () !default;
+$icon-sizes: map-merge(
+  (
+    1: $icon-size-base * 0.875,
+    2: $icon-size-base,
+    3: $icon-size-base * 1.25,
+    4: $icon-size-base * 1.5,
+    5: $icon-size-base * 1.875,
+    6: $icon-size-base * 2.5,
+    7: $icon-size-base * 5.25,
+  ),
+  $icon-sizes
+);
+
+$actionable-icon-size: $icon-size-base * 1.25;
+
+// Elevation
+
+$zindex-overlay-ctrl: 970;
+$zindex-tabbar: 980;
+$zindex-topbar: 990;
+$zindex-dropdown: 1000;
+$zindex-popover: 1010;
+$zindex-tooltip: 1020;
+$zindex-search-dialog-backdrop: 1030;
+$zindex-search-dialog: 1040;
+$zindex-appbar: 1050;
+$zindex-snackbar: 1055;
+$zindex-modal-backdrop: 1060;
+$zindex-modal: 1070;
+
+// Box
+
+$box-title-height: 50px;
+$box-title-min-height: 50px;
+
+// Form control
+
+$input-height: 40px;
+$input-xl-height: 50px;
+
+// Button
+
+$btn-display: inline-flex;
+$btn-padding-x: $spacer;
+$btn-padding-x-sm: $spacer * 0.5;
+$btn-padding-x-lg: $spacer * 1.5;
+
+// Tooltip
+
+$popup-padding: 0.5 * $spacer;
+
+
+// Menu
+
+$menu-item-padding-x: $spacer;
+
+// Badge
+
+$badge-padding-y: 5px;
+$badge-padding-sm-y: $spacer / 16;
+
+// Container
+
+$container-max-width: 1440px;
+
+// Searcharea
+
+$searcharea-sm-padding-x: $spacer;
+
+// Appbar
+
+$appbar-width: 84px;
+$appbar-depth: 4;
+$appbar-link-icon-size: $icon-size-base * 1.75;
+
+// Toolbar
+$toolbar-height: 56px;
+
+// Topbar
+
+$topbar-height: $toolbar-height;
+
+// Secondary Nav
+$secondary-navbar-height: $toolbar-height;
+
+// Body container padding
+
+$body-container-padding: $spacer * 1.25;
+
+//
+// App specific global variables for individual
+// use cases
+//
+
+// Create Pipeline Fixed Footer
+
+$create-pipeline-fixed-footer-height: 65px;

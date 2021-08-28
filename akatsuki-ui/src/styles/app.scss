@@ -1,0 +1,152 @@
+// //
+// // All global styles are imported, and declared here.
+// // These styles will be available across all the components.
+// //
+
+// //
+// // Imported font icons
+// //
+@import 'hevo-pack';
+
+// //
+// // Flex based grid system
+// //
+@import url('//cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css');
+
+// //
+// // Global variables
+// //
+@import 'variables';
+
+// //
+// // Global mixins
+// //
+@import 'mixins';
+
+// //
+// // Typography
+// //
+@import 'typography/prebuilt';
+
+// //
+// // Application theme
+// //
+@import 'theming/theme';
+@import 'theming/theme-css-variables';
+
+// Material UI
+// @import 'material-overrides/text-field';
+@import 'material-overrides/chip-input';
+@import 'material-overrides/auto-complete';
+@import 'material-overrides/chip';
+@import 'material-overrides/icon-btn';
+
+// //
+// // Utility classes
+// //
+@import 'utility/display';
+@import 'utility/spacing';
+@import 'utility/borders';
+@import 'utility/position';
+@import 'utility/bg';
+@import 'utility/scroll';
+@import 'utility/shadow';
+@import 'utility/typography';
+@import 'utility/mouse';
+@import 'utility/text-colors';
+
+// //
+// // Global component styles
+// //
+@import 'icon';
+@import 'button';
+@import 'button-group';
+
+@import 'auth';
+@import 'table';
+
+@import 'container';
+@import 'badge';
+@import 'link';
+@import 'row';
+@import 'box';
+
+@import 'primary-header';
+@import 'secondary-nav-header';
+@import 'flex-table';
+@import 'no-item';
+@import 'shimmer';
+@import 'text-link';
+
+@import 'toaster';
+
+// Component styles
+@import 'material-overrides/backdrop';
+@import 'material-overrides/dialog';
+
+@import 'sidebar';
+@import 'list-icon';
+@import 'focus';
+@import 'settings';
+@import 'integration-heading';
+@import 'forbidden-error-box';
+@import 'refresh';
+@import 'header-styles';
+@import 'card';
+@import 'execution-policy';
+@import 'flow-chart';
+@import 'menu-trigger';
+@import 'label';
+@import 'dialog';
+
+// @import 'codemirror/codemirror';
+
+@import 'spinner';
+
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
+.App {
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: $text-primary;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.entity-id {
+  display: inline-flex;
+  max-width: 20%;
+  align-items: center;
+  padding-right: $spacer;
+  margin-right: $spacer;
+  border-right: solid 1px $divider-color;
+  @include typography-level-to-styles($typography-config, subheading-2);
+}
+
+.tooltip-trigger-visually-hidden {
+  height: 0;
+  width: 0;
+}
+
+p {
+  line-height: $paragraph-line-height;
+}

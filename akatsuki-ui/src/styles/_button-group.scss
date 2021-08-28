@@ -1,0 +1,103 @@
+// stylelint-disable selector-no-qualifying-type
+
+// Make the div behave like a button
+.btn-group,
+.btn-group-vertical {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle; // match .btn alignment given font-size hack above
+
+  > .btn {
+    position: relative;
+    flex: 1 1 auto;
+
+    // Bring the hover, focused, and "active" buttons to the front to overlay
+    // the borders properly
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      z-index: 1;
+    }
+  }
+}
+
+.btn-group {
+  // Reset rounded corners
+  > .btn:not(:last-child):not(.dropdown-toggle),
+  > .btn-group:not(:last-child) > .btn {
+    @include border-right-radius(0);
+
+    &.btn-primary {
+      border-right: solid 1px $accent-dark;
+    }
+
+    &.btn-secondary {
+      border-right-width: 0;
+    }
+  }
+
+  > .btn:not(:first-child),
+  > .btn-group:not(:first-child) > .btn {
+    @include border-left-radius(0);
+  }
+}
+
+//
+// Split button dropdowns
+//
+
+.dropdown-toggle-split {
+  padding-right: $btn-padding-x * 0.5;
+  padding-left: $btn-padding-x * 0.5;
+
+  &::after,
+  .dropup &::after,
+  .dropright &::after {
+    margin-left: 0;
+  }
+
+  .dropleft &::before {
+    margin-right: 0;
+  }
+}
+
+.btn-sm + .dropdown-toggle-split {
+  padding-right: $btn-padding-x-sm * 0.5;
+  padding-left: $btn-padding-x-sm * 0.5;
+}
+
+.btn-lg + .dropdown-toggle-split {
+  padding-right: $btn-padding-x-lg * 0.5;
+  padding-left: $btn-padding-x-lg * 0.5;
+}
+
+// The clickable button for toggling the menu
+// Set the same inset shadow as the :active state
+.btn-group.show .dropdown-toggle {
+  &.btn-primary {
+    box-shadow: $shadow-elevated-accent;
+  }
+
+  &.btn-secondary {
+    box-shadow: $shadow-elevated-btn;
+  }
+}
+
+.btn-group-toggle {
+  .btn.btn-secondary {
+    &.active,
+    &.active:hover,
+    &.active:focus {
+      box-shadow: none;
+      border-color: $accent;
+      border-left-width: 1px;
+      background: $accent-faded;
+      color: $accent;
+    }
+
+    &.active + .btn.btn-secondary {
+      border-left-color: $accent;
+    }
+  }
+}

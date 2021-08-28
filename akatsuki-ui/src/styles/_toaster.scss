@@ -1,0 +1,197 @@
+// Variables
+
+$toaster-default: $accent !default;
+$toaster-success: $success !default;
+$toaster-error: $error !default;
+$toaster-info: $info !default;
+$toaster-wait: $accent !default;
+$toaster-warning: $deferred !default;
+
+$font-line-height: 18px;
+$toast-icon-size: $spacer * 1.25;
+$toast-icon-gutter-y: ($font-line-height - $toast-icon-size) / 2;
+$close-size: $icon-size-base;
+$close-gutter-y: ($font-line-height - $close-size) / 2;
+
+$toaster-text-color: $light-text !default;
+
+$toaster-colors: () !default;
+$toaster-colors: map-merge(
+                (
+                        'success': $toaster-success,
+                        'error': $toaster-error,
+                        'info': $toaster-info,
+                        'wait': $toaster-wait,
+                        'warning': $toaster-warning,
+                ),
+                $toaster-colors
+);
+
+$toaster-margin: 12px !default;
+
+$toaster-breakpoints: (
+        small: 240px,
+        medium: 480px,
+        large: 768px,
+) !default;
+
+// Style
+
+.toaster-icon {
+  flex-shrink: 0;
+  font-size: $toast-icon-size;
+  margin-top: $toast-icon-gutter-y;
+  margin-bottom: $toast-icon-gutter-y;
+}
+
+.toast-title {
+  font-weight: $font-weight-bold;
+}
+
+.toast-message {
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+  font-weight: $font-weight-bold;
+  line-height: $font-line-height;
+
+  & a,
+  & label {
+    color: $toaster-text-color;
+  }
+
+  & a:hover {
+    color: #cccccc;
+    text-decoration: none;
+  }
+}
+
+.toast-close-button {
+  flex-shrink: 0;
+  font-size: $close-size;
+  cursor: pointer;
+  margin-top: $close-gutter-y;
+  margin-bottom: $close-gutter-y;
+}
+
+.toast-content {
+  flex: 1;
+  padding: 0 $spacer * 0.75;
+  display: inline-block;
+  max-height: 500px;
+  overflow-y: auto;
+  align-self: center;
+}
+
+.toast-top-full-width {
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+
+.toast-bottom-full-width {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+
+.toast-top-left {
+  top: $toaster-margin;
+  left: $toaster-margin;
+}
+
+.toast-top-center {
+  top: $toaster-margin;
+}
+
+.toast-top-right {
+  top: $toaster-margin;
+  right: $toaster-margin;
+}
+
+.toast-bottom-right {
+  right: $toaster-margin;
+  bottom: $toaster-margin;
+}
+
+.toast-bottom-center {
+  bottom: $toaster-margin;
+}
+
+.toast-bottom-left {
+  bottom: $toaster-margin;
+  left: $toaster-margin;
+}
+
+.toast-center {
+  top: 45%;
+}
+
+#toast-container {
+  position: fixed;
+  z-index: 999999;
+  /*overrides*/
+  pointer-events: auto;
+}
+
+#toast-container.toast-center,
+#toast-container.toast-top-center,
+#toast-container.toast-bottom-center {
+  width: 100%;
+  pointer-events: none;
+  left: 0;
+  right: 0;
+}
+
+#toast-container.toast-center > div,
+#toast-container.toast-top-center > div,
+#toast-container.toast-bottom-center > div {
+  margin: 6px auto;
+  pointer-events: auto;
+}
+
+#toast-container.toast-center > button,
+#toast-container.toast-top-center > button,
+#toast-container.toast-bottom-center > button {
+  pointer-events: auto;
+}
+
+#toast-container > div {
+  padding: $spacer * 0.75;
+  width: 300px;
+  border-radius: $border-radius-default;
+  background-position: 15px center;
+  background-repeat: no-repeat;
+  color: $toaster-text-color;
+  display: flex;
+  align-items: flex-start;
+}
+
+#toast-container.toast-top-full-width > div,
+#toast-container.toast-bottom-full-width > div {
+  width: 96%;
+  margin: auto;
+}
+
+.toast {
+  position: relative;
+  background-color: $toaster-default;
+  font-size: inherit;
+}
+
+@each $color, $value in $toaster-colors {
+  .toast-#{$color} {
+    background-color: $value;
+  }
+}
+
+.Toastify__toast {
+  font-family: $font-family;
+}
+
+.Toastify__toast--success {
+  background: none !important;
+}
+
+.Toastify__toast {
+  box-shadow: none !important;
+}

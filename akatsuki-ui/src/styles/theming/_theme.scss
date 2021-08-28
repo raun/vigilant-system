@@ -1,0 +1,123 @@
+@import 'palette';
+
+/*
+Theme variables
+ */
+
+//
+$primary                         : var(--primary-color);
+$accent                          : var(--accent-color);
+$accent-faded                    : var(--accent-faded-color);
+$accent-disabled                 : var(--accent-disabled-color);
+$accent-dark                     : var(--accent-dark-color);
+
+// Semantic colors
+$default                         : var(--default-color);
+$default-secondary               : var(--default-secondary-color);
+$default-dark                    : var(--default-dark-color);
+$default-faded                   : var(--default-faded-color);
+$default-border                  : var(--default-border-color);
+
+$info                            : var(--info-color);
+$info-1                          : var(--info-1-color);
+$info-2                          : var(--info-2-color);
+$info-dark                       : var(--info-dark-color);
+$info-faded                      : var(--info-faded-color);
+$info-border                     : var(--info-border-color);
+
+$warning                         : var(--warning-color);
+$warning-secondary               : var(--warning-secondary-color);
+$warning-1                       : var(--warning-1-color);
+$warning-dark                    : var(--warning-dark-color);
+$warning-faded                   : var(--warning-faded-color);
+$warning-border                  : var(--warning-border-color);
+
+$error                           : var(--error-color);
+$error-dark                      : var(--error-dark-color);
+$error-faded                     : var(--error-faded-color);
+$error-secondary                 : var(--error-secondary-color);
+$error-border                    : var(--error-border-color);
+
+$deferred                        : var(--deferred-color);
+$deferred-1                      : var(--deferred-1-color);
+$deferred-2                      : var(--deferred-2-color);
+$deferred-dark                   : var(--deferred-dark-color);
+$deferred-faded                  : var(--deferred-faded-color);
+$deferred-border                 : var(--deferred-border-color);
+
+$success                         : var(--success-color);
+$success-1                       : var(--success-1-color);
+$success-dark                    : var(--success-dark-color);
+$success-faded                   : var(--success-faded-color);
+$success-border                  : var(--success-border-color);
+
+// Background colors
+$surface-bg                      : var(--surface-bg-color);
+$surface-bg-alternate            : var(--surface-bg-alternate-color);
+$surface-bg-secondary            : var(--surface-bg-secondary-color);
+$surface-bg-raised               : var(--surface-bg-raised-color);
+$surface-bg-overlay              : var(--surface-bg-overlay-color);
+$surface-bg-60                   : var(--surface-bg-60-color);
+$surface-bg-80                   : var(--surface-bg-80-color);
+$surface-bg-warn                 : var(--surface-bg-warn);
+
+$backdrop-color                  : var(--backdrop-color);
+$default-bg                      : var(--default-bg-color);
+$secondary-bg                    : var(--secondary-bg-color);
+$disabled-bg                     : var(--disabled-bg-color);
+
+$appbar-bg                       : var(--appbar-bg-color);
+$appbar-open-bg                  : var(--appbar-bg-open-color);
+
+$slider-thumb-bg                 : var(--slider-thumb-bg-color);
+
+$ripple-bg                       : var(--ripple-bg-color);
+
+$hover-bg                        : var(--hover-bg-color);
+$menu-bg                         : $surface-bg-secondary;
+$menu-active-bg                  : $ripple-bg;
+$menu-active-error-bg            : $error-faded;
+
+$tooltip-bg                      : var(--tooltip-bg-color);
+
+// Foreground colors
+$divider-color                   : var(--divider-color);
+$divider-10-color                : var(--divider-10-color);
+$active-border-color             : var(--active-border-color);
+$menu-border-color               : var(--menu-border-color);
+$surface-border-warn             : var(--surface-border-warn);
+
+$light-text                      : var(--light-text);
+$light-text-secondary            : var(--light-text-secondary);
+$dark-text                       : var(--dark-text);
+$dark-text-secondary             : var(--dark-text-secondary);
+$text-primary                    : var(--text-primary-color);
+$text-primary-alternate          : var(--text-primary-alternate-color);
+$text-secondary                  : var(--text-secondary-color);
+$focused-label                   : var(--focused-label-color);
+$text-accent                     : var(--text-accent-color);
+$text-accent-active              : var(--text-accent-active-color);
+
+// Shadows
+$shadow-default                  : var(--shadow-default);
+$shadow-elevated                 : var(--shadow-elevated);
+$shadow-tooltip                  : var(--shadow-tooltip);
+$shadow-header                   : var(--shadow-header);
+$shadow-bottom-card              : var(--shadow-bottom-card);
+$shadow-topbar                   : var(--shadow-topbar);
+$shadow-dropdown                 : var(--shadow-dropdown);
+$shadow-elevated-accent          : var(--shadow-elevated-accent);
+$shadow-elevated-btn             : var(--shadow-elevated-btn);
+$shadow-thumb                    : var(--shadow-thumb);
+
+// Transformation Code Editor Theme
+$transformation-editor-bg        : var(--transformation-editor-bg-color);
+$transformation-editor-header-bg : var(--transformation-editor-header-bg-color);
+
+// Label Theme
+$purple-badge-text               : var(--purple-badge-text);
+$purple-badge-bg                 : var(--purple-badge-bg);
+
+// Alert Theme
+$info-alert-bg                   : var(--info-alert-bg);
+$info-alert-border               : var(--info-alert-border);

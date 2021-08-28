@@ -1,0 +1,5 @@
+@import 'typography-core';
+
+@mixin hevo-typography($config) {
+  @include typography-core($typography-config);
+}

@@ -1,0 +1,293 @@
+:root {
+  --surface-bg-color:                     #{$white};
+  --surface-bg-alternate-color:           #{map-get($blue-palette, 100)};
+  --surface-bg-secondary-color:           #{$white};
+  --surface-bg-raised-color:              #{$white};
+  --surface-bg-overlay-color:             #{$grey-2};
+  --surface-bg-80-color:                  #{rgba($white, .8)};
+  --surface-bg-60-color:                  #{rgba($white, .6)};
+
+  --default-bg-color:                     #{$grey-2};
+  --secondary-bg-color:                   #{$grey-1};
+  --backdrop-color:                       #{rgba($mirage, .7)};
+  --disabled-bg-color:                    #{rgba($grey-5, .6)};
+
+  --ripple-bg-color:                      #{rgba($grey-11, .1)};
+  --hover-bg-color:                       #{$grey-2};
+
+  --tooltip-bg-color:                     #{$white};
+
+  --dark-text:                            #{$grey-11};
+  --dark-text-secondary:                  #{$grey-10};
+  --light-text:                           rgba(255, 255, 255, 1);
+  --light-text-secondary:                 rgba(255, 255, 255, .4);
+  --text-primary-color:                   #{$grey-11};
+  --text-primary-alternate-color:         #{rgba($grey-11, .8)};
+  --text-secondary-color:                 #{$grey-10};
+  --focused-label-color:                  #{$grey-11};
+  --text-accent-color:                    var(--accent-color);
+  --text-accent-active-color:             var(--accent-dark-color);
+
+  --divider-color:                        #{$grey-5};
+  --divider-10-color:                     #{rgba($grey-5, .1)};
+  --active-border-color:                  #{map-get($blue-palette, 400)};
+  --menu-border-color:                    transparent;
+
+  --appbar-bg-color:                      #{$mirage};
+  --appbar-bg-open-color:                 rgba(255, 255, 255, .1);
+
+  --slider-thumb-bg-color:                #{$white};
+
+  --primary-color:                        #{$mirage};
+
+  --accent-color:                         #{map-get($blue-palette, 400)};
+  --accent-faded-color:                   #{rgba(map-get($blue-palette, 400), .1)};
+  --accent-disabled-color:                #{map-get($blue-palette, 300)};
+  --accent-dark-color:                    #{map-get($purple-palette, 600)};
+
+  --shadow-default:                       0 0 4px 0 rgba(0, 0, 0, 0.1);
+  --shadow-header:                        0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  --shadow-bottom-card:                   0 0 4px 0 rgba(0, 0, 0, 0.1);
+  --shadow-topbar:                        0 0 4px 0 rgba(0,0,0,0.20);
+  --shadow-dropdown:                      0 7px 10px 0 rgba(0, 0, 0, 0.08);
+  --shadow-elevated:                      0 0 10px 0 rgba(0, 0, 0, 0.15);
+  --shadow-tooltip:                       0 1px 10px 0 rgba(0, 0, 0, 0.1), 0 -1px 10px 0 rgba(0, 0, 0, 0.2);
+  --shadow-elevated-accent:               0 1px 3px 1px rgba(65, 134, 224, 0.3), 0 1px 2px 0 rgba(65, 134, 224, 0.4);
+  --shadow-elevated-btn:                  0 0 10px 0 rgba(0, 0, 0, 0.15);
+  --shadow-thumb:                         0 0 4px 0 rgba(0, 0, 0, 0.1);
+
+  --default-color:                        #{$grey-11};
+  --default-secondary-color:              #{$grey-10};
+  --default-dark-color:                   #{$grey-11};
+  --default-faded-color:                  #{$grey-1};
+  --default-border-color:                 #{$grey-5};
+
+  --error-color:                          #{map-get($red-palette, 400)};
+  --error-secondary-color:                #{map-get($red-palette, 500)};
+  --error-faded-color:                    #{rgba(map-get($red-palette, 500), .1)};
+  --error-dark-color:                     #{map-get($red-palette, 500)};
+  --error-border-color:                   #{rgba(map-get($red-palette, 500), .2)};
+
+  --info-color:                           #{map-get($blue-palette, 400)};
+  --info-faded-color:                     #{rgba(map-get($blue-palette, 400), .1)};
+  --info-dark-color:                      #{map-get($blue-palette, 600)};
+  --info-1-color:                         #{map-get($purple-palette, 200)};
+  --info-2-color:                         #{map-get($purple-palette, 300)};
+  --info-border-color:                    #{rgba(map-get($blue-palette, 400), .2)};
+  --info-3-color:                         #{map-get($blue-palette, 650)};
+
+  --info-secondary-color:                 #{map-get($purple-palette, 400)};
+  --info-secondary-faded-color:           #{rgba(map-get($purple-palette, 400), .1)};
+  --info-secondary-dark-color:            #{map-get($purple-palette, 550)};
+  --info-secondary-border-color:          #{rgba(map-get($purple-palette, 400), .2)};
+
+  --success-color:                        #{map-get($green-palette, 400)};
+  --success-1-color:                      #{map-get($green-palette, 200)};
+  --success-faded-color:                  #{rgba(map-get($green-palette, 400), .1)};
+  --success-dark-color:                   #{map-get($green-palette, 600)};
+  --success-border-color:                 #{rgba(map-get($green-palette, 400), .2)};
+
+  --warning-color:                        #{map-get($yellow-palette, 300)};
+  --warning-faded-color:                  #{rgba(map-get($yellow-palette, 300), .2)};
+  --warning-faded-1-color:                #{rgba(map-get($yellow-palette, 300), .1)};
+  --warning-border-color:                 #{rgba(map-get($yellow-palette, 300), .2)};
+  --warning-dark-color:                   #{map-get($yellow-palette, 400)};
+
+  --deferred-color:                       #{map-get($orange-palette, 400)};
+  --deferred-1-color:                     #{map-get($orange-palette, 500)};
+  --deferred-2-color:                     #{map-get($orange-palette, 300)};
+  --deferred-faded-color:                 #{rgba(map-get($orange-palette, 400), .1)};
+  --deferred-dark-color:                  #{map-get($orange-palette, 500)};
+  --deferred-border-color:                #{rgba(map-get($orange-palette, 400), .2)};
+
+  --transformation-editor-bg-color:        #313347;
+  --transformation-editor-header-bg-color: rgba(0, 0, 0, .15);
+
+  --default-editor-c-1:                   #063289;
+  --default-editor-c-2:                   #b29762;
+  --default-editor-c-3:                   #063289;
+  --default-editor-c-4:                   #1659df;
+  --default-editor-c-5:                   #896724;
+  --default-editor-c-6:                   #896724;
+  --default-editor-c-7:                   #2d2006;
+  --default-editor-c-8:                   #b6ad9a;
+  --default-editor-c-9:                   #f00;
+  --default-editor-selection:             rgba(0, 0, 0, 0.10);
+
+  --calendly-surface-bg:                  #ffffff;
+  --calendly-text-color:                  #374053;
+  --calendly-primary-color:               #4186e0;
+
+  --blue-400:                             #{map-get($blue-palette, 400)};
+
+  --flow-chart-link:                      var(--text-primary-color);
+  --flow-chart-link-plus:                 #ffffff;
+
+  --transformation-block-border:          var(--divider-color);
+
+  --info-alert-bg:                        var(--info-faded-color);
+  --info-alert-border:                    var(--info-border-color);
+
+  --purple-badge-text:                    var(--info-secondary-color);
+  --purple-badge-bg:                      var(--info-secondary-faded-color);
+
+  --success-badge-text:                   var(--success-dark-color);
+  --success-badge-bg:                     var(--success-border-color);
+
+  --success-2-badge-text:                 #17b3c8;
+  --success-2-badge-bg:                   rgba(21, 151, 169, .2);
+
+  --icon-background:                      var(--ripple-bg-color);
+
+  --surface-box-shadow:                   var(--shadow-default);
+  --surface-box-border-color:             transparent;
+
+  --key-badge-pk:                         #6C63FF;
+  --key-badge-sk:                         #17B3C8;
+  --key-badge-ck:                         #37ABFF;
+  --key-badge-dk:                         #bd10e0;
+  --key-badge-partition-key:              #F2AE74;
+  --key-badge-not-null:                   #9b76ff;
+  --shape-over-backdrop-opacity:          1;
+}
+
+.color-mode-dark {
+  --surface-bg-color:                     #242526;
+  --surface-bg-alternate-color:           #1e2021;
+  --surface-bg-secondary-color:           #2b2b2c;
+  --surface-bg-raised-color:              #35383a;
+  --surface-bg-overlay-color:             rgba(255, 255, 255, .1);
+  --surface-bg-80-color:                  #{rgba(#242526, .8)};
+  --surface-bg-60-color:                  #{rgba(#242526, .6)};
+
+  --default-bg-color:                     #17191A;
+  --secondary-bg-color:                   #2b2b2c;
+  --backdrop-color:                       #{rgba(#020202, .7)};
+  --disabled-bg-color:                    rgba(255, 255, 255, .1);
+
+  --ripple-bg-color:                      rgba(255, 255, 255, .1);
+  --hover-bg-color:                       rgba(255, 255, 255, .2);
+
+  --tooltip-bg-color:                     #4d4d4d;
+
+  --text-primary-color:                   rgba(255, 255, 255, .80);
+  --text-primary-alternate-color:         rgba(255, 255, 255, .60);
+  --text-secondary-color:                 rgba(255, 255, 255, .40);
+  --focused-label-color:                  rgba(255, 255, 255, .80);
+  --text-accent-color:                    #539FDA;
+  --text-accent-active-color:             #539FDA;
+
+  --divider-color:                        rgba(255, 255, 255, .10);
+  --active-border-color:                  rgba(255, 255, 255, .40);
+  --menu-border-color:                    rgba(255, 255, 255, .10);
+
+  --appbar-bg-color:                      #020202;
+  --appbar-bg-open-color:                 #313131;
+
+  --slider-thumb-bg-color:                var(--accent-color);
+
+  --primary-color:                        #{map-get($blue-palette, 500)};
+
+  --accent-color:                         #{map-get($blue-palette, 560)};
+  --accent-faded-color:                   #{rgba(map-get($blue-palette, 500), .1)};
+  --accent-disabled-color:                #{map-get($purple-palette, 800)};
+  --accent-dark-color:                    #{map-get($purple-palette, 600)};
+
+  --shadow-default:                       0 0px 0px 0 rgba(0, 0, 0, 0.1);
+  --shadow-header:                        0px 1px 4px rgba(0, 0, 0, 0.1), 0px 2px 8px rgba(0, 0, 0, 0.1), 0px 0px 4px rgba(0, 0, 0, 0.06);
+  --shadow-bottom-card:                   0px -1px 5px rgba(0, 0, 0, 0.2), 0px -3px 14px rgba(0, 0, 0, 0.12), 0px -1px 10px rgba(0, 0, 0, 0.14);
+  --shadow-topbar:                        0px 1px 4px rgba(0, 0, 0, 0.1), 0px 2px 8px rgba(0, 0, 0, 0.1), 0px 0px 4px rgba(0, 0, 0, 0.06);
+  --shadow-dropdown:                      0 0px 1px 0 rgba(0, 0, 0, 0.1), 0 2px 3px 0 rgba(0, 0, 0, 0.1), 0 4px 3px 0 rgba(0, 0, 0, 0.1);
+  --shadow-elevated:                      0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.3), 0 4px 8px 0 rgba(0, 0, 0, 0.14);
+  --shadow-tooltip:                       0 1px 10px 0 rgba(0, 0, 0, 0.1), 0 -1px 10px 0 rgba(0, 0, 0, 0.2);
+  --shadow-elevated-accent:               0 0 1px 1px rgba(65, 134, 224, 0.25);
+  --shadow-elevated-btn:                  0px 3px 3px rgba(0, 0, 0, 0.2), 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 3px 5px rgba(0, 0, 0, 0.01);
+  --shadow-thumb:                         0 0 10px 0 rgba(0, 0, 0, 0.1);
+
+  --default-color:                        #7c7c7d;
+  --default-secondary-color:              #7c7c7d;
+  --default-dark-color:                   #4f5151;
+  --default-faded-color:                  rgba(255, 255, 255, .1);
+  --default-border-color:                 rgba(255, 255, 255, .1);
+
+  --error-color:                          #{map-get($red-palette, 600)};
+  --error-secondary-color:                #{map-get($red-palette, 650)};
+  --error-faded-color:                    #{rgba(map-get($red-palette, 600), .2)};
+  --error-dark-color:                     #{map-get($red-palette, 650)};
+  --error-border-color:                   #{rgba(map-get($red-palette, 600), .3)};
+
+  --info-color:                           #{map-get($blue-palette, 560)};
+  --info-faded-color:                     #{rgba(map-get($blue-palette, 560), .1)};
+  --info-dark-color:                      #{map-get($purple-palette, 600)};
+  --info-border-color:                    #{rgba(map-get($blue-palette, 560), .2)};
+
+  --info-secondary-color:                 #{map-get($purple-palette, 700)};
+  --info-secondary-faded-color:           #{rgba(map-get($purple-palette, 700), .1)};
+  --info-secondary-dark-color:            #{map-get($purple-palette, 900)};
+  --info-secondary-border-color:          #{rgba(map-get($purple-palette, 700), .2)};
+
+  --success-color:                        #{map-get($green-palette, 500)};
+  --success-1-color:                      #{map-get($green-palette, 300)};
+  --success-faded-color:                  #{rgba(map-get($green-palette, 500), .1)};
+  --success-dark-color:                   #{map-get($green-palette, 700)};
+  --success-border-color:                 #{rgba(map-get($green-palette, 500), .2)};
+
+  --warning-color:                        #{map-get($yellow-palette, 600)};
+  --warning-faded-color:                  #{rgba(map-get($yellow-palette, 600), .2)};
+  --warning-faded-1-color:                #{rgba(map-get($yellow-palette, 600), .1)};
+  --warning-border-color:                 #{rgba(map-get($yellow-palette, 600), .2)};
+  --warning-dark-color:                   #{map-get($yellow-palette, 800)};
+
+  --deferred-color:                       #{map-get($orange-palette, 900)};
+  --deferred-1-color:                     #{map-get($orange-palette, 800)};
+  --deferred-2-color:                     #{map-get($orange-palette, 1000)};
+  --deferred-faded-color:                 #{rgba(map-get($orange-palette, 900), .1)};
+  --deferred-dark-color:                  #{map-get($orange-palette, 1100)};
+  --deferred-border-color:                #{rgba(map-get($orange-palette, 900), .2)};
+
+  --transformation-editor-bg-color:        #16161b;
+  --transformation-editor-header-bg-color: rgba(0, 0, 0, .2);
+
+  --default-editor-c-1:                   #ffcc99;
+  --default-editor-c-2:                   #9a86fd;
+  --default-editor-c-3:                   #e09142;
+  --default-editor-c-4:                   #ffb870;
+  --default-editor-c-5:                   #6a51e6;
+  --default-editor-c-6:                   #7a63ee;
+  --default-editor-c-7:                   #eeebff;
+  --default-editor-c-8:                   #6c6783;
+  --default-editor-c-9:                   #f00;
+  --default-editor-selection:             rgba(255, 255, 255, 0.15);
+
+  --calendly-surface-bg:                  #1e1e1e;
+  --calendly-text-color:                  #d2d2d2;
+  --calendly-primary-color:               #3a75b6;
+
+  --flow-chart-link:                      #d3d3d4;
+  --flow-chart-link-plus:                 #242526;
+
+  --transformation-block-border:          transparent;
+
+  --info-alert-bg:                        var(--surface-bg-color);
+  --info-alert-border:                    var(--default-border-color);
+
+  --purple-badge-text:                    var(--text-primary-color);
+  --purple-badge-bg:                      var(--info-secondary-color);
+
+  --success-badge-text:                   var(--text-primary-color);
+  --success-badge-bg:                     var(--success-dark-color);
+
+  --success-2-badge-text:                 var(--text-primary-color);
+  --success-2-badge-bg:                   #106975;
+
+  --icon-background:                      rgba(255, 255, 255, 0.1);
+
+  --surface-box-shadow:                   none;
+  --surface-box-border-color:             var(--divider-color);
+
+  --key-badge-pk:                         #80a6f3;
+  --key-badge-sk:                         #54c5e2;
+  --key-badge-ck:                         #e691fb;
+
+  --shape-over-backdrop-opacity:          .8;
+}

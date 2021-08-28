@@ -1,0 +1,11 @@
+*:focus {
+  outline: none;
+}
+
+.hevo-icon.focusable {
+  padding: 2px;
+}
+
+.sl-option:not(.active) .destination:focus {
+  background-color: $hover-bg;
+}

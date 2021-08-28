@@ -1,0 +1,86 @@
+/*
+    Name:       hevo-default-view
+*/
+
+.cm-s-hevo-default-view {
+  &.CodeMirror {
+    background-color: $surface-bg;
+    color: $text-primary;
+    font-size: 13px;
+    z-index: 1;
+  }
+
+  .CodeMirror-gutters {
+    background: $secondary-bg;
+    color: $text-secondary;
+    border-right-color: $divider-color;
+  }
+
+  .CodeMirror-cursor {
+    border-left: 1px solid $text-primary;
+  }
+
+  .cm-atom,
+  .cm-number,
+  .cm-keyword,
+  .cm-variable,
+  .cm-attribute,
+  .cm-quote,
+  .cm-hr,
+  .cm-link {
+    color: var(--default-editor-c-1);
+  }
+  .CodeMirror-scroll {
+    z-index: 1;
+  }
+  div.CodeMirror-selected {
+    background: var(--default-editor-selection);
+  }
+
+  .CodeMirror-line::selection,
+  .CodeMirror-line > span::selection,
+  .CodeMirror-line > span > span::selection {
+    background: var(--default-editor-selection);
+  }
+
+  .cm-property {
+    color: var(--default-editor-c-2);
+  }
+  .cm-punctuation,
+  .cm-unit,
+  .cm-negative {
+    color: var(--default-editor-c-3);
+  }
+  .cm-string,
+  .cm-operator {
+    color: var(--default-editor-c-4);
+  }
+  .cm-positive {
+    color: var(--default-editor-c-5);
+  }
+
+  .cm-variable-2,
+  .cm-variable-3,
+  .cm-type,
+  .cm-string-2,
+  .cm-url {
+    color: var(--default-editor-c-6);
+  }
+  .cm-def,
+  .cm-tag,
+  .cm-builtin,
+  .cm-qualifier,
+  .cm-header,
+  .cm-em {
+    color: var(--default-editor-c-7);
+  }
+  .cm-bracket,
+  .cm-comment {
+    color: var(--default-editor-c-8);
+  }
+
+  .cm-error,
+  .cm-invalidchar {
+    color: var(--default-editor-c-9);
+  }
+}

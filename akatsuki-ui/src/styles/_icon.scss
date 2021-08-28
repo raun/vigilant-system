@@ -1,0 +1,144 @@
+.hevo-icon {
+  display: inline-flex;
+  font-size: $icon-size-base;
+}
+
+.actionable-icon {
+  font-size: $icon-size-base * 1.25;
+  cursor: pointer;
+}
+
+.actionable-icon-lg {
+  font-size: $icon-size-base * 1.25;
+}
+
+.actionable-icon-sm {
+  font-size: $icon-size-base;
+}
+
+.actionable-icon-xs {
+  font-size: $icon-size-base * 0.875;
+}
+
+.close-icon {
+  font-size: $icon-size-base * 1.25;
+  cursor: pointer;
+}
+
+.close-icon-sm {
+  font-size: $icon-size-base;
+}
+
+@each $size, $length in $icon-sizes {
+  .icon-size-#{$size} {
+    font-size: $length !important;
+  }
+}
+
+.delete-row {
+  vertical-align: middle;
+}
+
+.toggle-password-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: $spacer;
+  padding-left: $spacer / 2;
+  align-items: center;
+  height: 100%;
+  font-size: $icon-size-base;
+}
+
+.info-icon {
+  padding: 0.8px;
+  cursor: pointer;
+  margin-left: $spacer * 0.5;
+}
+
+.info-icon-sm {
+  font-size: $icon-size-base * 0.875;
+  padding: 0.6px;
+  margin-left: $spacer * 0.25;
+}
+
+.info-icon-xsm {
+  font-size: $icon-size-base * 0.8;
+  padding: 0.6px;
+  margin-left: $spacer * 0.25;
+}
+
+.copy-sm {
+  cursor: pointer;
+  color: $text-primary;
+  transition: all 200ms ease;
+  font-size: $icon-size-base;
+  opacity: 0.6;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
+
+.actionable-icon,
+.close-icon,
+.info-icon {
+  color: $text-secondary;
+  transition: color 200ms ease;
+
+  &.dbg {
+    color: $light-text;
+  }
+
+  &:not(.disabled) {
+    &:hover,
+    &:focus,
+    &.active {
+      color: $text-primary;
+    }
+  }
+
+  &.dbg {
+    &:not(.disabled) {
+      &:hover,
+      &:focus,
+      &.active {
+        color: $light-text;
+      }
+    }
+  }
+}
+
+.actionable-icon-primary {
+  $primary: $accent;
+  color: $primary;
+
+  &:hover:not(.disabled) {
+    color: $accent-dark;
+  }
+}
+
+.actionable-icon-error {
+  color: $error;
+
+  &:hover:not(.disabled) {
+    color: $error-dark;
+  }
+}
+
+.actionable-icon-warning {
+  color: $warning;
+
+  &:hover:not(.disabled) {
+    color: $warning-dark;
+  }
+}
+
+.actionable-icon-deferred {
+  color: $deferred;
+
+  &:hover:not(.disabled) {
+    color: $deferred-dark;
+  }
+}

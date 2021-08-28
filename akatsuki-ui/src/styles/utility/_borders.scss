@@ -1,0 +1,96 @@
+//
+// Border
+//
+
+.border {
+  border: $border-width $divider-color solid !important;
+}
+
+.border-top {
+  border-top: $border-width $divider-color solid !important;
+}
+
+.border-right {
+  border-right: $border-width $divider-color solid !important;
+}
+
+.border-bottom {
+  border-bottom: $border-width $divider-color solid !important;
+}
+
+.border-left {
+  border-left: $border-width $divider-color solid !important;
+}
+
+.border-0 {
+  border: 0 !important;
+}
+
+.border-top-0 {
+  border-top: 0 !important;
+}
+
+.border-right-0 {
+  border-right: 0 !important;
+}
+
+.border-bottom-0 {
+  border-bottom: 0 !important;
+}
+
+.border-left-0 {
+  border-left: 0 !important;
+}
+
+//
+// border radius
+//
+
+.border-radius-0 {
+  border-radius: 0 !important;
+}
+
+.border-top-left-radius-0 {
+  border-top-left-radius: 0 !important;
+}
+
+.border-top-right-radius-0 {
+  border-top-right-radius: 0 !important;
+}
+
+.border-bottom-right-radius-0 {
+  border-bottom-right-radius: 0 !important;
+}
+
+.border-bottom-left-radius-0 {
+  border-bottom-left-radius: 0 !important;
+}
+
+.border-radius-default {
+  border-radius: $border-radius-default !important;
+}
+
+.border-radius-xs {
+  border-radius: $border-radius-sm !important;
+}
+
+.border-radius-sm {
+  border-radius: $border-radius-sm !important;
+}
+
+.border-radius-md {
+  border-radius: $border-radius-md !important;
+}
+
+.border-radius-lg {
+  border-radius: $border-radius-lg !important;
+}
+
+.border-radius-xl {
+  border-radius: $border-radius-xl !important;
+}
+
+.border-top-radius {
+  border-top-left-radius: $border-radius-md;
+  border-top-right-radius: $border-radius-md;
+}

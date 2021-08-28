@@ -1,0 +1,22 @@
+.MuiIconButton-root {
+  padding: $spacer / 2.5;
+  color: $text-primary;
+  .hevo-icon {
+    font-size: $icon-size-base * 1.25;
+  }
+}
+
+.MuiIconButton-colorError {
+  color: $error;
+  &.Mui-disabled {
+    color: $error-faded;
+  }
+}
+
+.MuiIconButton-edgeEnd {
+  margin-right: -$spacer / 2;
+}
+
+.MuiIconButton-withoutGutter {
+  margin: -$spacer / 2;
+}

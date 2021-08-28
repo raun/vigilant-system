@@ -1,0 +1,101 @@
+.box {
+  background-color: $surface-bg;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-default;
+  overflow: hidden;
+}
+
+.box__header {
+  background-color: $surface-bg;
+  height: $box-title-min-height;
+  padding: 0 $spacer * 1.25;
+  border-bottom: 1px solid $divider-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box__header--auto-height {
+  height: auto;
+  padding: $spacer * 1.25;
+}
+
+.box.collapsible .box__header {
+  cursor: pointer;
+}
+
+.box__header.collapsed {
+  border-bottom: none;
+}
+
+.box__header.collapsed .collapse-btn {
+  transform: rotate(180deg);
+}
+
+.box__body.collapsed {
+  display: none;
+}
+
+.box__header--progress-bar {
+  position: relative;
+}
+
+.box__header__progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.box__title {
+  display: flex;
+  align-items: center;
+  @include typography-level-to-styles($typography-config, body-4);
+  flex: 1;
+}
+
+.box__body {
+  padding: $spacer * 1.25;
+  form .form-group {
+    margin-bottom: $spacer * 2;
+  }
+}
+
+.box--config .box__body,
+.box--table .box__body {
+  padding: 0;
+}
+
+.box--no-shadow {
+  box-shadow: none;
+  border: solid 1px $divider-color;
+}
+
+.box__header__actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.box__header__actions-separator {
+  height: $box-title-min-height;
+  display: inline-block;
+  width: 2px;
+  border-left: solid 1px $divider-color;
+  margin-left: $spacer * 1.25;
+  margin-right: $spacer * 1.25;
+}
+
+.box__back {
+  height: 100%;
+  padding-right: $spacer * 1.25;
+  border-right: 1px solid $divider-color;
+  display: flex;
+  align-items: center;
+  margin-right: $spacer * 1.25;
+}
+
+.box__footer {
+  border-top: solid 1px $divider-color;
+  padding: $spacer * 1.25;
+}

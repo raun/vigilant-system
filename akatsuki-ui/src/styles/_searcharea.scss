@@ -1,0 +1,48 @@
+@import 'variables';
+
+.searcharea {
+  border: solid 1px $divider-color;
+  border-radius: $border-radius-md;
+  display: flex;
+  justify-content: space-between;
+  padding: $spacer / 2 $spacer;
+  background: $surface-bg;
+  flex-shrink: 0;
+  transition: all 200ms ease;
+  position: relative;
+  width: 100%;
+  max-width: $container-max-width;
+  cursor: pointer;
+  input {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    height: auto;
+    width: 0;
+    flex: 1;
+    margin-right: $spacer + $icon-size-base + 4px;
+    font-family: $font-family;
+    font-size: $font-size-body;
+    font-weight: $font-weight-medium;
+    &::-webkit-input-placeholder {
+      color: $text-secondary !important;
+      font-weight: $font-weight-normal !important;
+    }
+
+    &:-moz-placeholder {
+      color: $text-secondary !important;
+      font-weight: $font-weight-normal !important;
+    }
+
+    &:-ms-input-placeholder {
+      color: $text-secondary !important;
+      font-weight: $font-weight-normal !important;
+    }
+  }
+
+  .clear-search {
+    position: absolute;
+    right: $spacer - 2px;
+    align-self: center;
+  }
+}

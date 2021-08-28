@@ -1,0 +1,40 @@
+.integration-heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .integration-node {
+    display: flex;
+    align-items: center;
+  }
+
+  .node-details {
+    // margin-left: $spacer;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .node-name {
+    margin-bottom: $spacer / 4;
+    max-width: 256px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: $font-size-subheader;
+    font-weight: $font-weight-medium;
+    line-height: 20px;
+  }
+
+  .node-type {
+    color: $text-secondary;
+    font-size: $font-size-body;
+    font-weight: $font-weight-normal;
+    line-height: 16px;
+  }
+
+  .pipeline-connection-indicator {
+    font-size: $icon-size-base * 1.5;
+    margin-left: $spacer * 2;
+    margin-right: $spacer * 2;
+  }
+}

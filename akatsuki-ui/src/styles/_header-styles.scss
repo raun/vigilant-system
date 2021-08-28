@@ -1,0 +1,27 @@
+@import 'variables';
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacer * 2 $spacer * 8;
+  background-color: $surface-bg;
+  .header {
+    @include typography-level-to-styles(typography-config(), title);
+    color: $text-primary;
+  }
+
+  .subheader {
+    text-align: center;
+    color: $text-secondary;
+    margin-top: $spacer * 0.25;
+  }
+}
+
+.floating-header {
+  border-radius: $border-radius-md;
+  width: 100%;
+  &.secondary-nav {
+    box-shadow: $shadow-default;
+  }
+}

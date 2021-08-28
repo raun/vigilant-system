@@ -1,0 +1,32 @@
+.menu-trigger {
+  @include clear-btn-style();
+  display: inline-flex;
+  padding: $spacer / 4 $spacer / 2;
+  cursor: pointer;
+  border-radius: $border-radius-default;
+  background-color: inherit;
+  align-items: center;
+  font-weight: $font-weight-medium;
+  &:focus:not(.disabled), &:hover:not(.disabled) {
+    background-color: $menu-active-bg;
+  }
+
+  .menu-trigger__dropdown-icon {
+    margin-left: $spacer / 4;
+    font-size: $icon-size-base * .875;
+  }
+
+  &.disabled {
+    cursor: default;
+    .menu-trigger__dropdown-icon {
+      opacity: 0;
+      transform: scale(0);
+    }
+  }
+}
+
+
+.menu-trigger__thumbnail {
+  margin-right: $spacer;
+  font-size: $icon-size-base;
+}

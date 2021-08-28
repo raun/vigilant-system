@@ -1,0 +1,198 @@
+.flow-chart-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.flow-chart-node {
+  position: absolute;
+}
+
+.flow-chart-node.hovered .flow-chart-node-anchor,
+.flow-chart-node.active .flow-chart-node-anchor,
+.flow-chart-node-anchor.highlight,
+.flow-chart-node-gutter.highlight {
+  opacity: 1;
+}
+
+$anchor-size: 7px;
+$anchor-border-size: 2px;
+
+.flow-chart-node-anchor {
+  position: absolute;
+  width: $anchor-size;
+  height: $anchor-size;
+  border-radius: 50%;
+  background: $surface-bg;
+  border: solid $anchor-border-size $accent;
+  box-sizing: content-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.flow-chart-node-anchor:hover {
+  .hevo-icon {
+    transform: scale(1);
+  }
+}
+
+.flow-chart-node-anchor .hevo-icon {
+  color: $light-text;
+  font-size: $icon-size-base * 0.75;
+  background: $accent;
+  padding: 5px;
+  transform: scale(0);
+  border-radius: 50%;
+  transition: all 200ms ease;
+}
+
+.flow-chart-node-anchor.top {
+  top: -1 * ($anchor-size + $anchor-border-size * 2) / 2;
+}
+
+.flow-chart-node-anchor.bottom {
+  bottom: -1 * ($anchor-size + $anchor-border-size * 2) / 2;
+}
+
+.flow-chart-node-anchor.left {
+  left: -1 * ($anchor-size + $anchor-border-size * 2) / 2;
+}
+
+.flow-chart-node-anchor.right {
+  right: -1 * ($anchor-size + $anchor-border-size * 2) / 2;
+}
+
+$gutter-size: 20px;
+
+.flow-chart-node-gutter {
+  position: absolute;
+  width: $gutter-size * 2;
+  height: $gutter-size * 2;
+  border-radius: 50%;
+  background: $surface-bg;
+  border: solid $anchor-border-size $accent;
+  box-sizing: border-box;
+  display: inline-block;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 200ms ease;
+}
+
+.flow-chart-node-gutter.top {
+  top: -1 * $gutter-size;
+}
+
+.flow-chart-node-gutter.bottom {
+  bottom: -1 * $gutter-size;
+}
+
+.flow-chart-node-gutter.left {
+  left: -1 * $gutter-size;
+}
+
+.flow-chart-node-gutter.right {
+  right: -1 * $gutter-size;
+}
+
+.link .link-path {
+  stroke-width: 2;
+  stroke: #737f97;
+}
+
+.link .link-label {
+  font-size: $font-size-caption;
+  fill: $text-primary;
+}
+
+.link .link-selector {
+  stroke-width: 12;
+  stroke: black;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.link .link-arrow-left,
+.link .link-arrow-right {
+  stroke-width: 2;
+  stroke: #737f97;
+}
+
+.link.active,
+.link.suggestion.active-suggestion {
+  .link-arrow-left,
+  .link-arrow-right,
+  .link-path {
+    stroke: var(--flow-chart-link);
+  }
+}
+
+.link.suggestion {
+  .link-arrow-left,
+  .link-arrow-right,
+  .link-path {
+    stroke-width: 1;
+  }
+}
+
+.link.drop-target {
+  .link-arrow-left,
+  .link-arrow-right,
+  .link-path {
+    stroke: var(--flow-chart-link);
+  }
+
+  .drop-target-circle {
+    fill: var(--flow-chart-link);
+  }
+
+  .drop-target-plus-h,
+  .drop-target-plus-v {
+    stroke: var(--flow-chart-link-plus);
+    stroke-width: 1;
+  }
+}
+
+.paths-root {
+  position: absolute;
+}
+
+.paths-root svg {
+  width: 100%;
+  height: 100%;
+}
+
+.flow-chart-controls-container {
+  display: flex;
+  align-items: center;
+}
+
+.flow-chart-control-group-container {
+  display: flex;
+  align-items: center;
+
+  + .flow-chart-control-group-container {
+    margin-left: $spacer;
+  }
+}
+
+.flow-chart-zoom-control .zoom-control-val {
+  margin: 0 $spacer / 4;
+  min-width: 32px;
+  text-align: center;
+}
+
+.flow-chart-zoom-control .zoom-control-btn {
+  font-size: $icon-size-base * 0.5;
+}
+
+.svg-root {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

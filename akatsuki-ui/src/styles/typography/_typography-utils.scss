@@ -1,0 +1,201 @@
+@function typography-level(
+  $font-size,
+  $font-weight: 400,
+  $line-height: normal,
+  $font-style: normal,
+  $font-family: null,
+  $letter-spacing: null
+) {
+  $config: (
+    font-size: $font-size,
+    line-height: $line-height,
+    font-weight: $font-weight,
+    font-style: $font-style,
+    font-family: $font-family,
+    letter-spacing: $letter-spacing,
+  );
+
+  @return $config;
+}
+
+@function typography-config(
+  $font-family: 'Open Sans, sans-serif',
+  $display-4: typography-level(40px, 600, 50px),
+  $display-3: typography-level(30px, 700, 36px),
+  $display-2: typography-level(30px, 600, 36px),
+  $display-1: typography-level(30px, 400, 36px),
+  $headline-2: typography-level(24px, 700, 30px),
+  $headline-1: typography-level(24px, 400, 30px),
+  $title: typography-level(20px, 700, 30px),
+  $subheading-3: typography-level(16px, 700, 20px),
+  $subheading-2: typography-level(16px, 600, 20px),
+  $subheading-1: typography-level(16px, 400, 24px),
+  $body-4: typography-level(12px, 700, 16px),
+  $body-3: typography-level(12px, 600, 16px),
+  $body-2: typography-level(12px, 400, 16px, italic),
+  $body-1: typography-level(12px, 400, 16px),
+  $caption-4: typography-level(10px, 700, 16px),
+  $caption-3: typography-level(10px, 600, 16px),
+  $caption-2: typography-level(10px, 400, 16px, italic),
+  $caption-1: typography-level(10px, 400, 16px),
+  $button: typography-level(12px, 700, 16px),
+  $button-sm: typography-level(12px, 700, 16px),
+  $input: typography-level(12px, 600, 1.33)
+) {
+  // Declare an initial map with all of the levels.
+  $config: (
+    display-4: $display-4,
+    display-3: $display-3,
+    display-2: $display-2,
+    display-1: $display-1,
+    headline-2: $headline-2,
+    headline-1: $headline-1,
+    title: $title,
+    subheading-1: $subheading-1,
+    subheading-2: $subheading-2,
+    subheading-3: $subheading-3,
+    body-1: $body-1,
+    body-2: $body-2,
+    body-3: $body-3,
+    body-4: $body-4,
+    caption-4: $caption-4,
+    caption-3: $caption-3,
+    caption-2: $caption-2,
+    caption-1: $caption-1,
+    caption: $caption-1,
+    button: $button,
+    button-sm: $button-sm,
+    input: $input,
+  );
+
+  // Loop through the levels and set the `font-family` of the ones that don't have one to the base.
+  // Note that Sass can't modify maps in place, which means that we need to merge and re-assign.
+  @each $key, $level in $config {
+    @if map-get($level, font-family) == null {
+      $new-level: map-merge(
+        $level,
+        (
+          font-family: $font-family,
+        )
+      );
+      $config: map-merge(
+        $config,
+        (
+          $key: $new-level,
+        )
+      );
+    }
+  }
+
+  // Add the base font family to the config.
+  @return map-merge(
+    $config,
+    (
+      font-family: $font-family,
+    )
+  );
+}
+
+@function _get-type-value($config, $level, $name) {
+  @return map-get(map-get($config, $level), $name);
+}
+
+// Gets the font size for a level inside a typography config.
+@function font-size($config, $level) {
+  @return _get-type-value($config, $level, font-size);
+}
+
+// Gets the line height for a level inside a typography config.
+@function line-height($config, $level) {
+  @return _get-type-value($config, $level, line-height);
+}
+
+// Gets the font weight for a level inside a typography config.
+@function font-weight($config, $level) {
+  @return _get-type-value($config, $level, font-weight);
+}
+
+// Gets the letter spacing for a level inside a typography config.
+@function letter-spacing($config, $level) {
+  @return _get-type-value($config, $level, letter-spacing);
+}
+
+// Gets the font-family from a typography config and removes the quotes around it.
+@function font-family($config, $level: null) {
+  $font-family: map-get($config, font-family);
+
+  @if $level != null {
+    $font-family: _get-type-value($config, $level, font-family);
+  }
+
+  @return if($font-family == null, $font-family, unquote($font-family));
+}
+
+// Gets the font-style for a level inside a typography config.
+@function font-style($config, $level) {
+  @return _get-type-value($config, $level, font-style);
+}
+
+// Outputs the shorthand `font` CSS property, based on a set of typography values. Falls back to
+// the individual properties if a value that isn't allowed in the shorthand is passed in.
+@mixin typography-font-shorthand(
+  $font-size,
+  $font-weight,
+  $line-height,
+  $font-family,
+  $font-style
+) {
+  // If any of the values are set to `inherit`, we can't use the shorthand
+  // so we fall back to passing in the individual properties.
+  @if (
+    $font-size ==
+      inherit or
+      $font-weight ==
+      inherit or
+      $line-height ==
+      inherit or
+      $font-family ==
+      inherit or
+      $font-style ==
+      inherit or
+      $font-size ==
+      null or
+      $font-weight ==
+      null or
+      $line-height ==
+      null or
+      $font-family ==
+      null
+      $font-style ==
+      null
+  ) {
+    font-size: $font-size;
+    font-weight: $font-weight;
+    line-height: $line-height;
+    font-family: $font-family;
+    font-style: $font-style;
+  } @else {
+    // Otherwise use the shorthand `font`, because it's the least amount of bytes. Note
+    // that we need to use interpolation for `font-size/line-height` in order to prevent
+    // Sass from dividing the two values.
+    font: $font-weight #{$font-size}/#{$line-height} $font-family $font-style;
+  }
+}
+
+// Converts a typography level into CSS styles.
+@mixin typography-level-to-styles($config, $level) {
+  $font-size: font-size($config, $level);
+  $font-weight: font-weight($config, $level);
+  $line-height: line-height($config, $level);
+  $font-family: font-family($config, $level);
+  $font-style: font-style($config, $level);
+
+  @include typography-font-shorthand(
+    $font-size,
+    $font-weight,
+    $line-height,
+    $font-family,
+    $font-style
+  );
+  letter-spacing: letter-spacing($config, $level);
+}

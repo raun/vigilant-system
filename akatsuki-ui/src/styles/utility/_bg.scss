@@ -1,0 +1,27 @@
+.bg-info {
+  background-color: map-get($blue-palette, 400) !important;
+}
+
+.bg-error {
+  background-color: $error !important;
+}
+
+.bg-warning {
+  background-color: $warning !important;
+}
+
+.bg-default {
+  background-color: $default-bg !important;
+}
+
+.bg-surface {
+  background-color: $surface-bg !important;
+}
+
+.bg-surface-alternate {
+  background-color: $surface-bg-alternate !important;
+}
+
+.bg-surface-secondary {
+  background-color: $surface-bg-secondary !important;
+}

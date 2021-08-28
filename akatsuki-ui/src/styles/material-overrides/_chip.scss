@@ -1,0 +1,32 @@
+.MuiChip-root {
+  font-size: $font-size-caption;
+  height: 24px;
+  background: none;
+  border-radius: $border-radius-default;
+  border: solid 1px $divider-color;
+  text-transform: none;
+}
+.MuiTooltip-popper {
+  .MuiChip-root {
+    color: white;
+  }
+}
+
+.MuiChip-label {
+  padding-left: $spacer / 2;
+  padding-right: $spacer / 8;
+}
+
+.MuiChip-deleteIcon {
+  margin: 0;
+  height: auto;
+  color: $text-primary;
+  &:hover {
+    color: $text-primary;
+  }
+}
+
+.MuiChip-deletable:hover,
+.MuiChip-deletable:focus {
+  background: $ripple-bg;
+}

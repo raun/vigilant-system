@@ -1,0 +1,274 @@
+/**
+There are 3 variants of a button.
+- Solid buttons (.btn)
+- Flat buttons (.btn-flat)
+- Snackbar buttons (.btn-banner)
+
+In order to apply styles to buttons include any of above variant's class. btn class adds base properties
+that are shared by all button designs. Apart from this there are modifier classes that
+add specific styles to each type of button.
+
+Solid and Flat buttons can have three styles (.btn-primary, .btn-secondary, .btn-error)
+You add the corresponding classes to use them.
+
+In order to add icon in a button you need to add class .btn-thumbnail-right or .btn-thumbnail-left
+depending on whether the icon should be in right or left. icons can either be img tag or a font icon
+You will also need to add the class .thumb to the icon so that parent class recognises icon element
+and adds appropriate styles to it.
+ */
+
+@mixin btn-size(
+  $padding-y,
+  $padding-x,
+  $border-width,
+  $border-radius,
+  $thumb-size
+) {
+  $padding-x: $padding-x - $border-width;
+  $padding-y: $padding-y - $border-width;
+  padding: $padding-y $padding-x;
+  border-radius: $border-radius;
+  border-width: $border-width;
+  border-style: solid;
+  .thumb {
+    font-size: $thumb-size;
+  }
+  img.thumb {
+    height: $thumb-size;
+  }
+  &.btn-thumbnail {
+    padding: $padding-y;
+  }
+}
+
+@mixin btn-typography() {
+  font-size: $font-size-body;
+  font-weight: $font-weight-bold;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.btn,
+.btn-flat,
+.btn-banner {
+  @include clear-btn-style();
+  display: $btn-display;
+  align-items: center;
+  justify-content: center;
+  transition: all 200ms ease;
+  background: none;
+  color: $text-primary;
+  border-color: transparent;
+  @include btn-typography();
+
+  &[disabled] {
+    opacity: 0.5;
+  }
+}
+
+.btn,
+.btn-flat {
+  @include btn-size($spacer * 0.5, $btn-padding-x, 0, $border-radius-md, 16px);
+
+  &.btn-lg {
+    @include btn-size(
+        $spacer * 0.75,
+        $btn-padding-x-lg,
+        0,
+        $border-radius-lg,
+        16px
+    );
+  }
+}
+
+.btn {
+  white-space: nowrap;
+
+  &.btn-primary {
+    $primary: $accent;
+    $primary-dark: $accent-dark;
+    color: white;
+    background: $primary;
+
+    &:not(.in-progress):not([disabled]) {
+      &:hover,
+      &:focus {
+        background: $primary-dark;
+        box-shadow: $shadow-elevated-accent;
+      }
+    }
+  }
+
+  &.btn-secondary {
+    border-color: $divider-color;
+    color: $text-primary;
+
+    &.filled-bg {
+      background: $surface-bg;
+    }
+
+    &:not(.in-progress):not([disabled]) {
+      &:hover,
+      &:focus {
+        box-shadow: $shadow-elevated-btn;
+        border-color: transparent;
+        background: $surface-bg-raised;
+      }
+    }
+  }
+
+  &.btn-error {
+    color: $light-text;
+    background: $error;
+
+    &:not(.in-progress):not([disabled]) {
+      &:hover,
+      &:focus {
+        background: $error-dark;
+        box-shadow: $shadow-elevated-btn;
+      }
+    }
+  }
+
+  &.btn-sm {
+    @include btn-size(
+        $badge-padding-y,
+        $btn-padding-x-sm,
+        0,
+        $border-radius-default,
+        14px
+    );
+
+    @include btn-typography();
+  }
+
+  &.in-progress {
+    background-size: 10px 100%;
+    background-image: linear-gradient(
+        to right,
+        transparent 50%,
+        rgba(0, 0, 0, 0.05) 50%
+    );
+    animation: in-progress 0.5s linear infinite;
+
+    &.btn-secondary,
+    &.btn-error {
+      background-color: $surface-bg-raised;
+    }
+
+    @keyframes in-progress {
+      100% {
+        background-position: 10px 0;
+      }
+    }
+  }
+}
+
+.btn-flat {
+  &:not(.in-progress):not([disabled]) {
+    &:hover,
+    &:focus {
+      box-shadow: $shadow-elevated-btn;
+      background: $surface-bg-raised;
+    }
+  }
+
+  &.btn-primary {
+    $primary: $text-accent;
+    color: $primary;
+  }
+
+  &.btn-secondary {
+    $text: $text-primary;
+    color: $text;
+  }
+
+  &.btn-error {
+    color: $error;
+  }
+
+  &.btn-sm {
+    @include btn-size(
+        $spacer * 0.25,
+        $btn-padding-x-sm,
+        0,
+        $border-radius-default,
+        14px
+    );
+  }
+}
+
+.btn-secondary {
+  @include btn-size(
+      $spacer * 0.5,
+      $btn-padding-x,
+      1px,
+      $border-radius-md,
+      16px
+  );
+
+  &.btn-lg {
+    @include btn-size(
+        $spacer * 0.75,
+        $btn-padding-x-lg,
+        1px,
+        $border-radius-lg,
+        16px
+    );
+  }
+
+  &.btn-sm {
+    @include btn-size(
+        $badge-padding-y,
+        $btn-padding-x-sm,
+        1px,
+        $border-radius-default,
+        14px
+    );
+  }
+}
+
+.btn-banner {
+  @include btn-size($spacer * 0.75, $spacer * 1.25, 0, 0, 16px);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: background-color 200ms ease;
+
+  &:not([disabled]) {
+    &:hover,
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+  }
+}
+
+.btn-thumbnail-right .thumb {
+  margin-left: $spacer * 0.25;
+}
+
+.btn-thumbnail-left .thumb {
+  margin-right: $spacer * 0.25;
+}
+
+.form-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: $spacer * 1.25;
+
+  .form-buttons-left {
+    display: flex;
+  }
+
+  button {
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  a {
+    margin-right: 10px;
+  }
+}

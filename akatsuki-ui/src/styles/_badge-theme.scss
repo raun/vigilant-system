@@ -1,0 +1,128 @@
+@mixin badge-theme($theme) {
+  .badge-solid {
+    color: white !important;
+  }
+
+  .badge-light {
+    color: $default-secondary;
+  }
+
+  .badge-solid {
+    background: $default-secondary;
+  }
+
+  .badge-solid.success-badge {
+    background: map-get($theme, success);
+  }
+
+  .badge-solid.warning-badge {
+    background: map-get($theme, warning);
+  }
+
+  .badge-solid.error-badge {
+    background: map-get($theme, error);
+  }
+
+  .badge-solid.deferred-badge {
+    background: map-get($theme, deferred);
+  }
+
+  .badge-solid.deferred-faded-badge {
+    background: map-get($theme, deferred-faded);
+  }
+
+  .badge-solid.warning-faded-badge {
+    background: map-get($theme, warning-faded);
+    color: $text-primary !important;
+    font-weight: $font-weight-medium;
+  }
+
+  .badge-light.success-badge {
+    color: map-get($theme, success);
+  }
+
+  .badge-light.warning-badge {
+    color: map-get($theme, warning);
+  }
+
+  .badge-light.error-badge {
+    color: map-get($theme, error);
+  }
+
+  .badge-light.deferred-badge {
+    color: map-get($theme, deferred);
+  }
+
+  .badge-light.info-badge {
+    color: map-get($theme, info);
+  }
+
+  .badge-light.deferred-1-badge {
+    color: map-get($theme, deferred-1);
+  }
+
+  .badge-light.info-1-badge {
+    color: map-get($theme, info-1);
+  }
+
+  .badge-light.success-1-badge {
+    color: map-get($theme, success-1);
+  }
+
+  .badge-light.info-2-badge {
+    color: map-get($theme, info-2);
+  }
+
+  .overlay-badge {
+    background: map-get(map-get($theme, background), ripple-bg);
+    color: $text-primary;
+  }
+
+  .overlay-badge-container-accent .overlay-badge, .overlay-badge-accent {
+    background: map-get($theme, accent-faded);
+    color: $text-accent;
+  }
+
+  .overlay-badge-container-error .overlay-badge, .overlay-badge-error {
+    background: map-get($theme, error);
+    color: $light-text;
+  }
+
+  .overlay-badge-container-success .overlay-badge, .overlay-badge-success {
+    background: $success-badge-bg;
+    color: $success-badge-text;
+  }
+
+  .overlay-badge-container-purple .overlay-badge, .overlay-badge-purple {
+    background: $purple-badge-bg;
+    color: $purple-badge-text;
+  }
+
+  .overlay-badge-container-success-2 .overlay-badge, .overlay-badge-success-2 {
+    background: $success-2-badge-bg;
+    color: $success-2-badge-text;
+  }
+}
+
+@mixin badge-typography($config) {
+  .badge {
+    text-transform: uppercase;
+    @include typography-level-to-styles($config, caption-4);
+  }
+
+  .badge-solid {
+    font-size: $font-size-body;
+  }
+
+  .badge-key--not-null {
+    text-transform: none;
+  }
+
+  .overlay-badge {
+    line-height: 12px;
+  }
+
+  .overlay-badge-medium {
+    line-height: 16px;
+  }
+}

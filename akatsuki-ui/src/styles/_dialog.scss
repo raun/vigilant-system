@@ -1,0 +1,57 @@
+$dialog-padding-x: $spacer * 1.25;
+$dialog-padding-y: $spacer * 1.25;
+
+.dialog-header {
+  border-bottom: solid 1px $divider-color;
+  padding-top: $spacer;
+  padding-bottom: 15px;
+  font-weight: $font-weight-medium;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: $border-radius-md;
+  border-top-right-radius: $border-radius-md;
+}
+
+.dialog-heading {
+  font-size: $font-size-subheader;
+  font-weight: $font-weight-bold;
+}
+
+.dialog-body {
+  padding-top: $dialog-padding-y;
+  padding-bottom: $dialog-padding-y;
+  position: relative;
+}
+
+.dialog-footer {
+  padding: $spacer * 1.25;
+
+  border-top: 1px solid var(--divider-color);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dialog-header,
+.dialog-body,
+.dialog-footer {
+  padding-left: $dialog-padding-x;
+  padding-right: $dialog-padding-x;
+}
+
+.dialog-title {
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.dialog-header--absolute {
+  position: absolute;
+  justify-content: flex-end;
+  background: none;
+  border: none;
+  width: 100%;
+  z-index: 1;
+}

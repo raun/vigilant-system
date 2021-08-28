@@ -1,0 +1,61 @@
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-transform-none {
+  text-transform: none !important;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-end {
+  text-align: end;
+}
+
+.text-bold {
+  font-weight: $font-weight-bold;
+}
+
+.text-medium {
+  font-weight: $font-weight-medium;
+}
+
+.text-normal {
+  font-weight: $font-weight-normal;
+}
+
+.break-all {
+  word-break: break-all;
+}
+
+.break-word {
+  word-wrap: break-word;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.pre-whitespace {
+  white-space: pre;
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}
+
+.text-ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.text-monospace {
+  font-family: Monaco, monospace;
+}
