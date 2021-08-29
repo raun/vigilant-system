@@ -9,7 +9,7 @@ class FeatureRequest(TimeStampedModel):
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
     tags = models.CharField(max_length=40, choices=FEATURE_REQUEST_TAGS)
     title = models.CharField(max_length=200)
-    description = models.CharField(max_length=5000)
+    description = models.TextField()
 
     def __str__(self):
         return self.title
@@ -31,6 +31,11 @@ class UserActions(TimeStampedModel):
 class Comment(TimeStampedModel):
     user = models.ForeignKey(User, related_name="comments", on_delete=models.CASCADE)
     feature_request = models.ForeignKey(FeatureRequest, related_name="comments", on_delete=models.CASCADE)
-    text = models.CharField(max_length=1000)
+    text = models.TextField()
 
 
+class Reply(TimeStampedModel):
+    user = models.ForeignKey(User, related_name="comments", on_delete=models.CASCADE)
+    feature_request = models.ForeignKey(FeatureRequest, related_name="comments", on_delete=models.CASCADE)
+    parent_comment_id = models.ForeignKey(Comment, related_name="replies", on_delete=models.CASCADE)
+    text = models.TextField()
