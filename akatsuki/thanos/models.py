@@ -40,7 +40,7 @@ class Comment(TimeStampedModel):
 
 class Reply(TimeStampedModel):
     objects = models.Manager()
-    user = models.ForeignKey(User, related_name="comments", on_delete=models.CASCADE)
-    feature_request = models.ForeignKey(FeatureRequest, related_name="comments", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="replies", on_delete=models.CASCADE)
+    feature_request = models.ForeignKey(FeatureRequest, related_name="replies", on_delete=models.CASCADE)
     parent_comment_id = models.ForeignKey(Comment, related_name="replies", on_delete=models.CASCADE)
     text = models.TextField()
