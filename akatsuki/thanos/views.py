@@ -4,12 +4,12 @@ from rest_framework import generics, mixins
 # Create your views here.
 
 
-class FeatureRequestsList(generics.ListAPIView):
+class FeatureRequestsList(generics.CreateAPIView, generics.ListAPIView):
     queryset = models.FeatureRequest.objects.all()
     serializer_class = serializers.FeatureRequestSerializer
 
 
-class FeatureRequestsDetail(generics.CreateAPIView, generics.RetrieveUpdateDestroyAPIView):
+class FeatureRequestsDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.FeatureRequest.objects.all()
     serializer_class = serializers.FeatureRequestSerializer
 
@@ -40,3 +40,6 @@ class CommentsList(generics.ListAPIView):
     def get_queryset(self):
         feature_request_id = self.kwargs.get(self.lookup_url_kwarg)
         return models.Comment.objects.filter(feature_request__id=feature_request_id)
+
+
+#class Replies
