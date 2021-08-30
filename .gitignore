@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Pip installer
+get-pip.py
+
+# Idea files IDE
+/akatsuki/.idea
