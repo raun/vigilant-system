@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from thanos.models import FeatureRequest, Comment, Reply, UserActions
+from thanos.models import FeatureRequest, Comment, Reply, UserActions, FeatureRequestResponse
 
 
 class FeatureRequestSerializer(ModelSerializer):
@@ -11,7 +11,7 @@ class FeatureRequestSerializer(ModelSerializer):
 
 class FeatureRequestResponseSerializer(ModelSerializer):
     class Meta:
-        model = FeatureRequest
+        model = FeatureRequestResponse
         fields = '__all__'
 
 
