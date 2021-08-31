@@ -1,0 +1,42 @@
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.zoomIn {
+  animation-name: zoomIn;
+}
+
+@keyframes zoomOut {
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.zoomOut {
+  animation-name: zoomOut;
+}
+
+.Toastify__toast--default {
+  background: transparent;
+}
+
+.Toastify__toast-container {
+  padding: 0;
+}
+
+.Toastify__toast-container--top-right {
+  top: 0;
+  right: 0;
+}
+.Toastify__toast {
+  overflow: visible;
+}

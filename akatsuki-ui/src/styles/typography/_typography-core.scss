@@ -69,6 +69,9 @@
   .text-link.text-link-sm {
     @include typography-level-to-styles($config, caption-4);
   }
+  .text-subheading-2 {
+    @include typography-level-to-styles($config, subheading-2);
+  }
 
   body {
     @include typography-level-to-styles($config, body-1);

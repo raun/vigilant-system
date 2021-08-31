@@ -2,15 +2,16 @@ import { Route, Redirect } from 'react-router-dom';
 // import { isAuth } from './../utils/helpers';
 
 const PublicRoute = ({ component: Component, restricted, ...rest }) => {
-	// console.log(Component, isAuth());
+	// console.log(Component, rest, restricted);
 	return (
 		// restricted = false meaning public route
 		// restricted = true meaning restricted route like login
 		<Route
 			{...rest}
-			render={(props) =>
+			render={(props) => {
 				// isAuth()
-        true && restricted ? <Redirect to="/" /> : <Component {...props} />
+        return false && restricted ? <Redirect to="/" /> : <Component {...props} />
+			}
 			}
 		/>
 	);
