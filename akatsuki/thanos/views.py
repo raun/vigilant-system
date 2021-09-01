@@ -4,13 +4,23 @@ from rest_framework import generics, mixins
 # Create your views here.
 
 
+class FeatureRequestsListAll(generics.ListAPIView):
+    queryset = models.FeatureRequest.objects.all()
+    serializer_class = serializers.FeatureRequestSerializer
+
+
 class FeatureRequestsList(generics.CreateAPIView, generics.ListAPIView):
     lookup_url_kwarg = 'user_id'
     serializer_class = serializers.FeatureRequestSerializer
 
     def get_queryset(self):
         user_id = self.kwargs.get(self.lookup_url_kwarg)
-        return models.FeatureRequest.objects.filter(creator__id=user_id)
+        owned = models.FeatureRequest.objects.filter(creator__id=user_id)
+        watching = models.FeatureRequest.objects.filter(
+            id__in=models.UserActionsFR.objects.filter(user__id=user_id).filter(action_type=3).
+            values('feature_request')
+        )
+        return (owned | watching).distinct()
 
 
 class FeatureRequestsDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -27,7 +37,7 @@ class FeatureRequestsResponseDetail(generics.RetrieveAPIView):
         return models.FeatureRequestResponse.objects.filter(id=feature_request_id)
 
 
-class UserActionsCreate(generics.CreateAPIView):
+class UserActionsCreate(generics.CreateAPIView, generics.DestroyAPIView):
     queryset = models.UserActionsFR.objects.all()
     serializer_class = serializers.UserActionsSerializer
 
