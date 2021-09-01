@@ -4,7 +4,7 @@ FEATURE_REQUEST_TAGS = (
     ("IMPROVEMENT", "Improvement")
 )
 
-USER_ACTION_TYPE = (
+FR_USER_ACTION_TYPE = (
     (1, "Like"),
     (2, "Email Updates"),
     (3, "Watch")
