@@ -13,6 +13,9 @@ import { Select, CheckboxWithLabel } from 'formik-material-ui';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { useDispatch, useSelector } from 'react-redux';
+import { createRequest } from '../../redux/action/createRequest';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
 	alert: {
@@ -56,7 +59,7 @@ const initialValues: FeatureRequestFormI = {
 };
 
 const validationSchema = Yup.object({
-  requestType: Yup.string().required(' '),
+  tags: Yup.string().required(' '),
 	title: Yup.string().required(' '),
 	description: Yup.string(),
   isBlocker: Yup.boolean(),
@@ -66,20 +69,13 @@ const validationSchema = Yup.object({
 
 export default function FeatureRequestForm(props: any) {
 	const classes = useStyles();
-
+	const dispatch = useDispatch();
 	const [buttonText, setButtonText] = useState(false);
 	const [redirectToReferrer, setRedirectToReferrer] = useState(false);
-  const [ showPassword, setShowPassword ] = useState(true)
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
 
-  const handleMouseDownPassword = (event: any) => {
-    event.preventDefault();
-  };
 	// const user = isAuth();
-	const onSubmit = (values: any, submitProps: any) => {console.log(values, submitProps)
-		
+	const onSubmit = async (values: any, submitProps: any) => {
+		dispatch(createRequest(values));
 	};
 
 	// if (redirectToReferrer) {
@@ -99,7 +95,7 @@ export default function FeatureRequestForm(props: any) {
 						initialValues={initialValues}
 						onSubmit={onSubmit}
 						validationSchema={validationSchema}>
-						{(formProps) => {console.log(formProps)
+						{(formProps) => {
 							const { submitForm, isSubmitting, isValid } = formProps;
 
 							return (
@@ -109,18 +105,18 @@ export default function FeatureRequestForm(props: any) {
                       <FormControl variant="outlined"
                         fullWidth 
                         error={'requestType' in formProps.errors}>
-                        <InputLabel htmlFor="request-type">Type of Request</InputLabel>
+                        <InputLabel id="request-type">Type of Request</InputLabel>
                         <Field
                           component={Select}
-                          name="requestType"
+                          name="tags"
                           inputProps={{
-                            name: 'requestType',
+														name: 'tags',
                             id: 'request-type',
                           }}>
-                          <MenuItem value=''>none</MenuItem>
-                          <MenuItem value={10}>Ten</MenuItem>
-                          <MenuItem value={20}>Twenty</MenuItem>
-                          <MenuItem value={30}>Thirty</MenuItem>
+                          
+                          <MenuItem value={'SOURCE'}>Source</MenuItem>
+                          <MenuItem value={'DESTINATION'}>Destination</MenuItem>
+                          <MenuItem value={'Improvement'}>Improvement</MenuItem>
                         </Field>
                       </FormControl>
 										</Grid>

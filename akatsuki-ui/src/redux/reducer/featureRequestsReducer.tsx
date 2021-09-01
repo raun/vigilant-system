@@ -1,6 +1,6 @@
 import { GET_FEATURES_ERROR, GET_FEATURES_REQUEST, GET_FEATURES_SUCCESS } from "../constant";
 
-interface Features {
+export interface Features {
   loading: boolean;
   featuresRequests: any[];
   error?: string

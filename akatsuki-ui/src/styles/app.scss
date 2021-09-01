@@ -120,7 +120,6 @@
 
 body,
 html {
-  height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -129,10 +128,6 @@ body {
   color: $text-primary;
   font-size: $spacer !important;
 }
-
-// .MuiOutlinedInput-input {
-//   font-size: 16px !important;
-// }
 
 body.modal-open {
   overflow: hidden;

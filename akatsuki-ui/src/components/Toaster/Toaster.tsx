@@ -27,7 +27,6 @@ export const notify = (props: ToasterI) => {
   toast.clearWaitingQueue();
   toast.dismiss();
   /* eslint-disable no-nested-ternary */
-console.log('loging')
   toast(
     <div id="toast-container" className="toast-top-right">
       <div className={`toast  toast-${props.type}`}>

@@ -5,14 +5,17 @@ import {
   GET_FEATURES_REQUEST,
   GET_FEATURES_SUCCESS,
 } from '../constant';
+import { Features } from '../reducer/featureRequestsReducer';
 
 export const getAllRequests = () => async (
   dispatch: Dispatch
 ) => {
   dispatch({ type: GET_FEATURES_REQUEST });
-  const url = ``;
+  const url = `/feature-requests/`;
 
   const data = await axios.get(url);
-  console.log(data);
-  return ['jkfjsdkjfajskfj' , 'fjldjfakdjf']
+  if (data.status === 200) {
+    dispatch({type: GET_FEATURES_SUCCESS, payload: data.data})
+  }
+  return data
 };

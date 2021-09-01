@@ -1,24 +1,25 @@
 import { Container } from "@material-ui/core";
 import HomeHeader from "../Header/HomeHeader";
-import CommentSummary from "./CommentSummary";
+import FeatureSummary from "./FeatureSummary";
 import { useDispatch, useSelector } from 'react-redux';
 import  { getAllRequests } from '../../redux/action/getAllRequests';
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Features } from '../../redux/reducer/featureRequestsReducer';
 
 const HomePage = () => {
-  const requests = ['jkfjsdkjfajskfj' , 'fjldjfakdjf']
+  const [requests, setRequests] = useState([]);
+  const dispatch = useDispatch();
+  const allFeatures: Features = useSelector((state: any) => state.features);
+  useEffect(() => {
+    dispatch(getAllRequests());
+  }, [])
 
-  const showRequest = requests.map((request) => (
-      <CommentSummary key={request} request={request} />
-    ))
-
-console.log(showRequest)
   return (
     <Container maxWidth="md">
       <HomeHeader />
       {
-        requests.map((request) => (
-          <CommentSummary key={request} request={request} />
+        allFeatures.featuresRequests.map((feature) => (
+          <FeatureSummary key={feature.id} feature={feature} />
         ))
       }
     </Container>

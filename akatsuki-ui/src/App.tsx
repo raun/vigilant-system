@@ -7,9 +7,13 @@ import LogIn from './components/Auth/Login';
 import SignUp from './components/Auth/Signup';
 import HomePage from './components/Dashboard/Home';
 import FeatureRequestForm from './components/Dashboard/FeatureRequestForm'
+import FeatureDetails from './components/Dashboard/FeatureDetails';
 import { StylesProvider } from '@material-ui/core/styles';
 import { muiTheme } from './basicThems';
 import './styles/app.scss';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'http://localhost:8000/';
 
 const App = () => {
   return (
@@ -23,6 +27,7 @@ const App = () => {
           <PublicRoute restricted={true} path="/signup" exact component={SignUp} />
           <PublicRoute restricted={false} path="/login" exact component={LogIn} />
           <PublicRoute restricted={false} path="/" exact component={HomePage} />
+          <PublicRoute restricted={false} path="/feature-requests/:featureId" exact component={FeatureDetails} />
           <PublicRoute restricted={false} path="/feature-request-form" exact component={FeatureRequestForm} />
       </BrowserRouter>
       </div>
