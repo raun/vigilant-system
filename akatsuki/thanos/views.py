@@ -5,8 +5,12 @@ from rest_framework import generics, mixins
 
 
 class FeatureRequestsList(generics.CreateAPIView, generics.ListAPIView):
-    queryset = models.FeatureRequest.objects.all()
+    lookup_url_kwarg = 'user_id'
     serializer_class = serializers.FeatureRequestSerializer
+
+    def get_queryset(self):
+        user_id = self.kwargs.get(self.lookup_url_kwarg)
+        return models.FeatureRequest.objects.filter(creator__id=user_id)
 
 
 class FeatureRequestsDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -24,7 +28,7 @@ class FeatureRequestsResponseDetail(generics.RetrieveAPIView):
 
 
 class UserActionsCreate(generics.CreateAPIView):
-    queryset = models.UserActions.objects.all()
+    queryset = models.UserActionsFR.objects.all()
     serializer_class = serializers.UserActionsSerializer
 
 
