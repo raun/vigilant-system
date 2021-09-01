@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from thanos.models import FeatureRequest, FeatureRequestResponse, Comment
+from thanos.models import FeatureRequest, FeatureRequestResponse, Comment, UserActionsFR
 
 
 class FeatureRequestResponseAdmin(admin.TabularInline):
