@@ -9,7 +9,7 @@ urlpatterns = [
     path('<int:feature_request_id>/response', views.FeatureRequestsResponseDetail.as_view()),
     path('<int:feature_request_id>/comments/all', views.CommentsList.as_view()),
     path('<int:feature_request_id>/comments', views.CommentsCrud.as_view()),
-    path("watch", views.UserActionsCreate.as_view())
+    path("<int:feature_request_id>/watch", views.UserActionsCreate.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

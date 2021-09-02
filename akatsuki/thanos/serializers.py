@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, Serializer, ListSerializer
 
 from thanos.models import FeatureRequest, Comment, UserActionsFR, FeatureRequestResponse
 
@@ -6,6 +6,7 @@ from thanos.models import FeatureRequest, Comment, UserActionsFR, FeatureRequest
 class FeatureRequestSerializer(ModelSerializer):
     class Meta:
         model = FeatureRequest
+        readable_fields = ()
         fields = '__all__'
 
 

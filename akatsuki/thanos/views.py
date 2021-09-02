@@ -5,7 +5,7 @@ from rest_framework import generics, mixins
 
 
 class FeatureRequestsListAll(generics.ListAPIView):
-    queryset = models.FeatureRequest.objects.all()
+
     serializer_class = serializers.FeatureRequestSerializer
 
 
@@ -16,11 +16,8 @@ class FeatureRequestsList(generics.CreateAPIView, generics.ListAPIView):
     def get_queryset(self):
         user_id = self.kwargs.get(self.lookup_url_kwarg)
         owned = models.FeatureRequest.objects.filter(creator__id=user_id)
-        watching = models.FeatureRequest.objects.filter(
-            id__in=models.UserActionsFR.objects.filter(user__id=user_id).filter(action_type=3).
-            values('feature_request')
-        )
-        return (owned | watching).distinct()
+        watching = models.FeatureRequest.objects.filter(id__in=models.UserActionsFR.objects.filter(user__id=user_id).filter(action_type=3).values('feature_request'))
+        return owned.union(watching)
 
 
 class FeatureRequestsDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -37,9 +34,13 @@ class FeatureRequestsResponseDetail(generics.RetrieveAPIView):
         return models.FeatureRequestResponse.objects.filter(id=feature_request_id)
 
 
-class UserActionsCreate(generics.CreateAPIView, generics.DestroyAPIView):
-    queryset = models.UserActionsFR.objects.all()
+class UserActionsCreate(generics.CreateAPIView, generics.RetrieveDestroyAPIView):
+    lookup_url_kwarg = 'feature_request_id'
     serializer_class = serializers.UserActionsSerializer
+
+    def get_queryset(self):
+        feature_request_id = self.kwargs.get(self.lookup_url_kwarg)
+        return models.UserActionsFR.objects.filter(feature_request__id=feature_request_id)
 
 
 class CommentsCrud(generics.CreateAPIView, generics.RetrieveUpdateDestroyAPIView):
