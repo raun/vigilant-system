@@ -69,7 +69,12 @@ class FeatureRequests(APIView):
         return get_response(relations_set, feature_requests, user_id)
 
 
-class FeatureRequestsCrud(generics.CreateAPIView, generics.RetrieveUpdateDestroyAPIView):
+class FeatureRequestCreate(generics.CreateAPIView):
+    queryset = models.FeatureRequest.objects.all()
+    serializer_class = serializers.FeatureRequestSerializer
+
+
+class FeatureRequestsDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.FeatureRequest.objects.all()
     serializer_class = serializers.FeatureRequestSerializer
 
@@ -104,12 +109,31 @@ class CommentsCrud(generics.CreateAPIView, generics.RetrieveUpdateDestroyAPIView
     serializer_class = serializers.CommentSerializer
 
 
-class CommentsList(generics.ListAPIView):
-    lookup_url_kwarg = 'feature_request_id'
-    serializer_class = serializers.CommentSerializer
+def get_comment(comment, user_id):
+    comment_id = comment.get('id')
+    likes = models.UserActionComment.objects.select_related('comment').filter(comment__id=comment_id).values('user')
+    liked = int(user_id) in set([x['user'] for x in likes])
+    return {"id": comment_id, "text": comment.get('text'), "likes": likes, "liked": liked}
 
-    def get_queryset(self):
-        feature_request_id = self.kwargs.get(self.lookup_url_kwarg)
-        return models.Comment.objects.filter(feature_request__id=feature_request_id)
+
+def get_comments_for_fr(fr_id, user_id):
+    comments = models.Comment.objects.select_related('feature_request').filter(feature_request__id=fr_id).values()
+    all_comments = []
+    for comment in comments:
+        all_comments.append(get_comment(comment, user_id))
+    return Response(all_comments)
+
+
+class CommentsList(APIView):
+    # lookup_url_kwarg = 'feature_request_id'
+    # serializer_class = serializers.CommentSerializer
+    #
+    # def get_queryset(self):
+    #     feature_request_id = self.kwargs.get(self.lookup_url_kwarg)
+    #     return models.Comment.objects.filter(feature_request__id=feature_request_id)
+    def get(self, request, feature_request_id):
+        user_id = request.GET.get('user_id')
+        return get_comments_for_fr(feature_request_id, user_id)
+
 
 # class Replies
