@@ -24,7 +24,18 @@ cd ..
 
 Create DB tables:
 ```sh
+cd akatsuki
 python manage.py migrate
+```
+
+If you get any error like 
+```
+ModuleNotFoundError: No module named 'grappelli.urls'
+```
+Then just google the module and you'll get the pip commond to run, 
+for example in this case:
+```
+pip install django-grappelli
 ```
 
 Run Server:
