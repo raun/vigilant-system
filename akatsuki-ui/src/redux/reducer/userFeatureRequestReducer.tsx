@@ -19,7 +19,7 @@ export default (state: UserFeatures = intialFeatures, action): UserFeatures => {
       return { ...state, userFeatures: action.payload, loading: false}
     }
     case USER_FEATURES_ERROR: {
-      return { ...state, error: action.payload, loading: false}
+      return { ...state, loading: false}
     }
     default:
       return state

@@ -29,7 +29,7 @@ export default (state: FeaturesDetails = intialFeaturesDetails, action): Feature
       return { ...state, details: action.payload, loading: false}
     }
     case FEATURE_DETAILS_ERROR: {
-      return { ...state, error: action.payload, loading: false}
+      return { ...state, loading: false}
     }
     default:
       return state

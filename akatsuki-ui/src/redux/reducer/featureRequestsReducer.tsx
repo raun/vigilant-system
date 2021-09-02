@@ -19,7 +19,7 @@ export default (state: Features = intialFeatures, action): Features => {
       return { ...state, featuresRequests: action.payload, loading: false}
     }
     case GET_FEATURES_ERROR: {
-      return { ...state, error: action.payload, loading: false}
+      return { ...state, loading: false}
     }
     default:
       return state

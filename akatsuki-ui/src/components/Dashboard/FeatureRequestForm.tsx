@@ -126,7 +126,7 @@ export default function FeatureRequestForm(props: any) {
 												fullWidth
 												variant="outlined"
 												component={TextField}
-												name="title"
+												name="Title"
 												type="text"
 												label="title"
                         helperText=" "
@@ -142,8 +142,8 @@ export default function FeatureRequestForm(props: any) {
 												component={TextField}
 												name="description"
 												type="text"
-												label="discription"
-                        helperText=" "
+												label="What is your usecase..."
+                        helperText="This will help us priortize your feature request."
 											/>
 										</Grid>
                     
@@ -152,7 +152,7 @@ export default function FeatureRequestForm(props: any) {
                         component={CheckboxWithLabel}
                         type="checkbox"
                         name="isBlocker"
-                        Label={{ label: 'is it a blocker for you to onboard Hevo?' }}
+                        Label={{ label: 'Is it a blocker for you to onboard Hevo?' }}
                         color="primary"
                       />
                     </Grid>

@@ -19,7 +19,7 @@ export default (state: FeatureData = intialFeatureData, action): FeatureData => 
       return { ...state, loading: false}
     }
     case CREATE_FEATURE_ERROR: {
-      return { ...state, error: action.payload, loading: false}
+      return { ...state, loading: false}
     }
     default:
       return state

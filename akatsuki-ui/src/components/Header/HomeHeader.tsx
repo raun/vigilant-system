@@ -7,7 +7,7 @@ const HomeHeader = () => {
         <div className="row align-items-center">
           <div className="col-lg-12">
             <h2 className="text-bold">
-              Feature Requests
+              Features Request
             </h2>
 
             <p className="">

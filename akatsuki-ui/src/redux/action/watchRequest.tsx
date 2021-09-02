@@ -16,7 +16,7 @@ export const sendWatchRequest = () => async (
   try {
     const data = await axios.get(url);
     if (data.status >= 200 && data.status < 300) {
-      dispatch({type: WATCH_SUCCESS })
+      dispatch({type: WATCH_SUCCESS, payload: data.data })
     }
     if (data.status >= 400) {
       dispatch({ type: WATCH_ERROR })

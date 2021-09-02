@@ -2,11 +2,13 @@ import { WATCH_ERROR, WATCH_SUCCESS, WATCH_REQUEST } from "../constant";
 
 export interface Watch {
   loading: boolean;
+  totalWatch: number;
   error?: string
 }
 
 const intialValues: Watch = {
   loading: false,
+  totalWatch: 0
 }
 
 export default (state: Watch = intialValues, action): Watch => {
@@ -14,7 +16,7 @@ export default (state: Watch = intialValues, action): Watch => {
     case WATCH_REQUEST: 
       return { ...state, loading: true }
     case WATCH_SUCCESS: {
-      return { ...state, loading: false}
+      return { ...state, totalWatch: action.payload, loading: false}
     }
     case WATCH_ERROR: {
       return { ...state, loading: false}
