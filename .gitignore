@@ -133,3 +133,6 @@ get-pip.py
 
 # Idea files IDE
 /akatsuki/.idea
+
+# UI
+/akatsuki-ui/node_modules

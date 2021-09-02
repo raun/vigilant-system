@@ -35,7 +35,7 @@
 @import 'theming/theme-css-variables';
 
 // Material UI
-// @import 'material-overrides/text-field';
+@import 'material-overrides/text-field';
 @import 'material-overrides/chip-input';
 @import 'material-overrides/auto-complete';
 @import 'material-overrides/chip';
@@ -81,8 +81,8 @@
 @import 'toaster';
 
 // Component styles
-@import 'material-overrides/backdrop';
-@import 'material-overrides/dialog';
+// @import 'material-overrides/backdrop';
+// @import 'material-overrides/dialog';
 
 @import 'sidebar';
 @import 'list-icon';
@@ -119,13 +119,13 @@
 
 body,
 html {
-  height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   color: $text-primary;
+  font-size: $spacer !important;
 }
 
 body.modal-open {

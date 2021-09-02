@@ -1,0 +1,29 @@
+@import '../../styles/variables';
+
+.MuiAppBar-colorPrimary.appbar {
+  background-color: #fff;
+  // height: $spacer * 5;
+}
+
+.MuiButton-contained.header-button {
+  border: 1px solid #fd8412;
+  background-color: #fd8412;
+  font-size: $spacer * 0.75;
+  color: #fff;
+  &:hover {
+    background-color: #fd8412;
+  }
+}
+
+.MuiSvgIcon-root.toggle-button {
+  font-size: $spacer * 1.5;
+}
+
+.appbar-brand-image {
+  height: $spacer * 2.5;
+}
+
+.overview {
+  // color: $white;
+  // background-Image: linear-gradient(117deg,#110c20 0,#220b36 100%)
+}
