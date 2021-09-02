@@ -13,15 +13,25 @@ export const createRequest = (requestBody: any) => async (
   dispatch({ type: CREATE_FEATURE_REQUEST });
   const url = `/feature-requests/`;
 
-  const data = await axios.post(url, {
-    ...requestBody,
-    creator: 1
-  });
-  console.log(data)
-  notify({
-    message: 'feature created successfully',
-    type: NotificationType.SUCCESS,
-    closeInTime: 5000,
-    progress_bar: false
-  })
+  try {
+    const data = await axios.post(url, {
+      ...requestBody,
+      creator: 1
+    });
+
+    notify({
+      message: 'feature created successfully',
+      type: NotificationType.SUCCESS,
+      closeInTime: 5000,
+      progress_bar: true
+    })
+  } catch (err) {console.log(err)
+    dispatch({ type: CREATE_FEATURE_ERROR })
+    notify({
+      message: err.message,
+      type: NotificationType.ERROR,
+      closeInTime: 5000,
+      progress_bar: true
+    })
+  }
 };

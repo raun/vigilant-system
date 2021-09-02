@@ -5,7 +5,7 @@ import {
   GET_FEATURES_REQUEST,
   GET_FEATURES_SUCCESS,
 } from '../constant';
-import { Features } from '../reducer/featureRequestsReducer';
+import { notify, NotificationType } from '../../components/Toaster/Toaster';
 
 export const getAllRequests = () => async (
   dispatch: Dispatch
@@ -13,9 +13,27 @@ export const getAllRequests = () => async (
   dispatch({ type: GET_FEATURES_REQUEST });
   const url = `/feature-requests/`;
 
-  const data = await axios.get(url);
-  if (data.status === 200) {
-    dispatch({type: GET_FEATURES_SUCCESS, payload: data.data})
+  try {
+    const data = await axios.get(url);
+    if (data.status >= 200 && data.status < 300) {
+      dispatch({type: GET_FEATURES_SUCCESS, payload: data.data})
+    }
+    if (data.status >= 400) {
+      dispatch({type: GET_FEATURES_ERROR })
+      notify({
+        closeInTime: 5000,
+        message: 'someting went wrong',
+        progress_bar: true,
+        type: NotificationType.ERROR
+      })
+    }
+  } catch (err) {
+    dispatch({type: GET_FEATURES_ERROR })
+    notify({
+      closeInTime: 5000,
+      message: err.message,
+      progress_bar: true,
+      type: NotificationType.ERROR
+    })
   }
-  return data
 };

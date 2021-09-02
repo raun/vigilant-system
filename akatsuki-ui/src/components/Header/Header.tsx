@@ -125,7 +125,7 @@ const Header = (props: any) => {
 	);
 
 	const [drawerState, setDrawerState] = React.useState(false);
-  const [isAuth, setIsAuth] = React.useState(false);
+  const [isAuth, setIsAuth] = React.useState(true);
 
 	const toggleDrawer = (isOpen) => (event) => {
 		if (
@@ -259,7 +259,7 @@ const Header = (props: any) => {
                   <div className="d-flex">
                     {isAuth  && ( //&& isAuth().role === 'user'
                       <>
-                        <li className="nav-item">
+                        <li className="nav-item mr-2">
                           <Link
                             to="/userdashboard"
                             className="py-2 px-2"

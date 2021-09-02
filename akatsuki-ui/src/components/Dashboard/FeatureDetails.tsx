@@ -6,6 +6,7 @@ import { Comment } from './Comment';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getFeaturesDetails } from '../../redux/action/getFeatureDetails';
+import Loading from "../Shared/Loading";
 
 const FeatureDetails = (props) => {
   const featureId = props.match.params.featureId;
@@ -17,24 +18,27 @@ const FeatureDetails = (props) => {
   }, [])
 
   return (
-    <Container maxWidth="md" >
-      <div className="pt-5 border-bottom">
-        <div className="row center-flex-row text-title mb-5">
-            {details.title}
+    <div>
+      <Loading open={loading} />
+      <Container maxWidth="md" >
+        <div className="pt-5 border-bottom">
+          <div className="row center-flex-row text-title mb-5">
+              {details.title}
+          </div>
+          <div className="row center-flex-row text-subheading-1 mb-5">
+            {details.description}
+          </div>
+          <div className="row d-flex">
+            <IconButton className="cursor-hand">
+              <ThumbUpOutlinedIcon fontSize="large"  />
+            </IconButton>
+          </div>
         </div>
-        <div className="row center-flex-row text-subheading-1 mb-5">
-          {details.description}
+        <div>
+          <Comment />
         </div>
-        <div className="row d-flex">
-          <IconButton className="cursor-hand">
-            <ThumbUpOutlinedIcon fontSize="large"  />
-          </IconButton>
-        </div>
-      </div>
-      <div>
-        <Comment />
-      </div>
-    </Container>
+      </Container>
+    </div>
   );
 }
 

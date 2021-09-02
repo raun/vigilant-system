@@ -1,20 +1,35 @@
 import { NavLink as RouterLink } from 'react-router-dom';
-import { Link } from '@material-ui/core';
+import { Chip, Link } from '@material-ui/core';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
 import { Box, IconButton } from '@material-ui/core';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import { VisibilityOutlined } from '@material-ui/icons';
 
-const FeatureSummary = ({ feature }) => {
+const FeatureSummary = ({ feature }) => {console.log(feature)
     return (
       <div className="py-4 border-bottom">
         <div className="row center-flex-row justify-between">
-          <Link component={RouterLink} to={`/feature-requests/${feature.id}`} className="col-xs-12 col-md-8 text-link">
-            <Box component="div" className="text-subheading-2 text-link">
-              {feature.title}
-            </Box> 
-          </Link>
+          <div className="col-xs-12 col-md-8  center-flex-row">
+            <Link component={RouterLink} to={`/feature-requests/${feature.id}`} className="text-link">
+              <Box component="div" className="text-subheading-2 text-link">
+                {feature.title}
+              </Box> 
+            </Link>
+            <Chip
+              label={feature.tags}
+              color="primary"
+              size="small"
+              className="ml-2"
+            />
+          </div>
+          
           <div className="col-xs-12 col-md-4 d-flex justify-end">
             <IconButton className="cursor-hand">
-              <ThumbUpOutlinedIcon fontSize="large"  />
+              <VisibilityOutlined fontSize="large" color="primary"  />
+            </IconButton>
+            <IconButton className="cursor-hand ml-2">
+              <ThumbUpOutlinedIcon fontSize="large" color="primary"  />
             </IconButton>
           </div>
         </div>

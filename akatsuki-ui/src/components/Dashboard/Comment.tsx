@@ -1,7 +1,8 @@
-import { Avatar, Box, Container, Grid, makeStyles, Typography } from "@material-ui/core"
+import { Avatar, Box, Container, Grid, IconButton, makeStyles, Typography } from "@material-ui/core"
 import { deepOrange } from "@material-ui/core/colors";
 import clsx from "clsx";
 import { AddComment } from "./AddComment";
+import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -62,6 +63,11 @@ export const Comment = () => {
 								  <div className="text-body-1 ml-5">{review.createdAt}</div>
                 </div>
 								<div className="text-body-3">{review.review}</div>
+								<div className="">
+									<IconButton className="cursor-hand">
+										<ThumbUpOutlinedIcon fontSize="large"  />
+									</IconButton>
+								</div>
 							</div>
 						</div>
 					))}

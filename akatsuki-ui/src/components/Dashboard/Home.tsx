@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import  { getAllRequests } from '../../redux/action/getAllRequests';
 import { useState, useEffect } from "react";
 import { Features } from '../../redux/reducer/featureRequestsReducer';
+import Loading from "../Shared/Loading";
 
 const HomePage = () => {
   const [requests, setRequests] = useState([]);
@@ -15,14 +16,17 @@ const HomePage = () => {
   }, [])
 
   return (
-    <Container maxWidth="md">
-      <HomeHeader />
-      {
-        allFeatures.featuresRequests.map((feature) => (
-          <FeatureSummary key={feature.id} feature={feature} />
-        ))
-      }
-    </Container>
+    <div>
+      <Loading open={allFeatures.loading} />
+      <Container maxWidth="md">
+        <HomeHeader />
+        {
+          allFeatures.featuresRequests.map((feature) => (
+            <FeatureSummary key={feature.id} feature={feature} />
+          ))
+        }
+      </Container>
+    </div>
   )
 }
 

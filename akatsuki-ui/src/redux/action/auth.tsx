@@ -1,23 +1,15 @@
 import { SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAILURE, SIGN_IN_REQUEST , SIGN_OUT } from '../constant';
 import axios from 'axios';
 
-export const signIn = () => {
-  return {
-    type: SIGN_IN
-  }
-}
-
 export const signOut = () => {
   return {
     type: SIGN_OUT
   }
 }
 
-const signIn1 = () => async (dispatch) => {
+const signIn = () => async (dispatch) => {
   dispatch({type: SIGN_IN_REQUEST});
-
-  const res = await axios.post(`/users/login`, {
-  });
+  dispatch({ type: SIGN_IN_SUCCESS , isAuth: true})
 
   
 }

@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export interface FeatureRequestFormI {
-  requestType: string,
+  tags: string,
   title: string,
   description: string,
   isBlocker: boolean,
@@ -50,7 +50,7 @@ export interface FeatureRequestFormI {
 }
 
 const initialValues: FeatureRequestFormI = {
-	requestType: '',
+	tags: '',
 	title: '',
   description: '',
   isBlocker: false,
@@ -109,11 +109,11 @@ export default function FeatureRequestForm(props: any) {
                         <Field
                           component={Select}
                           name="tags"
+													defaultValue="SOURCE"
                           inputProps={{
-														name: 'tags',
                             id: 'request-type',
+														name: "tags"
                           }}>
-                          
                           <MenuItem value={'SOURCE'}>Source</MenuItem>
                           <MenuItem value={'DESTINATION'}>Destination</MenuItem>
                           <MenuItem value={'Improvement'}>Improvement</MenuItem>
