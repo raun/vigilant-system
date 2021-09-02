@@ -75,7 +75,7 @@ export default function FeatureRequestForm(props: any) {
 
 	// const user = isAuth();
 	const onSubmit = async (values: any, submitProps: any) => {
-		dispatch(createRequest(values));
+		dispatch(createRequest(1, values));
 	};
 
 	// if (redirectToReferrer) {

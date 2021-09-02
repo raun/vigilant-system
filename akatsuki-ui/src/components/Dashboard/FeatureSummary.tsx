@@ -5,8 +5,13 @@ import { Box, IconButton } from '@material-ui/core';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import { VisibilityOutlined } from '@material-ui/icons';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const FeatureSummary = ({ feature }) => {console.log(feature)
+  const [state1,setState]  = useState(false);
+  const watch = useSelector((state: any) => state.watch); 
+console.log(watch)
     return (
       <div className="py-4 border-bottom">
         <div className="row center-flex-row justify-between">
@@ -25,8 +30,11 @@ const FeatureSummary = ({ feature }) => {console.log(feature)
           </div>
           
           <div className="col-xs-12 col-md-4 d-flex justify-end">
-            <IconButton className="cursor-hand">
-              <VisibilityOutlined fontSize="large" color="primary"  />
+            <IconButton className="cursor-hand" onClick={() => setState(!state1)}>
+              {!state1 ? 
+              <VisibilityOutlined fontSize="large" color="primary"  /> : 
+              <Visibility fontSize="large" color="primary"  />
+              } 
             </IconButton>
             <IconButton className="cursor-hand ml-2">
               <ThumbUpOutlinedIcon fontSize="large" color="primary"  />

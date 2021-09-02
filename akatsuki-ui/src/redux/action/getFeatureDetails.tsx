@@ -16,16 +16,16 @@ export const getFeaturesDetails = (id) => async (
     const data = await axios.get(url);
     if (data && data.status >= 400) {
       dispatch({type: FEATURE_DETAILS_ERROR, payload: data.data})
-    }
-  
-    if (data) {
-      dispatch({type: FEATURE_DETAILS_SUCCESS})
       notify({
         closeInTime: 5000,
-        message: 'someting went wrong',
+        message: 'something went wrong',
         progress_bar: true,
         type: NotificationType.ERROR
       })
+    }
+  
+    if (data) {
+      dispatch({type: FEATURE_DETAILS_SUCCESS, payload: data.data})
     }
   
   } catch (err) {

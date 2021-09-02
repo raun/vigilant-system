@@ -7,18 +7,18 @@ import {
 } from '../constant';
 import { notify, NotificationType } from '../../components/Toaster/Toaster';
 
-export const createRequest = (requestBody: any) => async (
+export const createRequest = (id: number, requestBody: any) => async (
   dispatch: Dispatch
 ) => {
   dispatch({ type: CREATE_FEATURE_REQUEST });
-  const url = `/feature-requests/`;
+  const url = `/feature-requests/user/${id}`;
 
   try {
     const data = await axios.post(url, {
       ...requestBody,
       creator: 1
     });
-
+    dispatch({ type: CREATE_FEATURE_SUCCESS })
     notify({
       message: 'feature created successfully',
       type: NotificationType.SUCCESS,
