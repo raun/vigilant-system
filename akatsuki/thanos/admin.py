@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from thanos.models import FeatureRequest, FeatureRequestResponse
+from thanos.models import FeatureRequest, FeatureRequestResponse, Comment, UserActionsFR
 
 
 class FeatureRequestResponseAdmin(admin.TabularInline):
@@ -9,8 +9,14 @@ class FeatureRequestResponseAdmin(admin.TabularInline):
     model = FeatureRequestResponse
 
 
+class CommentsAdmin(admin.TabularInline):
+    fields = ('text', 'user')
+    readonly_fields = ('created_at', 'updated_at', 'is_active')
+    model = Comment
+
+
 class FeatureRequestAdmin(admin.ModelAdmin):
-    inlines = (FeatureRequestResponseAdmin, )
+    inlines = (FeatureRequestResponseAdmin, CommentsAdmin)
     fields = ('creator', 'tags', 'title', 'description')
     list_display = ('title', 'creator', 'tags', 'description')
     search_fields = ('title', 'description')
