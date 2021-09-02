@@ -115,8 +115,10 @@ class FeatureRequestsResponseDetail(generics.RetrieveAPIView):
 
 class CreateWatchView(APIView):
     def post(self, request):
-        watch = models.UserActionsFR(**request.data)
-        if watch.user is not None and watch.feature_request is not None and watch.action_type is 3:
+        user = User.objects.get(id=request.data.get('user'))
+        feature_request = models.FeatureRequest.objects.get(id=request.data.get('feature_request'))
+        if user is not None and feature_request is not None:
+            watch = models.UserActionsFR(user=user, feature_request=feature_request, action_type=3)
             watch.save()
             return success_response()
         return bad_request()

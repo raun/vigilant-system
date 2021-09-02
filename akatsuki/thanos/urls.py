@@ -3,6 +3,22 @@ from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
+    # Gives all the Feature requests registered in the system
+    # [
+    #     {
+    #             "id": 2,
+    #             "created_at": "2021-08-30T14:44:27.154544Z",
+    #             "updated_at": "2021-08-30T14:44:27.154583Z",
+    #             "is_active": true,
+    #             "creator_id": 1,
+    #             "tags": "DESTINATION",
+    #             "title": "creating a FR from the api",
+    #             "description": "I am just trying to see if I can create FR using the API. This is for testing.",
+    #             "watching": true,
+    #             "liked": true,
+    #             "likes": 4
+    #     }
+    # ]
     path('user/all', views.FeatureRequestsListAll.as_view()),
     path('user/', views.FeatureRequests.as_view()),
     path('', views.FeatureRequestCreate.as_view()), # check this one here
