@@ -23,7 +23,7 @@ urlpatterns = [
     path('user/', views.FeatureRequests.as_view()),
     path('', views.FeatureRequestCreate.as_view()), # check this one here
     path('<int:feature_request_id>/delete', views.FeatureRequestDelete.as_view()), # this is the delete endpoint for FRs
-    path('<int:pk>', views.FeatureRequestsDetail.as_view()), # this is the retrieve detail endpoint
+    path('<int:feature_request_id>', views.FeatureRequestsDetail.as_view()), # this is the retrieve detail endpoint
     path('<int:feature_request_id>/response', views.FeatureRequestsResponseDetail.as_view()), # get the admin's response to the FR submission
     path('upvote', views.UpvoteView.as_view()), # upvote an FR
     path('<int:feature_request_id>/user/<int:user_id>/downvote', views.DownVoteView.as_view()), # Downvote an FR

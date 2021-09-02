@@ -17,24 +17,42 @@ def bad_request():
     return Response({"success": False}, status=400)
 
 
+def get_feature_request(watching_frs, fr, user_id):
+    fr1 = fr
+    fr_id = fr.get('id')
+    if fr_id is not None and int(fr_id) in watching_frs:
+        fr1['watching'] = True
+    else:
+        fr1['watching'] = False
+    like_relations = set([rel['user'] for rel in models.UserActionsFR.objects.filter(action_type=1).
+                         filter(feature_request__id=fr_id).values('user')])
+    if user_id is not None and int(user_id) in like_relations:
+        print('liked = True')
+        fr1['liked'] = True
+    else:
+        fr1['liked'] = False
+    fr1['likes'] = len(like_relations)
+    return fr1
+
+
 def get_response(watching_frs, all_frs, user_id):
     display_frs = []
     for fr in all_frs:
-        fr1 = fr
-        fr_id = fr.get('id')
-        if int(fr_id) in watching_frs:
-            fr1['watching'] = True
-        else:
-            fr1['watching'] = False
-        like_relations = set([rel['user'] for rel in models.UserActionsFR.objects.filter(action_type=1).
-            filter(feature_request__id=fr_id).values('user')])
-        if int(user_id) in like_relations:
-            print('liked = True')
-            fr1['liked'] = True
-        else:
-            fr1['liked'] = False
-        fr1['likes'] = len(like_relations)  # user filter must be removed
-        display_frs.append(fr1)
+        # fr1 = fr
+        # fr_id = fr.get('id')
+        # if int(fr_id) in watching_frs:
+        #     fr1['watching'] = True
+        # else:
+        #     fr1['watching'] = False
+        # like_relations = set([rel['user'] for rel in models.UserActionsFR.objects.filter(action_type=1).
+        #     filter(feature_request__id=fr_id).values('user')])
+        # if int(user_id) in like_relations:
+        #     print('liked = True')
+        #     fr1['liked'] = True
+        # else:
+        #     fr1['liked'] = False
+        # fr1['likes'] = len(like_relations)  # user filter must be removed
+        display_frs.append(get_feature_request(watching_frs, fr, user_id))
     return Response(display_frs)
 
 
@@ -90,13 +108,20 @@ class FeatureRequestDelete(APIView):
         return success_response()
 
 
-class FeatureRequestsDetail(generics.RetrieveUpdateAPIView):
-    lookup_url_kwarg = 'pk'
-    serializer_class = serializers.FeatureRequestSerializer
+class FeatureRequestsDetail(APIView):
+    def get(self, request, feature_request_id):
+        user_id = request.GET.get('user_id')
+        relations = models.UserActionsFR.objects.select_related('feature_requests').filter(user__id=user_id).\
+            filter(action_type=3).values('feature_request')
+        relations_set = set()
+        for relation in relations:
+            relations_set.add(relation.get('feature_request'))
+        feature_requests = models.FeatureRequest.objects.all().filter(id=feature_request_id).values()
+        feature_request = feature_requests[0]
+        return Response(get_feature_request(relations_set, feature_request,
+                                            user_id))
 
-    def get_queryset(self):
-        pk = self.kwargs.get(self.lookup_url_kwarg)
-        return models.FeatureRequest.objects.filter(id=pk)
+
 
 
 # class FeatureRequestsDetail(generics.RetrieveUpdateDestroyAPIView):
