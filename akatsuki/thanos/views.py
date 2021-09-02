@@ -4,6 +4,7 @@ from thanos import models, serializers
 from rest_framework import generics, mixins
 from rest_framework.views import APIView
 
+
 # Create your views here.
 
 
@@ -11,8 +12,19 @@ def get_response(watching_frs, all_frs, user_id):
     display_frs = []
     for fr in all_frs:
         fr1 = fr
-        fr1['watching'] = (fr.get('id') in watching_frs)
-        fr1['likes'] = len(models.UserActionsFR.objects.filter(action_type=1).filter(user__id=user_id).values('id'))
+        fr_id = fr.get('id')
+        if int(fr_id) in watching_frs:
+            fr1['watching'] = True
+        else:
+            fr1['watching'] = False
+        like_relations = set([rel['user'] for rel in models.UserActionsFR.objects.filter(action_type=1).
+            filter(feature_request__id=fr_id).values('user')])
+        if int(user_id) in like_relations:
+            print('liked = True')
+            fr1['liked'] = True
+        else:
+            fr1['liked'] = False
+        fr1['likes'] = len(like_relations)  # user filter must be removed
         display_frs.append(fr1)
     return Response(display_frs)
 
@@ -20,9 +32,9 @@ def get_response(watching_frs, all_frs, user_id):
 class FeatureRequestsListAll(APIView):
 
     def get(self, request):
-        user_id = request.data.get('user_id')
+        user_id = request.GET.get('user_id')
         feature_requests = models.FeatureRequest.objects.all().values()
-        relations = models.UserActionsFR.objects.select_related('feature_requests').filter(user__id=user_id)\
+        relations = models.UserActionsFR.objects.select_related('feature_requests').filter(user__id=user_id) \
             .filter(action_type=3).values('feature_request')
         relations_set = set()
         for relation in relations:
@@ -44,13 +56,16 @@ class FeatureRequestsListAll(APIView):
 
 class FeatureRequests(APIView):
     def get(self, request):
-        user_id = request.data.get('user_id')
-        feature_requests = models.FeatureRequest.objects.filter(creator__id=user_id).values()
-        relations = models.UserActionsFR.objects.select_related('feature_requests').filter(user__id=user_id)\
+        user_id = request.GET.get('user_id')
+        owned = models.FeatureRequest.objects.filter(creator__id=user_id).values()
+        relations = models.UserActionsFR.objects.select_related('feature_requests').filter(user__id=user_id) \
             .filter(action_type=3).values('feature_request')
+
         relations_set = set()
         for relation in relations:
             relations_set.add(relation.get('feature_request'))
+        watched = models.FeatureRequest.objects.filter(id__in=relations_set)
+        feature_requests = watched.union(owned).values()
         return get_response(relations_set, feature_requests, user_id)
 
 
@@ -95,5 +110,4 @@ class CommentsList(generics.ListAPIView):
         feature_request_id = self.kwargs.get(self.lookup_url_kwarg)
         return models.Comment.objects.filter(feature_request__id=feature_request_id)
 
-
-#class Replies
+# class Replies
