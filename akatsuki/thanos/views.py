@@ -102,16 +102,25 @@ class UserActionsCreate(generics.CreateAPIView, generics.RetrieveDestroyAPIView)
     #     return models.UserActionsFR.objects.filter(feature_request__id=feature_request_id)
 
 
-class CommentsCrud(generics.CreateAPIView, generics.RetrieveUpdateDestroyAPIView):
+class CommentsCreate(generics.CreateAPIView):
     queryset = models.Comment.objects.all()
     serializer_class = serializers.CommentSerializer
+
+
+class CommentsDetail(generics.RetrieveUpdateDestroyAPIView):
+    lookup_url_kwarg = 'comment_id'
+    serializer_class = serializers.CommentSerializer
+
+    def get_queryset(self):
+        comment_id = self.kwargs.get(self.lookup_url_kwarg)
+        return models.Comment.objects.filter(id=comment_id)
 
 
 def get_comment(comment, user_id):
     comment_id = comment.get('id')
     likes = models.UserActionComment.objects.select_related('comment').filter(comment__id=comment_id).values('user')
     liked = int(user_id) in set([x['user'] for x in likes])
-    return {"id": comment_id, "text": comment.get('text'), "likes": likes, "liked": liked}
+    return {"id": comment_id, "text": comment.get('text'), "likes": len(likes), "liked": liked}
 
 
 def get_comments_for_fr(fr_id, user_id):
@@ -134,4 +143,6 @@ class CommentsList(APIView):
         return get_comments_for_fr(feature_request_id, user_id)
 
 
-# class Replies
+class UserActionCommentCreate(generics.CreateAPIView):
+    queryset = models.UserActionComment.objects.all()
+    serializer_class = serializers.UserActionCommentSerializer

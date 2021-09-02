@@ -3,7 +3,7 @@ from collections import Set
 from rest_framework.serializers import ModelSerializer, Serializer, ListSerializer
 from rest_framework import serializers
 
-from thanos.models import FeatureRequest, Comment, UserActionsFR, FeatureRequestResponse
+from thanos.models import *
 
 
 class FeatureRequestSerializer(ModelSerializer):
@@ -108,3 +108,8 @@ class CommentSerializer(ModelSerializer):
         model = Comment
         fields = '__all__'
 
+
+class UserActionCommentSerializer(ModelSerializer):
+    class Meta:
+        model = UserActionComment
+        fields = '__all__'
