@@ -1,4 +1,6 @@
+from django.contrib.auth.models import User
 from rest_framework.response import Response
+
 
 from thanos import models, serializers
 from rest_framework import generics, mixins
@@ -89,8 +91,12 @@ class FeatureRequestDelete(APIView):
 
 
 class FeatureRequestsDetail(generics.RetrieveUpdateAPIView):
-    queryset = models.FeatureRequest.objects.all()
+    lookup_url_kwarg = 'pk'
     serializer_class = serializers.FeatureRequestSerializer
+
+    def get_queryset(self):
+        pk = self.kwargs.get(self.lookup_url_kwarg)
+        return models.FeatureRequest.objects.filter(id=pk)
 
 
 
@@ -120,8 +126,10 @@ class CreateWatchView(APIView):
 
 class UpvoteView(APIView):
     def post(self, request):
-        watch = models.UserActionsFR(**request.data)
-        if watch.user is not None and watch.feature_request is not None and watch.action_type is 1:
+        user = User.objects.get(id=request.data.get('user'))
+        feature_request = models.FeatureRequest.objects.get(id=request.data.get('feature_request'))
+        if user is not None and feature_request is not None:
+            watch = models.UserActionsFR(user=user, feature_request=feature_request, action_type=1)
             watch.save()
             return success_response()
         return bad_request()
