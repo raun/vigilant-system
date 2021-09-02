@@ -9,14 +9,14 @@ urlpatterns = [
     path('<int:feature_request_id>', views.FeatureRequestDelete.as_view()),
     path('<int:pk>', views.FeatureRequestsDetail.as_view()),
     path('<int:feature_request_id>/response', views.FeatureRequestsResponseDetail.as_view()),
-    path('/upvote', views.CreateWatchView.as_view()), # change this
-    path('<int:feature_request_id>/user/<int:user_id>/downvote', ), # delete request
+    path('upvote', views.UpvoteView.as_view()), # change this
+    path('<int:feature_request_id>/user/<int:user_id>/downvote', views.DownVoteView.as_view()), # delete request
     path('<int:feature_request_id>/comments', views.CommentsList.as_view()),
     path('comments', views.CommentsCreate.as_view()),
     path('comments/<int:comment_id>', views.CommentsDetail.as_view()),
     path('comments/like', views.LikeCommentView.as_view()),
     path('comments/<int:comment_id>/user/<int:user_id>/unlike', views.UnlikeCommentView.as_view()),
-    path("/watch", views.CreateWatchView.as_view()), # change this
+    path("watch", views.CreateWatchView.as_view()), # change this
     path("<int:feature_request_id>/<int:user_id>/unwatch", views.DeleteWatchView.as_view()),
 ]
 

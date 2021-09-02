@@ -10,7 +10,10 @@ from rest_framework.views import APIView
 def success_response():
     return Response({"success": True})
 
-def
+
+def bad_request():
+    return Response({"success": False}, status=400)
+
 
 def get_response(watching_frs, all_frs, user_id):
     display_frs = []
@@ -82,7 +85,7 @@ class FeatureRequestDelete(APIView):
     def delete(self, request, feature_request_id):
         if feature_request_id is not None:
             models.FeatureRequest.objects.filter(id=feature_request_id).delete()
-        return Response({"success": True})
+        return success_response()
 
 
 class FeatureRequestsDetail(generics.RetrieveUpdateAPIView):
@@ -109,10 +112,19 @@ class FeatureRequestsResponseDetail(generics.RetrieveAPIView):
 class CreateWatchView(APIView):
     def post(self, request):
         watch = models.UserActionsFR(**request.data)
-        if watch.user is not None and watch.feature_request is not None and watch.action_type is not None:
+        if watch.user is not None and watch.feature_request is not None and watch.action_type is 3:
             watch.save()
-            return Response()
+            return success_response()
+        return bad_request()
 
+
+class UpvoteView(APIView):
+    def post(self, request):
+        watch = models.UserActionsFR(**request.data)
+        if watch.user is not None and watch.feature_request is not None and watch.action_type is 1:
+            watch.save()
+            return success_response()
+        return bad_request()
 
 
 class DeleteWatchView(APIView):
@@ -120,7 +132,17 @@ class DeleteWatchView(APIView):
         if feature_request_id is not None and user_id is not None:
             models.UserActionsFR.objects.filter(user__id=user_id). \
                 filter(feature_request__id=feature_request_id).filter(action_type=3).delete()
-        return Response({"success": True})
+            return success_response()
+        return bad_request()
+
+
+class DownVoteView(APIView):
+    def delete(self, request, feature_request_id, user_id):
+        if feature_request_id is not None and user_id is not None:
+            models.UserActionsFR.objects.filter(user__id=user_id). \
+                filter(feature_request__id=feature_request_id).filter(action_type=1).delete()
+            return success_response()
+        return bad_request()
 
 
 class CommentsCreate(generics.CreateAPIView):
