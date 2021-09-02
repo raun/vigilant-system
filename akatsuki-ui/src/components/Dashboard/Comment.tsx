@@ -12,9 +12,9 @@ const useStyles = makeStyles((theme) => ({
 	orange: {
 		color: theme.palette.getContrastText(deepOrange[500]),
 		backgroundColor: deepOrange[500],
-		width: theme.spacing(8),
-		height: theme.spacing(8),
-		fontSize: '40px',
+		width: theme.spacing(6),
+		height: theme.spacing(6),
+		fontSize: '30px',
     alignItems: 'center'
 	},
 	box: {

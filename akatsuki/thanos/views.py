@@ -22,7 +22,7 @@ class FeatureRequestsList(generics.CreateAPIView, generics.ListAPIView):
 
 class FeatureRequestsDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.FeatureRequest.objects.all()
-    serializer_class = serializers.FeatureRequestSerializer
+    serializer_class = serializers.FeatureRequestsBasicListSerializer
 
 
 class FeatureRequestsResponseDetail(generics.RetrieveAPIView):

@@ -21,6 +21,11 @@ const FeatureDetails = (props) => {
     <div>
       <Loading open={loading} />
       <Container maxWidth="md" >
+        <div className="pt-5 d-flex justify-center">            
+          <h2 className="text-bold">
+          Feature Details
+          </h2>
+        </div>
         <div className="pt-5 border-bottom">
           <div className="row center-flex-row text-title mb-5">
               {details.title}
