@@ -21,7 +21,7 @@ class FeatureRequestResponse(TimeStampedModel):
     feature_request = models.OneToOneField(FeatureRequest, on_delete=models.CASCADE)
     display_status = models.CharField(max_length=5000)
     eta = models.DateTimeField()
-    is_valid = models.BooleanField(default=True)
+    is_valid = models.BooleanField(default=False)
 
 
 class UserActionsFR(TimeStampedModel):

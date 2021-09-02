@@ -7,6 +7,10 @@ from rest_framework.views import APIView
 
 # Create your views here.
 
+def success_response():
+    return Response({"success": True})
+
+def
 
 def get_response(watching_frs, all_frs, user_id):
     display_frs = []
@@ -74,7 +78,14 @@ class FeatureRequestCreate(generics.CreateAPIView):
     serializer_class = serializers.FeatureRequestSerializer
 
 
-class FeatureRequestsDetail(generics.RetrieveUpdateDestroyAPIView):
+class FeatureRequestDelete(APIView):
+    def delete(self, request, feature_request_id):
+        if feature_request_id is not None:
+            models.FeatureRequest.objects.filter(id=feature_request_id).delete()
+        return Response({"success": True})
+
+
+class FeatureRequestsDetail(generics.RetrieveUpdateAPIView):
     queryset = models.FeatureRequest.objects.all()
     serializer_class = serializers.FeatureRequestSerializer
 
@@ -93,13 +104,21 @@ class FeatureRequestsResponseDetail(generics.RetrieveAPIView):
         return models.FeatureRequestResponse.objects.filter(id=feature_request_id)
 
 
-class UserActionsCreate(generics.CreateAPIView, generics.RetrieveDestroyAPIView):
-    queryset = models.UserActionsFR.objects.all()
-    serializer_class = serializers.UserActionsSerializer
+class CreateWatchView(APIView):
+    def post(self, request):
+        watch = models.UserActionsFR(**request.data)
+        if watch.user is not None and watch.feature_request is not None and watch.action_type is not None:
+            watch.save()
+            return Response()
 
-    # def get_queryset(self):
-    #     feature_request_id = self.kwargs.get(self.lookup_url_kwarg)
-    #     return models.UserActionsFR.objects.filter(feature_request__id=feature_request_id)
+
+
+class DeleteWatchView(APIView):
+    def delete(self, request, feature_request_id, user_id):
+        if feature_request_id is not None and user_id is not None:
+            models.UserActionsFR.objects.filter(user__id=user_id). \
+                filter(feature_request__id=feature_request_id).filter(action_type=3).delete()
+        return Response({"success": True})
 
 
 class CommentsCreate(generics.CreateAPIView):
@@ -132,17 +151,20 @@ def get_comments_for_fr(fr_id, user_id):
 
 
 class CommentsList(APIView):
-    # lookup_url_kwarg = 'feature_request_id'
-    # serializer_class = serializers.CommentSerializer
-    #
-    # def get_queryset(self):
-    #     feature_request_id = self.kwargs.get(self.lookup_url_kwarg)
-    #     return models.Comment.objects.filter(feature_request__id=feature_request_id)
     def get(self, request, feature_request_id):
         user_id = request.GET.get('user_id')
         return get_comments_for_fr(feature_request_id, user_id)
 
 
-class UserActionCommentCreate(generics.CreateAPIView):
+class LikeCommentView(generics.CreateAPIView):
     queryset = models.UserActionComment.objects.all()
     serializer_class = serializers.UserActionCommentSerializer
+
+
+class UnlikeCommentView(APIView):
+
+    def delete(self, request, user_id, comment_id):
+        if user_id is not None and comment_id is not None:
+            models.UserActionComment.objects.filter(user__id=user_id). \
+                filter(comment__id=comment_id).delete()
+        return Response({"success": True})
