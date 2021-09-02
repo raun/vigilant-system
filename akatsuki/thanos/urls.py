@@ -9,8 +9,10 @@ urlpatterns = [
     path('<int:pk>', views.FeatureRequestsDetail.as_view()),
     path('<int:feature_request_id>/response', views.FeatureRequestsResponseDetail.as_view()),
     path('relation', views.UserActionsCreate.as_view()),
-    path('<int:feature_request_id>/comments/all', views.CommentsList.as_view()),
-    path('<int:feature_request_id>/comments', views.CommentsCrud.as_view()),
+    path('<int:feature_request_id>/comments', views.CommentsList.as_view()),
+    path('comments', views.CommentsCreate.as_view()),
+    path('comments/<int:comment_id>', views.CommentsDetail.as_view()),
+    path('comments/<int:comment_id>/like', views.UserActionCommentCreate.as_view()),
     path("<int:feature_request_id>/watch", views.UserActionsCreate.as_view()),
 ]
 
