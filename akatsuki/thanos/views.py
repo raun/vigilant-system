@@ -5,13 +5,13 @@ from rest_framework import generics, mixins
 
 
 class FeatureRequestsListAll(generics.ListAPIView):
-
-    serializer_class = serializers.FeatureRequestSerializer
+    queryset = models.FeatureRequest.objects.all()
+    serializer_class = serializers.FeatureRequestsBasicListSerializer
 
 
 class FeatureRequestsList(generics.CreateAPIView, generics.ListAPIView):
     lookup_url_kwarg = 'user_id'
-    serializer_class = serializers.FeatureRequestSerializer
+    serializer_class = serializers.FeatureRequestsBasicListSerializer
 
     def get_queryset(self):
         user_id = self.kwargs.get(self.lookup_url_kwarg)
