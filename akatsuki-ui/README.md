@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## For first time in local
-Go to `frontend` directory
+Go to `akatsuki-ui` directory
 run `npm install` and run `npm start`
 
 ## Available Scripts
