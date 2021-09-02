@@ -15,7 +15,7 @@ console.log(watch)
     return (
       <div className="py-4 border-bottom">
         <div className="row center-flex-row justify-between">
-          <div className="col-xs-12 col-md-8  center-flex-row">
+          <div className="col-xs-12 col-sm-8 col-md-8  center-flex-row">
             <Link component={RouterLink} to={`/feature-requests/${feature.id}`} className="text-link">
               <Box component="div" className="text-subheading-2 text-link">
                 {feature.title}
@@ -29,7 +29,7 @@ console.log(watch)
             />
           </div>
           
-          <div className="col-xs-12 col-md-4 d-flex justify-end">
+          <div className="col-xs-12 col-sm-4 col-md-4 d-flex justify-end">
             <IconButton className="cursor-hand" onClick={() => setState(!state1)}>
               {!state1 ? 
               <VisibilityOutlined fontSize="large" color="primary"  /> : 
