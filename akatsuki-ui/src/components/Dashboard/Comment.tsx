@@ -37,11 +37,15 @@ const useStyles = makeStyles((theme) => ({
 export const Comment = ({featureId, userId}) => {
   const classes = useStyles();
   const {loading, comments} = useSelector((state: any) => state.comments);
+
 	const dispatch = useDispatch();
 	const [click, setClick] = useState(false);
 
+console.log(featureId, userId)
 	useEffect(() => {
-		dispatch(getAllComments(featureId, 1))
+		if (featureId) {
+			dispatch(getAllComments(featureId, 1))
+		}
 	}, [click])
 
   return (

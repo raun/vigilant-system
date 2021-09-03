@@ -22,7 +22,7 @@ export const AddComment = ({userId, featureId, click, setClick}) => {
         onChange={handleChange}
       />
       <button onClick={() => {
-        dispatch(createComment(userId, featureId, value));
+        dispatch(createComment(1, featureId, value));
         setValue('');
         setTimeout(()=> {
           setClick(!click)

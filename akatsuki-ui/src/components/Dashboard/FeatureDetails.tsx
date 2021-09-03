@@ -22,13 +22,17 @@ const FeatureDetails = (props) => {
   const [activeStep, setActiveStep] = useState(0);
 
   const steps = ['To be Picked', 'Chosen for Development', 'Under Development', 'To be released in a week', 'Deployed'];
-
+console.log(loading, details.id)
   useEffect(() => {
-    dispatch(getFeaturesDetails(featureId, 1))
+    if (featureId) {
+      dispatch(getFeaturesDetails(featureId, 1))
+    }
   }, [click])
 
   useEffect(() => {
-    dispatch(getFeaturesResponse(featureId))
+    if (featureId) {
+      dispatch(getFeaturesResponse(featureId))
+    }
   },[])
 
   return (
@@ -103,9 +107,10 @@ const FeatureDetails = (props) => {
               </Button> */}
             </div>
           </div>
+          {!loading && details && details.id && (
           <div>
-            <Comment featureId={details.id} userId={details.id} />
-          </div>
+            <Comment featureId={details.id} userId={details.creator_id} />
+          </div>)}
         </Container>
     </div>
   );

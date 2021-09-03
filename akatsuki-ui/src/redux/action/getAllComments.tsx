@@ -11,7 +11,7 @@ export const getAllComments = (featureId: number, userId: number) => async (
   dispatch: Dispatch
 ) => {
   dispatch({ type: GET_ALL_COMMENT_REQUEST });
-  const url = `/feature-requests/1/comments?user_id=${userId}`;
+  const url = `/feature-requests/${featureId}/comments?user_id=${userId}`;
 
   try {
     const data = await axios.get(url);
