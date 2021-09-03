@@ -24,9 +24,9 @@ export const AddComment = ({userId, featureId, click, setClick}) => {
       <button onClick={() => {
         dispatch(createComment(userId, featureId, value));
         setValue('');
-        setTimeout(()=> {
+        // setTimeout(()=> {
           setClick(!click)
-        }, 100)
+        // }, 100)
       }}
       disabled={value === ''}
       className="btn btn-primary mt-4">

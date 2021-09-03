@@ -36,7 +36,8 @@ const useStyles = makeStyles((theme) => ({
 
 export const Comment = ({featureId, userId}) => {
   const classes = useStyles();
-  const {loading, comments} = useSelector((state: any) => state.comments);
+  const { comments} = useSelector((state: any) => state.comments);
+	const {loading } = useSelector((state: any) => state.createComment);
 
 	const dispatch = useDispatch();
 	const [click, setClick] = useState(false);
@@ -46,7 +47,7 @@ console.log(featureId, userId)
 		if (featureId) {
 			dispatch(getAllComments(featureId, 1))
 		}
-	}, [click])
+	}, [click, loading])
 
   return (
     <Container maxWidth="md">
