@@ -121,7 +121,7 @@ export default function FeatureRequestForm(props: any) {
                     <Grid item xs={12}>
                       <FormControl variant="outlined"
                         fullWidth 
-                        error={'requestType' in formProps.errors}>
+                        error={'tags' in formProps.errors}>
                         <InputLabel id="request-type">Type of Request</InputLabel>
                         <Field
                           component={Select}
@@ -131,9 +131,10 @@ export default function FeatureRequestForm(props: any) {
                             id: 'request-type',
 														name: "tags"
                           }}>
+													<MenuItem value=''>Select an option</MenuItem>
                           <MenuItem value={'SOURCE'}>Source</MenuItem>
                           <MenuItem value={'DESTINATION'}>Destination</MenuItem>
-                          <MenuItem value={'Improvement'}>Improvement</MenuItem>
+                          <MenuItem value={'IMPROVEMENT'}>Improvement</MenuItem>
                         </Field>
                       </FormControl>
 										</Grid>
