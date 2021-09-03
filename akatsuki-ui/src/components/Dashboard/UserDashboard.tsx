@@ -5,6 +5,7 @@ import Tab from '@material-ui/core/Tab';
 import { Box, AppBar } from '@material-ui/core';
 import UserFeatureSummaryList from './UserFeatureSummaryList';
 import Loading from "../Shared/Loading";
+import './dashboard.scss';
 
 function TabPanel(props) {
 	const { children, value, index } = props;

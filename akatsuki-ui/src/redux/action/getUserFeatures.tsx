@@ -11,7 +11,7 @@ export const getUserRequests = (userId) => async (
   dispatch: Dispatch
 ) => {
   dispatch({ type: USER_FEATURES_REQUEST });
-  const url = `/feature-requests/user/${userId}`;
+  const url = `/feature-requests/user?user_id=${userId}`;
 
   try{
     const data = await axios.get(url);

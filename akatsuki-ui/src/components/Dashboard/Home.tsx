@@ -12,7 +12,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const allFeatures: Features = useSelector((state: any) => state.features);
   useEffect(() => {
-    dispatch(getAllRequests());
+    dispatch(getAllRequests(1));
   }, [])
 
   return (

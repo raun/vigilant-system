@@ -4,14 +4,11 @@ import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
 import { Box, IconButton } from '@material-ui/core';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import { VisibilityOutlined } from '@material-ui/icons';
+import { ThumbUp, VisibilityOutlined } from '@material-ui/icons';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-const FeatureSummary = ({ feature }) => {console.log(feature)
-  const [state1,setState]  = useState(false);
-  const watch = useSelector((state: any) => state.watch); 
-console.log(watch)
+const FeatureSummary = ({ feature }) => {
     return (
       <div className="py-4 border-bottom">
         <div className="row center-flex-row justify-between">
@@ -30,15 +27,15 @@ console.log(watch)
           </div>
           
           <div className="col-xs-12 col-sm-4 col-md-4 d-flex justify-end">
-            <IconButton className="cursor-hand" onClick={() => setState(!state1)}>
-              {!state1 ? 
-              <VisibilityOutlined fontSize="large" color="primary"  /> : 
-              <Visibility fontSize="large" color="primary"  />
-              } 
-            </IconButton>
-            <IconButton className="cursor-hand ml-2">
-              <ThumbUpOutlinedIcon fontSize="large" color="primary"  />
-            </IconButton>
+            <span className="center-flex-row">
+              {feature.watching ? <Visibility fontSize="large" color="primary" className="mr-1" /> : 
+                <VisibilityOutlined fontSize="large" color="primary" className="mr-1" />}
+            </span>
+            <span className="ml-4 center-flex-row">
+            {feature.liked ? <ThumbUp fontSize="large" color="primary" className="mr-1" /> : 
+                <ThumbUpOutlinedIcon fontSize="large" color="primary" className="mr-1" />}
+              {feature.likes}
+            </span>
           </div>
         </div>
       </div>

@@ -15,14 +15,14 @@ import FormControl from '@material-ui/core/FormControl';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useDispatch, useSelector } from 'react-redux';
 import { createRequest } from '../../redux/action/createRequest';
-import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
 	alert: {
 		margin: theme.spacing(0),
 	},
 	paper: {
-		paddingTop: theme.spacing(4),
+		paddingTop: '80px',
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
@@ -71,26 +71,25 @@ export default function FeatureRequestForm(props: any) {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const [buttonText, setButtonText] = useState(false);
-	const [redirectToReferrer, setRedirectToReferrer] = useState(false);
-
+	const { success } = useSelector((state: any) => state.createFeature);
+console.log(props, success)
 	// const user = isAuth();
-	const onSubmit = async (values: any, submitProps: any) => {
+	const onSubmit = async (values: any, submitProps: any) => {console.log(values)
 		dispatch(createRequest(1, values));
 	};
-
-	// if (redirectToReferrer) {
-	// 	if (user.role === 'user') return <Redirect to="/userdashboard" />;
-	// 	else return <Redirect to="/admindashboard" />;
-	// 	if (isAuth()) return <Redirect to="/" />;
+console.log(success)
+	// if (success) {
+	// 	return <Redirect to="/userdashboard" />;
 	// }
 
 	return (
 		<div>
+			{/* {success && <Redirect to="/userdashboard" />} */}
 			<Container maxWidth="sm">
 				<div className={classes.paper}>
-					<Typography component="h1" variant="h4">
+					<div className="text-display-2">
 						Submit A Feature
-					</Typography>
+					</div>
 					<Formik
 						initialValues={initialValues}
 						onSubmit={onSubmit}
@@ -126,7 +125,7 @@ export default function FeatureRequestForm(props: any) {
 												fullWidth
 												variant="outlined"
 												component={TextField}
-												name="Title"
+												name="title"
 												type="text"
 												label="title"
                         helperText=" "
@@ -184,7 +183,7 @@ export default function FeatureRequestForm(props: any) {
 										variant="contained"
 										color="primary"
 										className={classes.submit}
-										
+										disabled={!isValid || isSubmitting}
 										type="submit"
 									>
 										{buttonText ? (

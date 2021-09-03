@@ -1,9 +1,11 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { useDispatch, useSelector } from 'react-redux';
+import { createComment } from '../../redux/action/addComment';
 
-export const AddComment = () => {
+export const AddComment = ({userId, featureId, click, setClick}) => {
   const [value, setValue] = React.useState('');
+  const dispatch = useDispatch();
   const handleChange = (event) => {console.log(value)
     setValue(event.target.value);
   };
@@ -19,7 +21,17 @@ export const AddComment = () => {
         value={value}
         onChange={handleChange}
       />
-      <button onClick={() => console.log('clicked')} className="btn btn-primary mt-4">Add Comment</button>
+      <button onClick={() => {
+        dispatch(createComment(userId, featureId, value));
+        setValue('');
+        setTimeout(()=> {
+          setClick(!click)
+        }, 0)
+      }}
+      disabled={value === ''}
+      className="btn btn-primary mt-4">
+        Add Comment
+      </button>
     </div>
   )
 }

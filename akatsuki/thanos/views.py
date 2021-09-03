@@ -13,8 +13,11 @@ def success_response():
     return Response({"success": True})
 
 
-def bad_request():
-    return Response({"success": False}, status=400)
+def bad_request(message):
+    response = {"success": False}
+    if message is not None:
+        response["message"] = message
+    return Response(response, status=400)
 
 
 def get_feature_request(watching_frs, fr, user_id):
@@ -104,7 +107,9 @@ class FeatureRequestCreate(generics.CreateAPIView):
 class FeatureRequestDelete(APIView):
     def delete(self, request, feature_request_id):
         if feature_request_id is not None:
-            models.FeatureRequest.objects.filter(id=feature_request_id).delete()
+            fr = models.FeatureRequest.objects.filter(id=feature_request_id)
+            if len(fr) == 0:
+                return bad_request("Feature request with the given id does not exist")
         return success_response()
 
 
@@ -124,20 +129,13 @@ class FeatureRequestsDetail(APIView):
 
 
 
-
-# class FeatureRequestsDetail(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = models.FeatureRequest.objects.all()
-#     serializer_class = serializers.FeatureRequestsBasicListSerializer
-
-
-
-class FeatureRequestsResponseDetail(generics.RetrieveAPIView):
-    lookup_url_kwarg = 'feature_request_id'
-    serializer_class = serializers.FeatureRequestResponseSerializer
-
-    def get_queryset(self):
-        feature_request_id = self.kwargs.get(self.lookup_url_kwarg)
-        return models.FeatureRequestResponse.objects.filter(id=feature_request_id)
+class FeatureRequestsResponseDetail(APIView):
+    def get(self, request, feature_request_id):
+        response = models.FeatureRequestResponse.objects.filter(feature_request__id=feature_request_id).values()
+        if len(response) == 0:
+            return Response({})
+        else:
+            return Response(response[0])
 
 
 class CreateWatchView(APIView):
@@ -197,7 +195,7 @@ class CommentsDetail(generics.RetrieveUpdateDestroyAPIView):
 def get_comment(comment, user_id):
     comment_id = comment.get('id')
     likes = models.UserActionComment.objects.select_related('comment').filter(comment__id=comment_id).values('user')
-    liked = int(user_id) in set([x['user'] for x in likes])
+    liked = user_id is not None and int(user_id) in set([x['user'] for x in likes])
     return {"id": comment_id, "text": comment.get('text'), "likes": len(likes), "liked": liked}
 
 

@@ -214,7 +214,7 @@ const Header = (props: any) => {
           <div className={classes.desktop}>
             <div>
               <img
-                className="appbar-brand-image m-1"
+                className="appbar-brand-image my-1 mr-9"
                 alt="Hevo"
                 src={brandLogo}
               />
@@ -262,10 +262,11 @@ const Header = (props: any) => {
                         <li className="nav-item mr-2">
                           <Link
                             to="/userdashboard"
-                            className="py-2 px-2"
+                            className="py-2 px-2 center-flex-col"
                             style={isActive('/userdashboard')}
                           >
                             <Avatar />
+                            user
                           </Link>
                         </li>
                       </>
@@ -273,55 +274,23 @@ const Header = (props: any) => {
                     
                     {!isAuth && (
                       <>
-                        <li style={{ listStyle: 'none' }}>
-                          <Button
-                            style={{
-                              padding: '0px 0px',
-                              alignSelf: 'center',
-                              margin: '0 4px',
-                            }}
-                            variant="contained"
-                            className="nav-item header-button cursor-hand">
-                            <Link
-                              to="/login"
-                              style={{ color: '#fff' }}
-                              className="py-2 px-2">
-                              Sign in
-                            </Link>
-                          </Button>
+                        <li style={{ alignSelf: 'center' }} className="my-3 mx-2 cursor-hand">
+                          <Link to="/login" style={isActive('/login')}>
+                          Sign in
+                          </Link>
                         </li>
-                        <li style={{ listStyle: 'none' }}>
-                          <Button
-                            style={{
-                              padding: '0px 0px',
-                              margin: '0 4px',
-                              alignSelf: 'center',
-                            }}
-                            variant="contained"
-                            className="header-button"
-                          >
-                            <Link
-                              to="/signup"
-                              className="py-2 px-2 cursor-hand"
-                              style={{ color: '#fff' }}
-                            >
-                              Sign up
-                            </Link>
-                          </Button>
+                        <li style={{ alignSelf: 'center' }} className="my-3 mx-2 cursor-hand">
+                          <Link to="/signup" style={isActive('/signup')}>
+                            Signup
+                          </Link>
                         </li>
                       </>
                     )}
                     {isAuth && (
-                      <li style={{ alignSelf: 'center' }} className="float-right cursor-hand">
-                        <Button
-                          variant="contained"
-                          className="py-2 px-2 header-button"
-                          onClick={() => {
-                            console.log('signout')
-                          }}
-                        >
+                      <li style={{ alignSelf: 'center' }} className="my-3 mx-2 cursor-hand">
+                        <Link>
                           Signout
-                        </Button>
+                        </Link>
                       </li>
                     )}
                   </div>

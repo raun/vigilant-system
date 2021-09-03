@@ -3,6 +3,12 @@ import { deepOrange } from "@material-ui/core/colors";
 import clsx from "clsx";
 import { AddComment } from "./AddComment";
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getAllComments } from '../../redux/action/getAllComments';
+import { likeComment, unlikeComment } from '../../redux/action/upvoteAction';
+import { useState } from "react";
+import { ThumbUp } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -28,51 +34,56 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export const Comment = () => {
+export const Comment = ({featureId, userId}) => {
   const classes = useStyles();
-  const reviews = [
-    {_id: 1, user: { name: 'sad' },createdAt: 'abhi' , review: `jfkd jfkld fjkldjfl kjflaskjd jlsjf jlkfas klfjdk hfklajsfk jklfjal jfkd jfkld fjkldjfl kjflaskjd jlsjf jlkfas klfjdk hfklajsfk jklfjal
-    jfkd jfkld fjkldjfl kjflaskjd jlsjf jlkfas klfjdk hfklajsfk jklfjal jfkd jfkld fjkldjfl kjflaskjd jlsjf jlkfas klfjdk hfklajsfk jklfjal
-    jfkd jfkld fjkldjfl kjflaskjd jlsjf jlkfas klfjdk hfklajsfk jklfjal jfkd jfkld fjkldjfl kjflaskjd jlsjf jlkfas klfjdk hfklajsfk jklfjal`},
-    {_id: 2, user: { name: 'mad' },createdAt: 'abhi' , review: 'safadfa fsfsfas fsfasdfas'},
-    {_id: 3, user: { name: 'mad' },createdAt: 'abhi' , review: 'safadfa fsfsfas fsfasdfas'},
-    {_id: 4, user: { name: 'mad' },createdAt: 'abhi' , review: 'safadfa fsfsfas fsfasdfas'},
-    {_id: 5, user: { name: 'mad' },createdAt: 'abhi' , review: 'safadfa fsfsfas fsfasdfas'},
-    {_id: 6, user: { name: 'mad' },createdAt: 'abhi' , review: 'safadfa fsfsfas fsfasdfas'},
-    {_id: 7, user: { name: 'mad' },createdAt: 'abhi' , review: 'safadfa fsfsfas fsfasdfas'}
-  ]
+  const {loading, comments} = useSelector((state: any) => state.comments);
+	const dispatch = useDispatch();
+	const [click, setClick] = useState(false);
+
+	useEffect(() => {
+		console.log(dispatch(getAllComments(featureId, 1)))
+	}, [click])
+
   return (
     <Container maxWidth="md">
 				<div>
-					{reviews.map((review) => (
-						<div key={review._id} className='row py-5 border-bottom'>
+					{comments.map((comment: any) => (
+						<div key={comment?.id} className='row py-5 border-bottom'>
 							<div className="col-xs-12 col-md-3 center-flex-col justify-center">
 								<Avatar
-									alt={review.user.name}
-									// src={`${imageUrl}/${review.user.image}`}
+									alt='image'
 									className={clsx(classes.orange, 'd-flex')}
-								>{review.user.name[0]}</Avatar>
-                {/* <div className="mt-2">
-                {review.user.name}
-                </div> */}
-              
+								>{comment.text[0]}</Avatar>
 							</div>
 							<div className="col-xs-12 col-md-9">
-                <div className="d-flex center-flex-row mb-2">
-								  <div className="text-subheading-2">{review.user.name}</div>
-								  <div className="text-body-1 ml-5">{review.createdAt}</div>
+                <div className="d-flex center-flex-row mb-2 justify-between">
+									<div className="center-flex-row">
+										<div className="text-subheading-2">{comment?.name || 'user'+comment.id}</div>
+										<div className="text-body-1 ml-5">{comment?.created_at}</div>
+									</div>
+									<span>
+										<IconButton className="cursor-hand" onClick={() => {
+											comment.liked ?
+											dispatch(unlikeComment(userId, comment.id)) :
+											dispatch(likeComment(userId, comment.id))
+										 	setClick(!click)
+										}}>
+											{
+												comment.liked ?
+												<ThumbUp fontSize="small" className="mr-1"  /> :
+													<ThumbUpOutlinedIcon fontSize="small" className="mr-1"  />
+											}
+										</IconButton>
+										{comment.likes}
+
+									</span>
                 </div>
-								<div className="text-body-3">{review.review}</div>
-								<div className="">
-									<IconButton className="cursor-hand">
-										<ThumbUpOutlinedIcon fontSize="large"  />
-									</IconButton>
-								</div>
+								<div className="text-body-3">{comment.text}</div>
 							</div>
 						</div>
 					))}
 				</div>
-        <AddComment />
+        <AddComment featureId={featureId} userId={userId} click={click} setClick={setClick} />
 			</Container>
   )
 }

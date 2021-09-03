@@ -4,7 +4,10 @@ import featureRequests from './featureRequestsReducer';
 import createFeatureReducer from './createFeatureReducer';
 import featureDetailsReducer from './featureDetailsReducer';
 import userFeatureRequestReducer from './userFeatureRequestReducer';
-import watchReducer from './watchReducer';
+import watchFeatureReducer from './watchFeatureReducer';
+import addCommentReducer from './addCommentReducer';
+import getAllComments from './getAllComments';
+import upvoteFeatureReducer from './upvoteFeatureReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -12,5 +15,8 @@ export default combineReducers({
   createFeature: createFeatureReducer,
   featureDetails: featureDetailsReducer,
   userFeatures: userFeatureRequestReducer,
-  watch: watchReducer
+  watch: watchFeatureReducer,
+  comments: getAllComments,
+  createComment: addCommentReducer,
+  upvote: upvoteFeatureReducer
 })

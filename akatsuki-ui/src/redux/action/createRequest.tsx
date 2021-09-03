@@ -11,13 +11,30 @@ export const createRequest = (id: number, requestBody: any) => async (
   dispatch: Dispatch
 ) => {
   dispatch({ type: CREATE_FEATURE_REQUEST });
-  const url = `/feature-requests/user/${id}`;
+  const url = `/feature-requests/`;
 
+  const dbReq = axios.post(url, {
+    ...requestBody,
+    creator: id
+  })
+  // const jiraBaseUrl = axios.create({baseURL: ''});
+
+  // const jiraReq = jiraBaseUrl.post('https://akatsukithegreat.atlassian.net/rest/api/2/issue',{
+  //     "project":
+  //     {
+  //        "id": "10000"
+  //     },
+  //     "summary": requestBody.title,
+  //     "description": requestBody.description,
+  //     "issuetype": {
+  //        "id": "10001"
+  //     }
+  // })
+
+  // const promiseArr = [dbReq];
   try {
-    const data = await axios.post(url, {
-      ...requestBody,
-      creator: 1
-    });
+    const data = await dbReq;
+    
     dispatch({ type: CREATE_FEATURE_SUCCESS })
     notify({
       message: 'feature created successfully',

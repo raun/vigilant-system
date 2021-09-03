@@ -7,11 +7,11 @@ import {
 } from '../constant';
 import { notify, NotificationType } from '../../components/Toaster/Toaster';
 
-export const getAllRequests = () => async (
+export const getAllRequests = (id: any) => async (
   dispatch: Dispatch
 ) => {
   dispatch({ type: GET_FEATURES_REQUEST });
-  const url = `/feature-requests/user/all`;
+  const url = `/feature-requests/user/all?user_id=${id}`;
 
   try {
     const data = await axios.get(url);
