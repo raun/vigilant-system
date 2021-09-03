@@ -3,7 +3,7 @@ import { NavLink as RouterLink } from 'react-router-dom';
 
 const HomeHeader = () => {
   return (
-      <div className="pt-9 border-bottom">
+      <div className="pt-9 pb-5 border-bottom">
         <div className="row align-items-center">
           <div className="col-lg-12">
             <h2 className="text-bold">
