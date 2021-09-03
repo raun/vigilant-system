@@ -118,7 +118,7 @@ export default function FeatureRequestForm(props: any) {
 							return (
 								<Form className={classes.form}>
 									<Grid container spacing={2}>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className="mb-5">
                       <FormControl variant="outlined"
                         fullWidth 
                         error={'tags' in formProps.errors}>
@@ -139,7 +139,7 @@ export default function FeatureRequestForm(props: any) {
                       </FormControl>
 										</Grid>
 
-										<Grid item xs={12}>
+										<Grid item xs={12} className="mb-5">
 											<Field
 												fullWidth
 												variant="outlined"
@@ -154,12 +154,12 @@ export default function FeatureRequestForm(props: any) {
 										</Grid>
 										
 										{features && features.length > 0 &&
-										<Grid item xs={12}>
+										<Grid item xs={12} className="mb-5">
 										  <RecommendedFeatures features={features} />
 										</Grid>}
 										
 
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className="mb-5">
 											<Field
 												fullWidth
                         multiline
@@ -173,7 +173,7 @@ export default function FeatureRequestForm(props: any) {
 											/>
 										</Grid>
                     
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className="px-2 py-0">
                       <Field
                         component={CheckboxWithLabel}
                         type="checkbox"
@@ -183,7 +183,7 @@ export default function FeatureRequestForm(props: any) {
                       />
                     </Grid>
 
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className="px-2 py-0">
                       <Field
                         component={CheckboxWithLabel}
                         type="checkbox"
@@ -193,7 +193,7 @@ export default function FeatureRequestForm(props: any) {
                       />
                     </Grid>
 
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className="px-2 py-0">
                       <Field
                         component={CheckboxWithLabel}
                         type="checkbox"
