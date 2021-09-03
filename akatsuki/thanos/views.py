@@ -121,6 +121,8 @@ class FeatureRequestDelete(APIView):
             fr = models.FeatureRequest.objects.filter(id=feature_request_id)
             if len(fr) == 0:
                 return bad_request("Feature request with the given id does not exist")
+            else:
+                fr.delete()
         return success_response()
 
 
