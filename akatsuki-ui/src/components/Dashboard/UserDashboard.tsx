@@ -62,7 +62,7 @@ function AdminDashboard() {
 							onChange={handleChange}
 							className={classes.tabs}
 						>
-							<Tab label="My Features Request" />
+							<Tab label="My Feature Requests" />
 							<Tab label="Profile" />
 							<Tab label="Manage Features" />
 						</Tabs>

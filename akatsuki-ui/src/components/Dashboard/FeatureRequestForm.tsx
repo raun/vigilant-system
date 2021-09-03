@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 		margin: theme.spacing(0),
 	},
 	paper: {
-		paddingTop: '80px',
+		paddingTop: '60px',
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
@@ -105,7 +105,7 @@ export default function FeatureRequestForm(props: any) {
 			{/* {success && <Redirect to="/userdashboard" />} */}
 			<Container maxWidth="sm">
 				<div className={classes.paper}>
-					<div className="text-display-2">
+					<div className="text-display-2 mb-5">
 						Submit A Feature
 					</div>
 					<Formik
@@ -146,7 +146,7 @@ export default function FeatureRequestForm(props: any) {
 												component={TextField}
 												name="title"
 												type="text"
-												label="title"
+												label="Title"
                         helperText=" "
 												autoComplete="off"
 												onChange={(e) => handleSchemaChange(e.target.value, setFieldValue)}
@@ -178,7 +178,7 @@ export default function FeatureRequestForm(props: any) {
                         component={CheckboxWithLabel}
                         type="checkbox"
                         name="isBlocker"
-                        Label={{ label: 'Is it a blocker for you to onboard Hevo?' }}
+                        Label={{ label: 'Is it a blocker to onboard to Hevo?' }}
                         color="primary"
                       />
                     </Grid>

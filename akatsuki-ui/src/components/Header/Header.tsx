@@ -113,7 +113,7 @@ const Header = (props: any) => {
 		<>
 			<li className="my-3 mx-2 cursor-hand">
 				<Link to="/" style={isActive('/')}>
-					Features Request
+					Feature Requests
 				</Link>
 			</li>
       <li className="my-3 mx-2 cursor-hand">
@@ -266,7 +266,7 @@ const Header = (props: any) => {
                             style={isActive('/userdashboard')}
                           >
                             <Avatar />
-                            user
+                            Jerome
                           </Link>
                         </li>
                       </>

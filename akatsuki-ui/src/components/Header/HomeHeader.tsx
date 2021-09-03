@@ -6,12 +6,13 @@ const HomeHeader = () => {
       <div className="pt-9 pb-5 border-bottom">
         <div className="row align-items-center">
           <div className="col-lg-12">
-            <h2 className="text-bold">
-              Features Request
+            <h2 className="text-bold mb-5">
+              Feature Requests
             </h2>
 
-            <p className="">
-              Hevo is a no-code data pipeline as a service. Start moving data from any source to your data warehouse such as Redshift, BigQuery, and Snowflake in real-time.
+            <p className="mb-5">
+              Share your ideas with us. Your ideas are widely appreciated and recognized at Hevo. Upvoting existing requests will help us priorities your requests.
+              You can choose to recieve updates via slack or email.
             </p>
           </div>
 

@@ -116,8 +116,7 @@ export default function SignUp(props: any) {
 
 	return (
 		<div>
-			<Container component="main" maxWidth="sm">
-				<CssBaseline />
+			<Container className="pt-9" component="main" maxWidth="sm">
 				<div className={classes.paper}>
 					<Typography component="h1" variant="h4">
 						Create your Account
