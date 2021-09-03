@@ -144,7 +144,7 @@ class FeatureRequestsResponseDetail(APIView):
     def get(self, request, feature_request_id):
         response = models.FeatureRequestResponse.objects.filter(feature_request__id=feature_request_id).values()
         if len(response) == 0:
-            return Response({})
+            return Response({'display_status': 'Unpicked'})
         else:
             return Response(response[0])
 
