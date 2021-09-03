@@ -18,7 +18,7 @@ const RecommendedFeatures = ({features}) => {
           expandIcon={<ExpandMoreIcon />}
           id="panel1bh-header"
         >
-          <div>similar searches</div>
+          <div className="text-body-1">Similar Searches</div>
         </AccordionSummary>
         <AccordionDetails className="flex-col">
           {features.map((feature: any) => 

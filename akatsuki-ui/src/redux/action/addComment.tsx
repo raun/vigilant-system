@@ -2,6 +2,8 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 import { CREATE_COMMENT_ERROR, CREATE_COMMENT_SUCCESS, CREATE_COMMENT_REQUEST } from "../constant";
 import { notify, NotificationType } from '../../components/Toaster/Toaster';
+import getAllComments from '../reducer/getAllComments';
+import { useDispatch } from 'react-redux';
 
 export const createComment = (userId: number, featureId: number, text: string) => async (
   dispatch: Dispatch
