@@ -1,10 +1,10 @@
 from django.contrib.auth.models import User
+from django.db.models import Q
+from rest_framework import generics
 from rest_framework.response import Response
-
+from rest_framework.views import APIView
 
 from thanos import models, serializers
-from rest_framework import generics, mixins
-from rest_framework.views import APIView
 
 
 # Create your views here.
@@ -59,6 +59,17 @@ def get_response(watching_frs, all_frs, user_id):
     return Response(display_frs)
 
 
+class SearchFR(APIView):
+
+    def get(self, request):
+        results = []
+        if request.method == "GET":
+            title = request.GET.get('title')
+            results = models.FeatureRequest.objects\
+                .filter(Q(title__icontains=title)).values()
+        return Response(results)
+
+
 class FeatureRequestsListAll(APIView):
 
     def get(self, request):
@@ -110,13 +121,15 @@ class FeatureRequestDelete(APIView):
             fr = models.FeatureRequest.objects.filter(id=feature_request_id)
             if len(fr) == 0:
                 return bad_request("Feature request with the given id does not exist")
+            else:
+                fr.delete()
         return success_response()
 
 
 class FeatureRequestsDetail(APIView):
     def get(self, request, feature_request_id):
         user_id = request.GET.get('user_id')
-        relations = models.UserActionsFR.objects.select_related('feature_requests').filter(user__id=user_id).\
+        relations = models.UserActionsFR.objects.select_related('feature_requests').filter(user__id=user_id). \
             filter(action_type=3).values('feature_request')
         relations_set = set()
         for relation in relations:

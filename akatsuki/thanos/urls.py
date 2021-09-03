@@ -34,6 +34,7 @@ urlpatterns = [
     path('comments/<int:comment_id>/user/<int:user_id>/unlike', views.UnlikeCommentView.as_view()), # unlike a comment
     path("watch", views.CreateWatchView.as_view()), # Watch an FR
     path("<int:feature_request_id>/<int:user_id>/unwatch", views.DeleteWatchView.as_view()), # unwatch an FR
+    path("search", views.SearchFR.as_view())
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
