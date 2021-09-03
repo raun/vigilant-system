@@ -8,6 +8,9 @@ import watchFeatureReducer from './watchFeatureReducer';
 import addCommentReducer from './addCommentReducer';
 import getAllComments from './getAllComments';
 import upvoteFeatureReducer from './upvoteFeatureReducer';
+import deleteFeatureReducer from './deleteFeatureReducer';
+import featureResponseReducer from './featureResponseReducer';
+import searchFeatureReducer from './searchFeatureReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -18,5 +21,8 @@ export default combineReducers({
   watch: watchFeatureReducer,
   comments: getAllComments,
   createComment: addCommentReducer,
-  upvote: upvoteFeatureReducer
+  upvote: upvoteFeatureReducer,
+  search: searchFeatureReducer,
+  delete: deleteFeatureReducer,
+  featureResponse: featureResponseReducer
 })

@@ -65,6 +65,8 @@ class SearchFR(APIView):
         results = []
         if request.method == "GET":
             title = request.GET.get('title')
+            if not title:
+                return Response(results)
             results = models.FeatureRequest.objects\
                 .filter(Q(title__icontains=title)).values()
         return Response(results)

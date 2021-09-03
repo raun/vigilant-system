@@ -3,7 +3,6 @@ import { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import { TextField } from 'formik-material-ui';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Formik, Form, Field } from 'formik';
@@ -15,7 +14,10 @@ import FormControl from '@material-ui/core/FormControl';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useDispatch, useSelector } from 'react-redux';
 import { createRequest } from '../../redux/action/createRequest';
+import RecommendedFeatures from './RecommendedFeatures'
+import {searchSimilarFeatures} from '../../redux/action/searchSimilarFeatures';
 import { Redirect } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const useStyles = makeStyles((theme) => ({
 	alert: {
@@ -71,16 +73,32 @@ export default function FeatureRequestForm(props: any) {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const [buttonText, setButtonText] = useState(false);
+	const [title1, setTitle] = useState('');
 	const { success } = useSelector((state: any) => state.createFeature);
-console.log(props, success)
-	// const user = isAuth();
-	const onSubmit = async (values: any, submitProps: any) => {console.log(values)
+
+	let { features } = useSelector((state: any) => state.search)
+
+	const onSubmit = async (values: any, submitProps: any) => {
 		dispatch(createRequest(1, values));
+		submitProps.resetForm();
 	};
-console.log(success)
+
 	// if (success) {
 	// 	return <Redirect to="/userdashboard" />;
 	// }
+	useEffect(() => {
+		features = features.filter(feature => feature.id == null);
+	},[])
+
+	const handleSchemaChange = (value, setFieldValue) => {console.log(value)
+    setFieldValue('title', value);
+    searchTerm(value)
+}
+
+	const searchTerm = (title: any) => {
+		console.log(dispatch(searchSimilarFeatures(title)))
+	}
+ 
 
 	return (
 		<div>
@@ -95,7 +113,7 @@ console.log(success)
 						onSubmit={onSubmit}
 						validationSchema={validationSchema}>
 						{(formProps) => {
-							const { submitForm, isSubmitting, isValid } = formProps;
+							const { values, isSubmitting, isValid, setFieldValue } = formProps;
 
 							return (
 								<Form className={classes.form}>
@@ -129,8 +147,16 @@ console.log(success)
 												type="text"
 												label="title"
                         helperText=" "
+												autoComplete="off"
+												onChange={(e) => handleSchemaChange(e.target.value, setFieldValue)}
 											/>
 										</Grid>
+										
+										{features && features.length > 0 &&
+										<Grid item xs={12}>
+										  <RecommendedFeatures features={features} />
+										</Grid>}
+										
 
                     <Grid item xs={12}>
 											<Field

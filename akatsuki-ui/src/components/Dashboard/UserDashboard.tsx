@@ -64,7 +64,7 @@ function AdminDashboard() {
 						>
 							<Tab label="My Features Request" />
 							<Tab label="Profile" />
-							<Tab label="Watching Features" />
+							<Tab label="Manage Features" />
 						</Tabs>
 					</div>
 					<div className="col-sm-8 col-md-9">
@@ -72,10 +72,10 @@ function AdminDashboard() {
 							<UserFeatureSummaryList />
 						</TabPanel>
 						<TabPanel value={value} index={1}>
-              b
+							In here you can see and update your profile and personal information.
 						</TabPanel>
 						<TabPanel value={value} index={2}>
-              c
+							In here you can manage your features which is watching some features and email subscription and stuff related to features.
 						</TabPanel>
 					</div>
 				</div>
@@ -99,10 +99,10 @@ function AdminDashboard() {
 					<UserFeatureSummaryList />
 				</TabPanel>
 				<TabPanel value={value} index={1}>
-					b
+					In here you can see and update your profile and personal information.
 				</TabPanel>
 				<TabPanel value={value} index={2}>
-          c
+          In here you can manage your features which is watching some features and email subscription and stuff related to features.
 				</TabPanel>
 			</div>
 		</div>

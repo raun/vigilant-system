@@ -58,7 +58,7 @@ export const Comment = ({featureId, userId}) => {
 							<div className="col-xs-12 col-md-9">
                 <div className="d-flex center-flex-row mb-2 justify-between">
 									<div className="center-flex-row">
-										<div className="text-subheading-2">{comment?.name || 'user'+comment.id}</div>
+										<div className="text-subheading-2">{comment?.name || 'user'+userId}</div>
 										<div className="text-body-1 ml-5">{comment?.created_at}</div>
 									</div>
 									<span>

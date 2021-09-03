@@ -10,6 +10,7 @@ import './dashboard.scss'
 import { ThumbUp, Visibility, VisibilityOutlined } from '@material-ui/icons';
 import { watchClick, unwatchClick } from '../../redux/action/watchAction';
 import { upvoteClick, downvoteClick } from '../../redux/action/upvoteAction';
+import { getFeaturesResponse} from '../../redux/action/featureResponse'
 
 const FeatureDetails = (props) => {
   const featureId = props.match.params.featureId;
@@ -22,10 +23,13 @@ const FeatureDetails = (props) => {
 
   const steps = ['To be Picked', 'Chosen for Development', 'Under Development', 'To be released in a week', 'Deployed'];
 
-console.log(details)
   useEffect(() => {
     dispatch(getFeaturesDetails(featureId, 1))
   }, [click])
+
+  useEffect(() => {
+    console.log(dispatch(getFeaturesResponse(featureId)))
+  },[])
 
   return (
     <div className="pt-9">

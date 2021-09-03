@@ -231,7 +231,7 @@ const Header = (props: any) => {
           {/* for desktop screen */}
           <div className={classes.mobile}>
             <img
-              className="appbar-brand-image p-1 mr-4"
+              className="appbar-brand-image p-1 mr-9"
               alt="Hevo"
               src={brandLogo}
             />

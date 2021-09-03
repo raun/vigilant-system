@@ -1,4 +1,4 @@
-import { FEATURE_DETAILS_REQUEST, FEATURE_DETAILS_SUCCESS, FEATURE_DETAILS_ERROR } from "../constant";
+import { FEATURE_RESPONSE_ERROR, FEATURE_RESPONSE_REQUEST, FEATURE_RESPONSE_SUCCESS } from "../constant";
 
 export interface ResponseDetails {
   loading: boolean;
@@ -13,12 +13,12 @@ const intialFeaturesDetails: ResponseDetails = {
 
 export default (state: ResponseDetails = intialFeaturesDetails, action): ResponseDetails => {
   switch(action.type) {
-    case FEATURE_DETAILS_REQUEST: 
+    case FEATURE_RESPONSE_REQUEST: 
       return { ...state, loading: true }
-    case FEATURE_DETAILS_SUCCESS: {
+    case FEATURE_RESPONSE_SUCCESS: {
       return { ...state, details: action.payload, loading: false}
     }
-    case FEATURE_DETAILS_ERROR: {
+    case FEATURE_RESPONSE_ERROR: {
       return { ...state, loading: false}
     }
     default:

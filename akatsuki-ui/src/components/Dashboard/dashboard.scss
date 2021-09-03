@@ -1,3 +1,6 @@
+@import '../../styles/variables';
+@import '../../styles/theming/theme';
+
 .MuiTypography-body2 {
   font-size: 16px;
 }
@@ -13,4 +16,13 @@
 .MuiTab-wrapper {
   font-size: 16px;
   align-items: flex-start;
+}
+
+.MuiAccordionSummary-root {
+  border: 1px solid $divider-color;
+}
+
+.MuiAccordionDetails-root {
+  overflow: scroll;
+  height: 150px;
 }
