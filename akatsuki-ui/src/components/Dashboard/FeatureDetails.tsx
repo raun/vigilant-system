@@ -34,13 +34,13 @@ const FeatureDetails = (props) => {
   return (
     <div className="pt-9">
       <Loading open={loading} />
-      {/* <Stepper className="position-sticky" activeStep={activeStep} alternativeLabel>
+      <Stepper className="position-sticky" activeStep={activeStep} alternativeLabel>
           {steps.map((label) => (
             <Step key={label}>
               <StepLabel>{label}</StepLabel>
             </Step>
           ))}
-        </Stepper> */}
+        </Stepper>
         <Container maxWidth="md" >
           <div className="p-5 border-bottom">
             {/* <div>
