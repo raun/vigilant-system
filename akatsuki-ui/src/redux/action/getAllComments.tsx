@@ -15,7 +15,7 @@ export const getAllComments = (featureId: number, userId: number) => async (
 
   try {
     const data = await axios.get(url);
-    console.log(data)
+    
     if (data.status >= 200 && data.status < 300) {
       dispatch({type: GET_ALL_COMMENT_SUCCESS, payload: data.data})
     }

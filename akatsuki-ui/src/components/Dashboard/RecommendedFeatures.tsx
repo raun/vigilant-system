@@ -10,7 +10,7 @@ import { Box } from '@material-ui/core';
 
 const RecommendedFeatures = ({features}) => {
   const [expanded, setExpanded] = useState(false);
-console.log(features)
+
   return (
     <div>
       <Accordion expanded={expanded} onChange={() => setExpanded(!expanded)}>

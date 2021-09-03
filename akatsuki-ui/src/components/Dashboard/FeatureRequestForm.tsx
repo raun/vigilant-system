@@ -90,13 +90,13 @@ export default function FeatureRequestForm(props: any) {
 		features = features.filter(feature => feature.id == null);
 	},[])
 
-	const handleSchemaChange = (value, setFieldValue) => {console.log(value)
+	const handleSchemaChange = (value, setFieldValue) => {
     setFieldValue('title', value);
     searchTerm(value)
 }
 
 	const searchTerm = (title: any) => {
-		console.log(dispatch(searchSimilarFeatures(title)))
+		dispatch(searchSimilarFeatures(title))
 	}
  
 

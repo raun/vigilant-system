@@ -28,7 +28,7 @@ const FeatureDetails = (props) => {
   }, [click])
 
   useEffect(() => {
-    console.log(dispatch(getFeaturesResponse(featureId)))
+    dispatch(getFeaturesResponse(featureId))
   },[])
 
   return (

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteFeature } from '../../redux/action/deleteFeature'
 
 const UserFeatureSummary = ({feature, change, setChange}) => {
-console.log(feature);
+
   const dispatch = useDispatch();
 
   return (

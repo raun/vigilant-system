@@ -15,7 +15,7 @@ export const searchSimilarFeatures = (title: string) => async (
 
   try {
     const data = await axios.get(url);
-    console.log(data)
+    
     if (data.status >= 200 && data.status < 300) {
       dispatch({type: SEARCH_FEATURE_SUCCESS, payload: data.data})
     }

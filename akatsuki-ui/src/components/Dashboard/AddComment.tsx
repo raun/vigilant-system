@@ -6,7 +6,7 @@ import { createComment } from '../../redux/action/addComment';
 export const AddComment = ({userId, featureId, click, setClick}) => {
   const [value, setValue] = React.useState('');
   const dispatch = useDispatch();
-  const handleChange = (event) => {console.log(value)
+  const handleChange = (event) => {
     setValue(event.target.value);
   };
   return (

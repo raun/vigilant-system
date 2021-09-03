@@ -41,7 +41,7 @@ export const Comment = ({featureId, userId}) => {
 	const [click, setClick] = useState(false);
 
 	useEffect(() => {
-		console.log(dispatch(getAllComments(featureId, 1)))
+		dispatch(getAllComments(featureId, 1))
 	}, [click])
 
   return (
