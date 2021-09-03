@@ -193,7 +193,7 @@ class CommentsDetail(generics.RetrieveUpdateDestroyAPIView):
 def get_comment(comment, user_id):
     comment_id = comment.get('id')
     likes = models.UserActionComment.objects.select_related('comment').filter(comment__id=comment_id).values('user')
-    liked = int(user_id) in set([x['user'] for x in likes])
+    liked = user_id is not None and int(user_id) in set([x['user'] for x in likes])
     return {"id": comment_id, "text": comment.get('text'), "likes": len(likes), "liked": liked}
 
 
